@@ -2,7 +2,7 @@
     display: flex;
     min-height: 3.5rem;
 
-    background-color: var(--clr4);
+    background-color: var(--gray-light);
     padding: .8rem 1rem;
     
     & nav {
@@ -41,11 +41,11 @@
 
         .score {
             padding: 8px;
-            background-color: var(--clr2);
+            background-color: var(--clr1);
             border-radius: 50%;
             margin: 10px;
 
-            color: var(--gray1);
+            color: var(--white);
         }
 
         & img {

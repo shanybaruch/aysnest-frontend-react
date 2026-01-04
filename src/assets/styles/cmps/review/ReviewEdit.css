@@ -5,7 +5,7 @@
     gap: .5em;
 
     padding-block-end: 1em;
-    border-block-end: 1px solid var(--gray2);
+    border-block-end: 1px solid var(--gray-light);
 
     > * {
         height: 2em;

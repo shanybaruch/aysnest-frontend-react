@@ -1,9 +1,9 @@
 .stay-preview {
-    color: var(--gray2);
+    color: var(--gray-light);
 
     > header {
         font-size: 1.2em;
-        color: var(--gray1);
+        color: var(--white);
     }
 
     & p {

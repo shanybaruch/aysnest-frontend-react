@@ -5,7 +5,7 @@
 	margin: auto;
 
 	padding: 1em;
-	background-color: var(--clr4);
+	background-color: var(--gray-light);
 }
 
 .signup-form {
@@ -36,7 +36,7 @@
 
 	> a {
 		font-size: 0.8em;
-		color: var(--clr4);
+		color: var(--gray-light);
 
 		&:hover {
 			color: var(--clr1);
@@ -44,7 +44,7 @@
 
 		&.active {
 			text-decoration: underline;
-			color: var(--clr2);
+			color: var(--clr1);
 		}
 	}
 }

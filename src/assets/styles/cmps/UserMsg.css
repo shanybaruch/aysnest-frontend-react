@@ -8,7 +8,7 @@
 
     padding: .2em;
     padding-inline-end: 1.5em;
-    background-color: var(--gray3);
+    background-color: var(--gray);
 
     color: white;
     font-size: .9em;
@@ -31,11 +31,11 @@
     }
 
     & button {
-        background-color: var(--gray1);
+        background-color: var(--white);
         padding: 1px 6px;
         border: 0;
         border-radius: 50%;
-        color: var(--gray4);
+        color: var(--black);
     }
 
 }

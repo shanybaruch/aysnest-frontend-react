@@ -4,7 +4,7 @@
     align-items: center;
     gap: 0 .5em;
 
-    background-color: var(--clr4);
+    background-color: var(--gray-light);
     padding: .5em;
 
     & h3 {
@@ -20,11 +20,11 @@
     & input:is([type="text"], [type="number"]){
         height: 1.8em;
         border: none;
-        border-block-end: 1px solid var(--gray1);
+        border-block-end: 1px solid var(--white);
     
         &:focus {
             outline: none;
-            background-color: var(--gray1);
+            background-color: var(--white);
         }
     }
 
@@ -55,12 +55,12 @@
         > span {
             font-size: .9em;
             padding: 0.1em 0.3em;
-            outline: 1px solid var(--gray1);
+            outline: 1px solid var(--white);
         }
 
         &:has(:checked) span  {
-            background-color: var(--clr3);
-            color: var(--gray1);
+            background-color: var(--gray);
+            color: var(--white);
         }
     }
 }

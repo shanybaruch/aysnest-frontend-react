@@ -9,7 +9,7 @@
         display: grid;
         grid-template-columns: max-content auto;
         padding: .5em;
-        background-color: var(--clr2);
+        background-color: var(--clr1);
 
         .actions {
             justify-self: end;
