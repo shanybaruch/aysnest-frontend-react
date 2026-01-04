@@ -21,15 +21,17 @@ export function AppHeader() {
 	return (
 		<header className="app-header full">
 			<nav className='header-nav'>
-					<NavLink to="/stay" className="logo">
-						AYS Stay
-					</NavLink>
-				
+				<NavLink to="/stay" className="logo">
+					AYS Stay
+				</NavLink>
+
 				<section className='nav-middle'>
-					<NavLink to="about">About</NavLink>
+					{/* <NavLink to="about">About</NavLink> */}
 					<NavLink to="stay">Homes</NavLink>
-					<NavLink to="chat">Chat</NavLink>
-					<NavLink to="review">Review</NavLink>
+					<NavLink to="/">Experiences</NavLink>
+					<NavLink to="/">Services</NavLink>
+					{/* <NavLink to="chat">Chat</NavLink> */}
+					{/* <NavLink to="review">Review</NavLink> */}
 				</section>
 
 				<section>
@@ -48,6 +50,23 @@ export function AppHeader() {
 					)}
 				</section>
 			</nav>
+			<div className='selection'>
+				<section>
+					<p>Where</p>
+					<span>Search destinations</span>
+				</section>
+				<section>
+					<p>When</p>
+					<span>Add dates</span>
+				</section>
+				<section className='select-who'>
+					<div>
+						<p>Who</p>
+						<span>Add guests</span>
+					</div>
+					<span className='search'></span>
+				</section>
+			</div>
 		</header>
 	)
 }
