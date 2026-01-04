@@ -20,28 +20,33 @@ export function AppHeader() {
 
 	return (
 		<header className="app-header full">
-			<nav>
-				<NavLink to="/" className="logo">
-					E2E Demo
-				</NavLink>
-				<NavLink to="about">About</NavLink>
-				<NavLink to="stay">Stays</NavLink>
-				<NavLink to="chat">Chat</NavLink>
-				<NavLink to="review">Review</NavLink>
+			<nav className='header-nav'>
+					<NavLink to="/stay" className="logo">
+						AYS Stay
+					</NavLink>
+				
+				<section className='nav-middle'>
+					<NavLink to="about">About</NavLink>
+					<NavLink to="stay">Homes</NavLink>
+					<NavLink to="chat">Chat</NavLink>
+					<NavLink to="review">Review</NavLink>
+				</section>
 
-                {user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
+				<section>
+					{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
 
-				{!user && <NavLink to="auth/login" className="login-link">Login</NavLink>}
-				{user && (
-					<div className="user-info">
-						<Link to={`user/${user._id}`}>
-							{user.imgUrl && <img src={user.imgUrl} />}
-							{user.fullname}
-						</Link>
-						<span className="score">{user.score?.toLocaleString()}</span>
-						<button onClick={onLogout}>logout</button>
-					</div>
-				)}
+					{!user && <NavLink to="auth/login" className="login-link">Login</NavLink>}
+					{user && (
+						<div className="user-info">
+							<Link to={`user/${user._id}`}>
+								{user.imgUrl && <img src={user.imgUrl} />}
+								{user.fullname}
+							</Link>
+							<span className="score">{user.score?.toLocaleString()}</span>
+							<button onClick={onLogout}>logout</button>
+						</div>
+					)}
+				</section>
 			</nav>
 		</header>
 	)

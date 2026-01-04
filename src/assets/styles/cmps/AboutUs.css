@@ -31,7 +31,7 @@
 
 .proj-preview {
     background-color: teal;
-    color: whitesmoke;
+    color: var(--gray-light);
     padding: 5px;
     margin: 3px;
 }

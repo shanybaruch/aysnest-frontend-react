@@ -6,7 +6,7 @@
     }
     
     li:nth-child(odd) {
-        background-color: whitesmoke;
+        background-color: var(--gray-light);
     }
 
     form {

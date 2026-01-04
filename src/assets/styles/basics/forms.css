@@ -5,7 +5,7 @@ button {
 	margin: .5em;
 	cursor: pointer;
 	background-color: var(--clr1);
-	color: whitesmoke;
+	color: var(--gray-light);
 }
 
 button:hover {

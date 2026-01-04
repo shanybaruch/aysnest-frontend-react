@@ -1,7 +1,7 @@
 export function HomePage() {
     return (
-        <section className="home">
-            <h1>Home sweet Home</h1>
+        <section className="home-page">
+            <h1 className="title">Home sweet Home</h1>
         </section >
     )
 }

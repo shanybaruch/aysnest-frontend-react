@@ -2,25 +2,45 @@
     display: flex;
     min-height: 3.5rem;
 
-    background-color: var(--gray-light);
+    background-color: var(--white);
     padding: .8rem 1rem;
-    
-    & nav {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        gap: 1em;
-        
-        font-size: .8em;
+    border-bottom: 2px solid var(--gray-light);
 
-        .active {
-            color: var(--clr1);
+    & .header-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1em;
+
+        width: 100%;
+        color: var(--gray);
+        font-size: .9em;
+
+        .nav-middle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2em;
+
+            font-weight: 300;
+            letter-spacing: .3px;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        a.active:not(.logo) {
+            font-weight: 600;
+            color: var(--black);
+            border-bottom: 2px solid var(--black);
         }
 
         .logo {
             font-size: 1.4em;
-            font-weight: bold;
-            margin-inline-end: 2em;
+            font-weight: 500;
+            margin-inline-start: 1em;
+            color: var(--clr1);
         }
 
         .login-link {

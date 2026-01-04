@@ -7,7 +7,7 @@
         padding-block: .3em;
     }
 
-    & h2 {
+    & .title {
         margin: 0;
         font-size: 1.3em;
     }
