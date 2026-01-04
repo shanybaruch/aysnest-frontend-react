@@ -28,8 +28,8 @@ export function AppHeader() {
 				<section className='nav-middle'>
 					{/* <NavLink to="about">About</NavLink> */}
 					<NavLink to="stay">Homes</NavLink>
-					<NavLink to="/">Experiences</NavLink>
-					<NavLink to="/">Services</NavLink>
+					<NavLink to="/review">Experiences</NavLink>
+					<NavLink to="chat">Services</NavLink>
 					{/* <NavLink to="chat">Chat</NavLink> */}
 					{/* <NavLink to="review">Review</NavLink> */}
 				</section>
