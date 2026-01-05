@@ -76,76 +76,114 @@
                 margin-inline-start: auto;
             }
 
-            button {
-                margin-inline-end: 0;
-            }
-        }
+            .menu-dropdown {
+                position: absolute;
+                right: 0;
 
+                background-color: var(--white);
+                min-width: 230px;
+                box-shadow: 0 0px 16px var(--gray-light-hover);
+                border-radius: 16px;
+                padding: 4px 0;
+                z-index: 100;
 
-        .user-info {
-            display: flex;
-            align-items: center;
-            margin-inline-start: auto;
-
-            color: var(--black);
-
-            .score {
-                padding: 8px;
-                background-color: var(--clr1);
-                border-radius: 50%;
-                margin: 10px;
-
-                color: var(--white);
-            }
-
-            img {
-                width: 2em;
-                aspect-ratio: 1;
-                border-radius: 50%;
-            }
-        }
-
-        .selection {
-            display: flex;
-            justify-content: space-evenly;
-            gap: 0em;
-
-            border-radius: 50px;
-            box-shadow: 0px 5px 20px 2px var(--gray-light-hover);
-            border: 1.5px solid var(--gray-light-hover);
-
-            .select-where,
-            .select-when {
                 display: flex;
-            }
-
-            .v-line {
-                border-right: 1px solid var(--gray-light-hover);
-                height: 30px;
-                margin-block: 15px;
-                /* align-self: center; */
-            }
-
-            .sec {
-                display: flex;
+                align-items: center;
                 flex-direction: column;
 
-                padding-block: 12px;
-                padding-inline-start: 30px;
-                width: 250px;
-
-                p {
-                    font-size: .8rem;
-                    font-weight: 500;
-                    margin-bottom: .2em;
+                hr {
+                    border: 0;
+                    border-top: 1px solid var(--gray-light-hover);
+                    margin: 4px 0;
+                    width: 85%;
                 }
 
-                span {
-                    color: var(--gray);
-                    font-size: .9rem;
-                    font-weight: 300;
+                .menu-item.logout-btn {
+                    margin: 0;
                 }
             }
+
+            .menu-item {
+                padding: 12px 20px;
+                text-decoration: none;
+                color: var(--black);
+                font-size: 14px;
+                text-align: left;
+                background: none;
+                border: none;
+                width: 100%;
+
+                &:hover {
+                    background-color: var(--white-gray);
+                }
+            }
+        }
+
+    }
+
+    .selection {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 0em;
+
+        border-radius: 50px;
+        box-shadow: 0px 5px 20px 2px var(--gray-light-hover);
+        border: 1.5px solid var(--gray-light-hover);
+
+        .select-where,
+        .select-when {
+            display: flex;
+        }
+
+        .v-line {
+            border-right: 1px solid var(--gray-light-hover);
+            height: 30px;
+            margin-block: 15px;
+            /* align-self: center; */
+        }
+
+        .sec {
+            display: flex;
+            flex-direction: column;
+
+            padding-block: 12px;
+            padding-inline-start: 30px;
+            width: 250px;
+
+            p {
+                font-size: .8rem;
+                font-weight: 500;
+                margin-bottom: .2em;
+            }
+
+            span {
+                color: var(--gray);
+                font-size: .9rem;
+                font-weight: 300;
+            }
+        }
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        margin-inline-start: auto;
+
+        color: var(--black);
+
+        .score {
+            padding: 8px;
+            background-color: var(--clr1);
+            border-radius: 50%;
+            margin: 10px;
+
+            color: var(--white);
+        }
+
+        & img {
+            width: 2em;
+            aspect-ratio: 1;
+            border-radius: 50%;
         }
     }
 }
