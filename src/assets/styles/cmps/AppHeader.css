@@ -150,10 +150,6 @@
             padding-inline-start: 30px;
             width: 250px;
 
-            &:not(:last-child) {
-                /* border-right: 1px solid var(--gray-light-hover); */
-            }
-
             p {
                 font-size: .8rem;
                 font-weight: 500;
