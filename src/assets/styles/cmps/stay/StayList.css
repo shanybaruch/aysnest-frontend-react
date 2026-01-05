@@ -3,7 +3,7 @@
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
-    gap: 1em;
+    gap: .8em;
 
     li {
         aspect-ratio: 1 / 1;
