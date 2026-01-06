@@ -1,14 +1,121 @@
 .calendar {
-  background: var(--white);
+  background: transparent;
   padding: 20px;
   border-radius: 32px;
-  display: inline-block;
+
+  .rdp-months {
+    display: flex;
+    gap: 40px;
+    flex-wrap: nowrap;
+    position: relative;
+  }
+
+  .rdp-nav {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    margin: 0;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+
+    .rdp-button_previous,
+    .rdp-button_next {
+      margin-block: 0;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .rdp-month_caption {
+    display: flex;
+    justify-content: center;
+  }
+
+  .rdp-month_grid {
+    margin-top: 1em;
+  }
+
+  .rdp-weekday {
+    padding-block: .8em;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--gray);
+    text-align: center;
+  }
+
+  .rdp-day {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    padding-inline: 8px;
+    padding-block: 12px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .rdp-day_button {
+    font-size: .8rem;
+    background-color: transparent;
+    color: var(--black);
+    font-weight: 600;
+    text-align: center;
+    font-family: sans-serif;
+    border: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+  }
+
+  .rdp-day:hover:not(.rdp-day_selected) {
+    border-color: var(--black);
+  }
+
+  .rdp-day_selected,
+  .rdp-day_range_start,
+  .rdp-day_range_end {
+    background-color: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+    border-radius: 50%;
+  }
+
+  .rdp-day_selected .rdp-day_button,
+  .rdp-day_range_start .rdp-day_button,
+  .rdp-day_range_end .rdp-day_button,
+  .rdp-day_range_middle .rdp-day_button {
+    color: var(--white);
+  }
+
+  .rdp-day_range_start,
+  .rdp-day_range_end,
+  .rdp-day_selected:not(.rdp-day_range_middle) {
+    background-color: var(--black);
+    color: var(--white);
+  }
+
+  .rdp-day_range_middle {
+    background-color: var(--gray-light-hover);
+    color: var(--black);
+    border-radius: 0;
+  }
 }
 
 .rdp-caption_label {
   font-weight: 600;
   font-size: 16px;
-  color:  var(--black);
+  color: var(--black);
 }
 
 .rdp-head_cell {
@@ -18,31 +125,12 @@
   text-transform: uppercase;
 }
 
-.rdp-day {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%; 
-  font-weight: 400;
-}
-
-.rdp-day_selected:not(.rdp-day_range_middle) {
-  background-color: var(--black); 
-  color: var(--white);
-}
-
-.rdp-day_range_middle {
-  background-color: var(--gray-light);
-  color: var(--black);
-  border-radius: 0; 
-}
-
-.rdp-day:hover:not(.rdp-day_selected) {
-  background-color: transparent;
-  border: 1px solid  var(--black);
-}
-
 .rdp-button:focus-visible {
   outline: none;
-  background-color: var(--white);
-  border: 1px solid  var(--black);
+}
+
+.rdp-day_disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  color: var(--gray);
 }

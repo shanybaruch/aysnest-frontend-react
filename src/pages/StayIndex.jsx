@@ -15,6 +15,8 @@ export function StayIndex() {
     const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
     const stays = useSelector(storeState => storeState.stayModule.stays)
     console.log('stays: ', stays);
+    const [range, setRange] = useState()
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false)
     // const isFirstRender = useRef(true)
 
 
@@ -75,7 +77,6 @@ export function StayIndex() {
                 onRemoveStay={onRemoveStay}
                 onUpdateStay={onUpdateStay} 
             />
-            {/* <Calendar /> */}
         </section>
     )
 }

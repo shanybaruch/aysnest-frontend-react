@@ -140,11 +140,16 @@
         box-shadow: 0px 7px 24px 0px var(--gray-light-hover);
         border: 1.5px solid var(--gray-light-hover);
 
+        .select-when {
+            position: relative;
+        }
+
         &:focus-within {
             background-color: var(--gray-light);
             border-color: var(--gray-light-hover);
 
             box-shadow: 0px 5px 20px 0px var(--gray-light-hover);
+
 
             .select-where,
             .select-when,
@@ -235,6 +240,18 @@
         }
     }
 
+    .calendar-dropdown {
+    position: absolute;
+    top: 70px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+    border-radius: 32px;
+    z-index: 10;
+    padding: 10px;
+}
+
     .user-info {
         display: flex;
         align-items: center;
@@ -258,7 +275,6 @@
     }
 }
 
-@media (min-width: 744px) {
-}
-@media (min-width: 375px) {
-}
+@media (min-width: 744px) {}
+
+@media (min-width: 375px) {}

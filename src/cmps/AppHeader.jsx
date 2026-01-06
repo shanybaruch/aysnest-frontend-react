@@ -8,16 +8,37 @@ import { useState } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { loadStays } from '../store/actions/stay.actions'
 import { SET_FILTER_BY } from '../store/reducers/stay.reducer'
+import { Calendar } from './Calendar'
 
 
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
+	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [isEditingWhere, setIsEditingWhere] = useState(false)
+	const [isEditingWhen, setIsEditingWhen] = useState(false)
+
+	function onSetRange(range) {
+		const from = range?.from || null
+		const to = range?.to || null
+
+		dispatch({
+			type: SET_FILTER_BY,
+			filterBy: { ...filterBy, from, to }
+		})
+
+		if (from && to && from.getTime() !== to.getTime()) {
+			setIsEditingWhen(false)
+		}
+	}
+
+	const rangeForCalendar = {
+		from: filterBy.from ? new Date(filterBy.from) : undefined,
+		to: filterBy.to ? new Date(filterBy.to) : undefined
+	}
 
 	async function onLogout() {
 		try {
@@ -38,10 +59,18 @@ export function AppHeader() {
 	function onSearch() {
 		loadStays(filterBy)
 		setIsEditingWhere(false)
+		setIsEditingWhen(false)
 	}
 
 	return (
 		<header className="app-header full">
+			{(isMenuOpen || isEditingWhen || isEditingWhere) && (
+				<div className="main-screen" onClick={() => {
+					setIsMenuOpen(false)
+					setIsEditingWhen(false)
+					setIsEditingWhere(false)
+				}}></div>
+			)}
 			<nav className='header-nav'>
 				<NavLink to="/stay" className="logo">
 					<img src="/img/logo-ays.png" alt="logo" />
@@ -49,7 +78,6 @@ export function AppHeader() {
 				</NavLink>
 
 				<section className='nav-middle'>
-					{/* <NavLink to="about">About</NavLink> */}
 					<NavLink to="stay">Homes</NavLink>
 					<NavLink to="/review">Experiences</NavLink>
 					<NavLink to="chat">Services</NavLink>
@@ -87,7 +115,10 @@ export function AppHeader() {
 			<div className='selection'>
 				<section
 					className={`select-where ${isEditingWhere ? 'active' : ''}`}
-					onClick={() => setIsEditingWhere(true)}
+					onClick={() => {
+						setIsEditingWhere(true)
+						setIsEditingWhen(false)
+					}}
 				>
 					<section className='sec'>
 						<p>Where</p>
@@ -102,18 +133,41 @@ export function AppHeader() {
 							/>
 						) : (
 							<span>{filterBy.txt || 'Search destinations'}</span>
-						)}					</section>
-					<div className="v-line"></div>
-				</section>
-				<section className='select-when' tabIndex="0">
-					<section className='sec'>
-						<p>When</p>
-						<span>Add dates</span>
-
+						)}
 					</section>
 					<div className="v-line"></div>
 				</section>
-				<section className='select-who' tabIndex="0">
+				<section
+					className={`select-when ${isEditingWhen ? 'active' : ''}`}
+					onClick={() => {
+						setIsEditingWhen(true)
+						setIsEditingWhere(false)
+					}}
+					tabIndex="0">
+					<section className='sec'>
+						<p>When</p>
+						<span>
+							{filterBy.from ?
+								`${filterBy.from.toLocaleDateString()} - ${filterBy.to?.toLocaleDateString() || ''}`
+								: 'Add dates'}
+						</span>
+					</section>
+					{isEditingWhen && (
+						<div className="calendar-dropdown" onClick={(e) => e.stopPropagation()}>
+							<Calendar
+								range={rangeForCalendar}
+								setRange={onSetRange}
+							/>
+						</div>
+					)}
+					<div className="v-line"></div>
+				</section>
+				<section className='select-who'
+					onClick={() => {
+						setIsEditingWhen(false)
+						setIsEditingWhere(false)
+					}}
+					tabIndex="0">
 					<section className='sec'>
 						<p>Who</p>
 						<span>Add guests</span>
