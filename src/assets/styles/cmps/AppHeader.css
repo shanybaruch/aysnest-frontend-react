@@ -5,24 +5,32 @@
     /* min-height: 3.5rem; */
 
     background-color: var(--white);
-    padding: .8rem 1rem 1.5rem;
+    padding: .8rem 1rem 2.6rem;
     border-bottom: 1px solid var(--gray-light);
 
     .header-nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1em;
+        gap: 35px;
 
         width: 100%;
         color: var(--gray);
         font-size: .9em;
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
             font-size: 1.4em;
             font-weight: 600;
-            margin-inline-start: 1.5em;
+            margin-inline-start: 1em;
             color: var(--clr1);
+
+            img {
+                height: 40px;
+            }
         }
 
         a:hover {
@@ -125,10 +133,11 @@
         display: flex;
         justify-content: space-evenly;
         gap: 0em;
+        padding: 0;
 
         position: relative;
         border-radius: 50px;
-        box-shadow: 0px 5px 20px 0px var(--gray-light-hover);
+        box-shadow: 0px 7px 24px 0px var(--gray-light-hover);
         border: 1.5px solid var(--gray-light-hover);
 
         &:focus-within {
@@ -181,21 +190,22 @@
 
         .v-line {
             border-right: 1px solid var(--gray-light-hover);
-            height: 30px;
-            margin-block: 15px;
+            height: 32px;
+            margin-block: 16px;
             /* align-self: center; */
         }
 
         .sec {
             display: flex;
             flex-direction: column;
+            justify-content: center;
 
-            padding-block: 12px;
-            padding-inline-start: 30px;
-            width: 250px;
+            padding-inline-start: 26px;
+            width: 280px;
+            height: 100%;
 
             p {
-                font-size: .8rem;
+                font-size: .75rem;
                 font-weight: 600;
                 margin-bottom: .2em;
             }
@@ -208,13 +218,13 @@
 
         .sec-search {
             position: absolute;
-            right: 10px;
-            top: 7px;
-            font-size: 1.1rem;
+            right: 9px;
+            top: 8px;
+            font-size: 1.25rem;
             color: var(--white);
-            padding-top: .8em;
-            padding-bottom: .6em;
-            padding-inline: .8em;
+            padding-top: .7em;
+            padding-bottom: .44em;
+            padding-inline: .71em;
             border-radius: 50%;
             background-color: var(--clr1);
             cursor: pointer;
@@ -246,4 +256,9 @@
             border-radius: 50%;
         }
     }
+}
+
+@media (min-width: 744px) {
+}
+@media (min-width: 375px) {
 }

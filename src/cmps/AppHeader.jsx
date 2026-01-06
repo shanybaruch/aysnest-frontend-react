@@ -44,6 +44,7 @@ export function AppHeader() {
 		<header className="app-header full">
 			<nav className='header-nav'>
 				<NavLink to="/stay" className="logo">
+					<img src="/img/logo-ays.png" alt="logo" />
 					AYS Nest
 				</NavLink>
 
