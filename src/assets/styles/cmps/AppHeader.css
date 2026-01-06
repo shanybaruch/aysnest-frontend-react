@@ -185,7 +185,11 @@
             padding-inline: .8em;
             border-radius: 50%;
             background-color: var(--clr1);
+            cursor: pointer;
 
+            &:hover {
+                background-color: var(--clr1-hover);
+            }
         }
     }
 

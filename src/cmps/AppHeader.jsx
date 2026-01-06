@@ -90,7 +90,10 @@ export function AppHeader() {
 						<span>Add guests</span>
 					</section>
 				</section>
-				<section className='sec-search'>
+				<section 
+				className='sec-search'
+				onClick
+				>
 					<IoSearch />
 				</section>
 			</div>
