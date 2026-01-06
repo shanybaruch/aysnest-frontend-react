@@ -175,7 +175,7 @@
 
             &:hover {
                 border-radius: 50px;
-                background-color: var(--gray-light-hover);
+                background-color: var(--gray-light);
             }
         }
 

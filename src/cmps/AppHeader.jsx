@@ -104,7 +104,7 @@ export function AppHeader() {
 						)}					</section>
 					<div className="v-line"></div>
 				</section>
-				<section className='select-when'>
+				<section className='select-when' tabindex="0">
 					<section className='sec'>
 						<p>When</p>
 						<span>Add dates</span>
@@ -112,7 +112,7 @@ export function AppHeader() {
 					</section>
 					<div className="v-line"></div>
 				</section>
-				<section className='select-who'>
+				<section className='select-who' tabindex="0">
 					<section className='sec'>
 						<p>Who</p>
 						<span>Add guests</span>
