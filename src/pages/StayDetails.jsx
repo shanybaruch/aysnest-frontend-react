@@ -9,7 +9,7 @@ import { loadStay, addStayMsg } from '../store/actions/stay.actions'
 
 export function StayDetails() {
 
-  const {stayId} = useParams()
+  const { stayId } = useParams()
   const stay = useSelector(storeState => storeState.stayModule.stay)
 
   useEffect(() => {
@@ -18,26 +18,83 @@ export function StayDetails() {
 
   async function onAddStayMsg(stayId) {
     try {
-        await addStayMsg(stayId, 'bla bla ' + parseInt(Math.random()*10))
-        showSuccessMsg(`Stay msg added`)
+      await addStayMsg(stayId, 'bla bla ' + parseInt(Math.random() * 10))
+      showSuccessMsg(`Stay msg added`)
     } catch (err) {
-        showErrorMsg('Cannot add stay msg')
-    }        
+      showErrorMsg('Cannot add stay msg')
+    }
 
-}
+  }
 
   return (
     <section className="stay-details">
       <Link to="/stay">Back to list</Link>
-      <h1>Stay Details</h1>
       {stay && <div>
-        <h3>{stay.type}</h3>
-        <h4>{stay.capacity}</h4>
-        <pre> {JSON.stringify(stay, null, 2)} </pre>
+
+        <div class="heading flex">
+          <h1>{stay.name}</h1>
+          <div class="right-heading flex">
+            <p>save</p>
+            <p>share</p>
+          </div>
+        </div>
+        <div className="gallery">
+          <div className="gallery-main">
+            <img src={stay.imgUrl} alt={stay.name} class="left-img" />
+          </div>
+          <div className="gallery-side">
+            <div><img src={stay.imgUrl} alt={stay.name} /></div>
+            <div><img src={stay.imgUrl} alt={stay.name} class="top-right" /></div>
+            <div><img src={stay.imgUrl} alt={stay.name} /></div>
+            <div><img src={stay.imgUrl} alt={stay.name} class="bottom-right" /></div>
+          </div>
+        </div>
+        <div class="description">
+          <h2>
+            {stay.type}{stay.name}
+          </h2>
+          <p class="guests">{stay.capacity} guests-{stay.capacity / 2} bedroom</p>
+          <h3>{stay.rate} - {stay.reviews.length}</h3>
+          <p>{stay.description}</p>
+        </div>
+        <div className="amenities">
+          {stay.amenities && (
+            <>
+              {(() => {
+                // חישוב אמצע המערך
+                const mid = Math.ceil(stay.amenities.length / 2);
+                const queue1 = stay.amenities.slice(0, mid);
+                const queue2 = stay.amenities.slice(mid);
+
+                return (
+                  <div className="amenities-wrapper" style={{ display: 'flex', gap: '40px' }}>
+                    {/* תור ראשון */}
+                    <div className="queue1">
+                      {queue1.map((item, idx) => (
+                        <div key={idx}>{item}</div>
+                      ))}
+                    </div>
+
+                    {/* תור שני */}
+                    <div className="queue2">
+                      {queue2.map((item, idx) => (
+                        <div key={idx}>{item}</div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+            </>
+          )}
+        </div>
+
+
+        {/* <pre> {JSON.stringify(stay, null, 2)} </pre> */}
+
       </div>
       }
       <button onClick={() => { onAddStayMsg(stay._id) }}>Add stay msg</button>
 
-    </section>
+    </section >
   )
 }

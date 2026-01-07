@@ -10,6 +10,7 @@ export function StayPreview({ stay }) {
         <header>
             <Link to={`/stay/${stay._id}`}>{stay.name}</Link>
         </header>
+
         <div className="stay-info">
                 {/* <h3>{stay.name}</h3> */}
                 <p>{stay.loc?.city}, {stay.loc?.country}</p>
