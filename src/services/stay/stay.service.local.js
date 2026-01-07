@@ -130,5 +130,5 @@ function createStays() {
         amenities: ['Wifi', 'Air conditioning', 'Kitchen', 'TV', 'Balcony'],
         reviews: []
     }))
-    saveToStorage(STORAGE_KEY, JSON.stringify(stays))
+    saveToStorage(STORAGE_KEY, stays)
 }
