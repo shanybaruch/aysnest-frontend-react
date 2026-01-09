@@ -29,12 +29,10 @@ export function AppHeader() {
 			type: SET_FILTER_BY,
 			filterBy: { ...filterBy, from, to }
 		})
-
-		if (from && to && from.getTime() !== to.getTime()) {
-			setIsEditingWhen(false)
-		}
+		// if (from && to && from.getTime() !== to.getTime()) {
+		//     setIsEditingWhen(false)
+		// }
 	}
-
 	const rangeForCalendar = {
 		from: filterBy.from ? new Date(filterBy.from) : undefined,
 		to: filterBy.to ? new Date(filterBy.to) : undefined
@@ -139,8 +137,9 @@ export function AppHeader() {
 				</section>
 				<section
 					className={`select-when ${isEditingWhen ? 'active' : ''}`}
-					onClick={() => {
-						setIsEditingWhen(true)
+					onClick={(e) => {
+						e.stopPropagation()
+						setIsEditingWhen(!isEditingWhen) 
 						setIsEditingWhere(false)
 					}}
 					tabIndex="0">

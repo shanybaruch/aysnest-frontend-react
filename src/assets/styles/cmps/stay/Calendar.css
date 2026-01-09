@@ -1,6 +1,6 @@
 .calendar {
   background: transparent;
-  padding: 20px;
+  padding: 15px;
   border-radius: 32px;
 
   .rdp-months {
@@ -36,11 +36,13 @@
 
   .rdp-month_grid {
     margin-top: 1em;
+    border-collapse: separate;
+    border-spacing: 0;
   }
 
   .rdp-weekday {
     padding-block: .8em;
-    font-size: .8rem;
+    font-size: .7rem;
     font-weight: 600;
     color: var(--gray);
     text-align: center;
@@ -50,9 +52,9 @@
     box-sizing: border-box;
     width: 40px;
     height: 40px;
-    padding-inline: 8px;
-    padding-block: 12px;
-    border: 1px solid transparent;
+    /* padding-inline: 8px;
+    padding-block: 12px; */
+    border: 1.5px solid transparent;
     border-radius: 50%;
     text-align: center;
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
@@ -65,6 +67,7 @@
     font-weight: 600;
     text-align: center;
     font-family: sans-serif;
+    padding: 18px;
     border: none;
     width: 100%;
     height: 100%;
@@ -75,40 +78,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s ease;
   }
 
-  .rdp-day:hover:not(.rdp-day_selected) {
-    border-color: var(--black);
+  .rdp-day:hover:not(.rdp-selected):not(.rdp-disabled):not([aria-disabled="true"]) {
+    border: 1.5px solid var(--black);
   }
 
-  .rdp-day_selected,
-  .rdp-day_range_start,
-  .rdp-day_range_end {
+  .rdp-day.rdp-range_middle {
+    background-color: var(--white-gray);
+    border-radius: 0;
+  }
+
+  .rdp-day.rdp-range_middle .rdp-day_button {
+    color: var(--black);
+  }
+
+  .rdp-day.rdp-range_start,
+  .rdp-day.rdp-range_end {
     background-color: var(--black);
-    color: var(--white);
-    border-color: var(--black);
     border-radius: 50%;
   }
 
-  .rdp-day_selected .rdp-day_button,
-  .rdp-day_range_start .rdp-day_button,
-  .rdp-day_range_end .rdp-day_button,
-  .rdp-day_range_middle .rdp-day_button {
+  .rdp-day.rdp-range_start .rdp-day_button,
+  .rdp-day.rdp-range_end .rdp-day_button {
     color: var(--white);
   }
 
-  .rdp-day_range_start,
-  .rdp-day_range_end,
-  .rdp-day_selected:not(.rdp-day_range_middle) {
-    background-color: var(--black);
-    color: var(--white);
+  .rdp-day[aria-disabled="true"],
+  .rdp-disabled {
+    opacity: 0.4;
+    pointer-events: none;
   }
 
-  .rdp-day_range_middle {
-    background-color: var(--gray-light-hover);
-    color: var(--black);
-    border-radius: 0;
+  .rdp-day[aria-disabled="true"] .rdp-day_button,
+  .rdp-disabled .rdp-day_button {
+    color: var(--gray);
+    cursor: default;
   }
 }
 
@@ -127,10 +132,4 @@
 
 .rdp-button:focus-visible {
   outline: none;
-}
-
-.rdp-day_disabled {
-  opacity: 0.3;
-  pointer-events: none;
-  color: var(--gray);
 }

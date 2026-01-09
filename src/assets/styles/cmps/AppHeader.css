@@ -8,6 +8,17 @@
     padding: .8rem 1rem 2.6rem;
     border-bottom: 1px solid var(--gray-light);
 
+    .main-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent; 
+    z-index: 10; 
+    cursor: default;
+}
+
     .header-nav {
         display: flex;
         align-items: center;
@@ -139,6 +150,7 @@
         border-radius: 50px;
         box-shadow: 0px 7px 24px 0px var(--gray-light-hover);
         border: 1.5px solid var(--gray-light-hover);
+        z-index: 30;
 
         .select-when {
             position: relative;
@@ -273,6 +285,11 @@
             border-radius: 50%;
         }
     }
+}
+
+.app-header {
+    position: relative;
+    z-index: 20;
 }
 
 @media (min-width: 744px) {}

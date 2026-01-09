@@ -13,8 +13,10 @@ export function Calendar({ range, setRange }) {
         selected={range}
         onSelect={setRange}
         numberOfMonths={2}
-        showOutsideDays
         disabled={{ before: today }}
+        onDayClick={(day, modifiers) => {
+            if (modifiers.disabled) return
+        }}
         formatters={{
           formatCaption: (date) =>
             date.toLocaleString('en-US', { month: 'long', year: 'numeric' }),
