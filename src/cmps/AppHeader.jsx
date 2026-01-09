@@ -27,6 +27,8 @@ export function AppHeader() {
 	const [isEditingWhen, setIsEditingWhen] = useState(false)
 	const [isEditingWho, setIsEditingWho] = useState(false)
 
+	const isAnyActive = isEditingWhere || isEditingWhen || isEditingWho
+
 	function onUpdateGuests(type, diff) {
 		const newVal = Math.max(0, guests[type] + diff)
 		dispatch({
@@ -214,10 +216,11 @@ export function AppHeader() {
 					)}
 				</section>
 				<section
-					className='sec-search'
+					className={`sec-search ${isAnyActive ? 'expanded' : ''}`}
 					onClick={onSearch}
 				>
 					<IoSearch />
+					{isAnyActive && <span className="search-text">Search</span>}
 				</section>
 			</div>
 		</header>

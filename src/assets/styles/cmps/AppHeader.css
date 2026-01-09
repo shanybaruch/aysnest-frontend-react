@@ -9,15 +9,15 @@
     border-bottom: 1px solid var(--gray-light);
 
     .main-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent; 
-    z-index: 10; 
-    cursor: default;
-}
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: transparent;
+        z-index: 10;
+        cursor: default;
+    }
 
     .header-nav {
         display: flex;
@@ -209,7 +209,6 @@
             border-right: 1px solid var(--gray-light-hover);
             height: 32px;
             margin-block: 16px;
-            /* align-self: center; */
         }
 
         .sec {
@@ -237,32 +236,66 @@
             position: absolute;
             right: 9px;
             top: 8px;
-            font-size: 1.25rem;
-            color: var(--white);
-            padding-top: .7em;
-            padding-bottom: .44em;
-            padding-inline: .71em;
+            height: 48px;
+            width: 48px;
             border-radius: 50%;
-            background-color: var(--clr1);
+            background: linear-gradient(to right, var(--clr1), var(--clr1));
+            color: var(--white);
             cursor: pointer;
-        }
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        .sec-search:hover {
-            background: linear-gradient(to right, var(--clr1), var(--clr1-hover));
+            transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.2s ease,
+                border-radius 0.35s ease,
+                padding 0.35s ease;
+
+            svg {
+                font-size: 1.2rem;
+            }
+
+            .search-text {
+                max-width: 0;
+                opacity: 0;
+                overflow: hidden;
+                white-space: nowrap;
+                font-weight: 600;
+                font-size: .9rem;
+                transition: max-width 0.3s ease, opacity 0.2s ease, margin 0.3s ease;
+            }
+
+            &:hover {
+                background: linear-gradient(to right, var(--clr1), var(--clr1-hover));
+            }
+
+            &.expanded {
+                width: 105px;
+                border-radius: 24px;
+                padding-inline: 12px;
+                justify-content: flex-start;
+                background: linear-gradient(to right, var(--clr1), var(--clr1-hover));
+
+                .search-text {
+                    max-width: 70px;
+                    opacity: 1;
+                    margin-inline-start: 8px;
+                }
+            }
         }
     }
 
     .calendar-dropdown {
-    position: absolute;
-    top: 70px; 
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--white);
-    box-shadow: 0 16px 32px rgba(0,0,0,0.15);
-    border-radius: 32px;
-    z-index: 10;
-    padding: 10px;
-}
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--white);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+        border-radius: 32px;
+        z-index: 10;
+        padding: 10px;
+    }
 
     .user-info {
         display: flex;
