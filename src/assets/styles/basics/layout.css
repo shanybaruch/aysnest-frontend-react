@@ -50,7 +50,7 @@
     gap: 10px;
 
     > article {
-        border: 1px solid #ccc;
+        border: 1px solid var(--gray2);
         border-radius: 6px;
         padding: 2rem;
         text-align: center;

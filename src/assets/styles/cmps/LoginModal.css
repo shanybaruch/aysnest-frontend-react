@@ -74,8 +74,9 @@
                 flex-direction: column;
 
                 label {
-                    font-size: 12px;
+                    font-size: 10px;
                     color: var(--gray);
+                    font-weight: 400;
                 }
 
                 select,
@@ -89,7 +90,13 @@
 
                 &.top {
                     border-bottom: 1px solid var(--gray2);
+
+                    &:has(input[type="email"]) {
+                        padding: 14px 12px;
+                        border-bottom: none;
+                    }
                 }
+
                 &.bottom {
                     padding-block: 16px;
                 }
@@ -100,6 +107,7 @@
             font-size: 12px;
             margin: 8px 0 10px;
             line-height: 16px;
+            font-weight: 400;
 
             a {
                 font-weight: 600;
@@ -116,7 +124,8 @@
             padding: 14px;
             border-radius: 8px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 400;
+            letter-spacing: .5px;
             cursor: pointer;
         }
 
@@ -152,7 +161,7 @@
                 width: 100%;
                 background: var(--white);
                 border: 1px solid var(--black);
-                padding: 12px;
+                padding: 14px 10px;
                 border-radius: 8px;
                 display: flex;
                 align-items: center;
@@ -167,9 +176,10 @@
                 }
 
                 span {
+                    font-weight: 200;
                     flex: 1;
+                    font-size: .9rem;
                     text-align: center;
-                    font-weight: 600;
                     color: var(--black);
                 }
 
