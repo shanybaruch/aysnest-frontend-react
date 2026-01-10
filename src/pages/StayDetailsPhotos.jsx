@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom';
 
 export function StayDetailsPhotos() {
   const { stayId } = useParams();
