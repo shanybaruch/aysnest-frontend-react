@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
-import { useNavigate } from 'react-router'
+import { Navigate, useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
@@ -29,7 +29,6 @@ export function AppHeader() {
 	const [isEditingWho, setIsEditingWho] = useState(false)
 
 	const isAnyActive = isEditingWhere || isEditingWhen || isEditingWho
-
 	const [isLoginOpen, setIsLoginOpen] = useState(false)
 
 	function onUpdateGuests(type, diff) {
@@ -121,7 +120,7 @@ export function AppHeader() {
 				<section className='nav-end'>
 					<div className="menu-wrapper">
 						{user && <section>
-								<img src={user.imgUrl} alt="" />
+								<img src={user.imgUrl} alt="user-photo" onClick={() => navigate('/')}/>
 							</section>}
 						<button
 							className="btn-menu"
