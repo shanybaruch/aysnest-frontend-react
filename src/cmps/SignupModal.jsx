@@ -69,8 +69,8 @@ export function SignupModal({ credentials, setCredentials, onBack }) {
                             max={maxDateString}
                             value={credentials.birthDate || ''}
                             type="date"
-                            onChange={handleChange}
-                            // onChange={(e) => setCredentials(prev => ({ ...prev, birthDate: e.target.value }))}
+                            // onChange={handleChange}
+                            onChange={(e) => setCredentials(prev => ({ ...prev, birthDate: e.target.value }))}
                             className="input-date"
                             placeholder="Birthdate"
                             required
