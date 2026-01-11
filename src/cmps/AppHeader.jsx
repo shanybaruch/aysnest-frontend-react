@@ -30,6 +30,7 @@ export function AppHeader() {
 
 	const isAnyActive = isEditingWhere || isEditingWhen || isEditingWho
 	const [isLoginOpen, setIsLoginOpen] = useState(false)
+	
 
 	function onUpdateGuests(type, diff) {
 		const newVal = Math.max(0, guests[type] + diff)
@@ -121,7 +122,7 @@ export function AppHeader() {
 					<div className="menu-wrapper">
 						{user && <section>
 							<Link to={`user/${user._id}`} className="menu-item bold">
-								<img src={user.imgUrl} alt="user-photo" onClick={() => navigate('/')}/>
+								<img src={user.imgUrl} alt="user-photo" />
 							</Link>
 							</section>}
 						<button
@@ -142,7 +143,7 @@ export function AppHeader() {
 								) : (
 									<>
 										{/* <Link to={`user/${user._id}`} className="menu-item bold">Profile</Link> */}
-										<hr />
+										{/* <hr /> */}
 										<button onClick={onLogout} className="menu-item logout-btn">Logout</button>
 									</>
 								)}

@@ -70,6 +70,7 @@ export function LoginModal({ onClose }) {
                         credentials={credentials}
                         setCredentials={setCredentials}
                         onBack={onBack}
+                        onClose={onClose}
                     /> :
                     <main className="modal-body">
                         <h2>Welcome to AYS Nest</h2>

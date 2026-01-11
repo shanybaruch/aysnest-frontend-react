@@ -27,6 +27,7 @@ export function SignupModal({ credentials, setCredentials, onBack, onClose }) {
         }
         try {
             await signup(credentials)
+            onClose()
             navigate('/')
         } catch (err) {
             console.error('Signup failed:', err)
