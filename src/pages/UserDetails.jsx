@@ -1,14 +1,15 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-import { loadUser } from '../store/actions/user.actions'
-import { store } from '../store/store'
+import { loadUser, updateUser } from '../store/actions/user.actions'
 import { showSuccessMsg } from '../services/event-bus.service'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
+import { ImgUploader } from '../cmps/ImgUploader'
 
 export function UserDetails() {
-
+  const dispatch = useDispatch()
   const params = useParams()
   const user = useSelector(storeState => storeState.userModule.watchedUser)
 
@@ -25,20 +26,47 @@ export function UserDetails() {
   }, [params.id])
 
   function onUserUpdate(user) {
-    showSuccessMsg(`This user ${user.fullname} just got updated from socket, new score: ${user.score}`)
-    store.dispatch({ type: 'SET_WATCHED_USER', user })
+    showSuccessMsg(`User updated`)
+    dispatch({ type: SET_WATCHED_USER, user })
+  }
+
+  async function onUploaded(imgUrl) {
+    const userToUpdate = { ...user, imgUrl }
+    try {
+      await updateUser(userToUpdate)
+      showSuccessMsg('Profile updated and saved!')
+    } catch (err) {
+      showErrorMsg('Could not save image to database')
+    }
   }
 
   return (
     <section className="user-details">
-      <h1>User Details</h1>
-      {user && <div>
-        <h3>
-          {user.fullname}
-        </h3>
-        <img src={user.imgUrl} style={{ width: '100px' }} />
-        <pre> {JSON.stringify(user, null, 2)} </pre>
-      </div>}
+      <section className='section profile'>
+        <h1 className='title'>Profile</h1>
+        <div className='nav-links'>
+          <NavLink>
+            <img src={user?.imgUrl} alt="img-profile" className='img-profile' />
+            <span>About me</span>
+          </NavLink>
+          <NavLink>
+            <div className='img-trip'>🧳</div>
+            {/* <img src="" alt="" /> */}
+            <span>Past trips</span>
+          </NavLink>
+        </div>
+      </section>
+      <div className='divider'></div>
+      <section className='section details'>
+        <section className='top'>
+          <h1 className='title'>About me</h1>
+          <ImgUploader onUploaded={onUploaded} />
+        </section>
+        <section className='main'>
+          <img src={user?.imgUrl} alt="img-profile" className='img-profile' />
+          <h1 className='name'>{user?.firstName}</h1>
+        </section>
+      </section>
     </section>
   )
 }

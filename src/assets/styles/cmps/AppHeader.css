@@ -4,8 +4,11 @@
     gap: 1em;
     /* min-height: 3.5rem; */
 
+    position: relative;
+    z-index: 20;
+
     background-color: var(--white);
-    padding: .8rem 1rem 2.6rem;
+    padding: .8rem 1rem .8rem;
     border-bottom: 1px solid var(--gray-light);
 
     .main-screen {
@@ -57,7 +60,7 @@
         .nav-middle {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             gap: 1.5em;
 
             font-weight: 300;
@@ -80,19 +83,20 @@
                 display: flex;
                 align-items: center;
                 
-                a {
-                    
-                }
+                a {}
+                
                 img {
-                    width: 40px;
-                    height: 40px;
+                    object-fit: cover;
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
                     cursor: pointer;
                 }
-                
+
                 .btn-menu {
                     padding: 0;
-                    width: 40px;
-                    height: 40px;
+                    width: 45px;
+                    height: 45px;
                     /* padding-block: .7em; */
                     font-size: 1rem;
                     border-radius: 2em;
@@ -100,11 +104,11 @@
                     background-color: var(--white-gray);
                     transition: .2s;
                     /* margin: 0; */
-    
+
                     display: flex;
                     align-items: center;
                     justify-content: center;
-    
+
                     &:hover {
                         background-color: var(--gray-light-hover);
                     }
@@ -122,9 +126,10 @@
 
                 background-color: var(--white);
                 min-width: 230px;
-                box-shadow: 0 0px 16px var(--gray-light-hover);
+                box-shadow: 0 0px 16px var(--gray2);
                 border-radius: 16px;
-                padding: 4px 0;
+                padding: 15px 20px;
+;
                 z-index: 100;
 
                 display: flex;
@@ -145,7 +150,7 @@
 
             .menu-item {
                 cursor: pointer;
-                padding: 12px 20px;
+                padding: 0;
                 text-decoration: none;
                 color: var(--black);
                 font-size: 14px;
@@ -154,6 +159,8 @@
                 border: none;
                 width: 100%;
                 font-weight: 400;
+
+                display: flex;
 
                 &:hover {
                     /* background-color: var(--white-gray); */
@@ -170,10 +177,12 @@
         padding: 0;
 
         position: relative;
+        z-index: 30;
+
         border-radius: 50px;
         box-shadow: 0px 7px 24px 0px var(--gray-light-hover);
         border: 1.5px solid var(--gray-light-hover);
-        z-index: 30;
+        margin-bottom: 1.7em;
 
         .select-when {
             position: relative;
@@ -342,11 +351,6 @@
             border-radius: 50%;
         }
     }
-}
-
-.app-header {
-    position: relative;
-    z-index: 20;
 }
 
 @media (min-width: 744px) {}

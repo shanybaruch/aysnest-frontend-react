@@ -1,10 +1,10 @@
 import { Link, NavLink } from 'react-router-dom'
-import { Navigate, useNavigate } from 'react-router'
+import { Navigate, useLocation, useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { FiMenu } from "react-icons/fi";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { loadStays } from '../store/actions/stay.actions'
 import { SET_FILTER_BY } from '../store/reducers/stay.reducer'
@@ -15,9 +15,10 @@ import { LoginModal } from './LoginModal'
 
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
+	const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+	const location = useLocation()
 
 	const guests = filterBy.guests || { adults: 0, children: 0, infants: 0, pets: 0 }
 	const { adults, children, infants, pets } = guests
@@ -27,10 +28,21 @@ export function AppHeader() {
 	const [isEditingWhere, setIsEditingWhere] = useState(false)
 	const [isEditingWhen, setIsEditingWhen] = useState(false)
 	const [isEditingWho, setIsEditingWho] = useState(false)
-
-	const isAnyActive = isEditingWhere || isEditingWhen || isEditingWho
 	const [isLoginOpen, setIsLoginOpen] = useState(false)
-	
+	const [inUserPage, setInUserPage] = useState(false)
+	const isAnyActive = isEditingWhere || isEditingWhen || isEditingWho
+
+	useEffect(() => {
+		const loc = user?._id
+		const userPage = '/user/' + loc
+
+		if (location.pathname === userPage) {
+			setInUserPage(true)
+		} else {
+			setInUserPage(false)
+		}
+	}, [location])
+
 
 	function onUpdateGuests(type, diff) {
 		const newVal = Math.max(0, guests[type] + diff)
@@ -110,21 +122,26 @@ export function AppHeader() {
 					AYS Nest
 				</NavLink>
 
-				<section className='nav-middle'>
-					<NavLink to="stay">Homes</NavLink>
-					<NavLink to="/review">Experiences</NavLink>
-					<NavLink to="chat">Services</NavLink>
-					{/* <NavLink to="chat">Chat</NavLink> */}
-					{/* <NavLink to="review">Review</NavLink> */}
-				</section>
+				{!inUserPage &&
+					<div>
+						<section className='nav-middle'>
+							<NavLink to="stay">Homes</NavLink>
+							<NavLink to="/review">Experiences</NavLink>
+							<NavLink to="chat">Services</NavLink>
+							{/* <NavLink to="chat">Chat</NavLink> */}
+							{/* <NavLink to="review">Review</NavLink> */}
+						</section>
+					</div>
+				}
 
 				<section className='nav-end'>
 					<div className="menu-wrapper">
+						
 						{user && <section>
-							<Link to={`user/${user._id}`} className="menu-item bold">
+							<Link to={`user/${user._id}`} className="menu-item">
 								<img src={user.imgUrl} alt="user-photo" />
 							</Link>
-							</section>}
+						</section>}
 						<button
 							className="btn-menu"
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -155,87 +172,89 @@ export function AppHeader() {
 					</div>
 				</section>
 			</nav>
-			<div className='selection'>
-				<section
-					className={`select-where ${isEditingWhere ? 'active' : ''}`}
-					onClick={() => {
-						setIsEditingWhere(!isEditingWhere)
-						setIsEditingWhen(false)
-						setIsEditingWho(false)
-					}}
-				>
-					<section className='sec'>
-						<p>Where</p>
-						{isEditingWhere ? (
-							<input
-								type="text"
-								autoFocus
-								placeholder="Search destinations"
-								value={filterBy.txt || ''}
-								onChange={handleTxtChange}
-								onBlur={() => setTimeout(() => setIsEditingWhere(false), 200)}
+			{!inUserPage &&
+				<div className='selection'>
+					<section
+						className={`select-where ${isEditingWhere ? 'active' : ''}`}
+						onClick={() => {
+							setIsEditingWhere(!isEditingWhere)
+							setIsEditingWhen(false)
+							setIsEditingWho(false)
+						}}
+					>
+						<section className='sec'>
+							<p>Where</p>
+							{isEditingWhere ? (
+								<input
+									type="text"
+									autoFocus
+									placeholder="Search destinations"
+									value={filterBy.txt || ''}
+									onChange={handleTxtChange}
+									onBlur={() => setTimeout(() => setIsEditingWhere(false), 200)}
+								/>
+							) : (
+								<span>{filterBy.txt || 'Search destinations'}</span>)}
+						</section>
+						<div className="v-line"></div>
+					</section>
+					<section
+						className={`select-when ${isEditingWhen ? 'active' : ''}`}
+						onClick={(e) => {
+							e.stopPropagation()
+							setIsEditingWhen(!isEditingWhen)
+							setIsEditingWhere(false)
+							setIsEditingWho(false)
+						}}
+						tabIndex="0">
+						<section className='sec'>
+							<p>When</p>
+							<span>
+								{filterBy.from ?
+									`${filterBy.from.toLocaleDateString()} - ${filterBy.to?.toLocaleDateString() || ''}`
+									: 'Add dates'}
+							</span>
+						</section>
+						{isEditingWhen && (
+							<div className="calendar-dropdown" onClick={(e) => e.stopPropagation()}>
+								<Calendar
+									range={rangeForCalendar}
+									setRange={onSetRange}
+								/>
+							</div>
+						)}
+						<div className="v-line"></div>
+					</section>
+					<section className={`select-who ${isEditingWho ? 'active' : ''}`}
+						onClick={(e) => {
+							e.stopPropagation()
+							setIsEditingWhere(false)
+							setIsEditingWhen(false)
+							setIsEditingWho(!isEditingWho)
+						}}
+						tabIndex="0">
+						<section className='sec'>
+							<p>Who</p>
+							<span>
+								{getGuestLabel()}
+							</span>
+						</section>
+						{isEditingWho && (
+							<GuestPicker
+								guests={guests}
+								onUpdateGuests={onUpdateGuests}
 							/>
-						) : (
-							<span>{filterBy.txt || 'Search destinations'}</span>)}
+						)}
 					</section>
-					<div className="v-line"></div>
-				</section>
-				<section
-					className={`select-when ${isEditingWhen ? 'active' : ''}`}
-					onClick={(e) => {
-						e.stopPropagation()
-						setIsEditingWhen(!isEditingWhen)
-						setIsEditingWhere(false)
-						setIsEditingWho(false)
-					}}
-					tabIndex="0">
-					<section className='sec'>
-						<p>When</p>
-						<span>
-							{filterBy.from ?
-								`${filterBy.from.toLocaleDateString()} - ${filterBy.to?.toLocaleDateString() || ''}`
-								: 'Add dates'}
-						</span>
+					<section
+						className={`sec-search ${isAnyActive ? 'expanded' : ''}`}
+						onClick={onSearch}
+					>
+						<IoSearch />
+						{isAnyActive && <span className="search-text">Search</span>}
 					</section>
-					{isEditingWhen && (
-						<div className="calendar-dropdown" onClick={(e) => e.stopPropagation()}>
-							<Calendar
-								range={rangeForCalendar}
-								setRange={onSetRange}
-							/>
-						</div>
-					)}
-					<div className="v-line"></div>
-				</section>
-				<section className={`select-who ${isEditingWho ? 'active' : ''}`}
-					onClick={(e) => {
-						e.stopPropagation()
-						setIsEditingWhere(false)
-						setIsEditingWhen(false)
-						setIsEditingWho(!isEditingWho)
-					}}
-					tabIndex="0">
-					<section className='sec'>
-						<p>Who</p>
-						<span>
-							{getGuestLabel()}
-						</span>
-					</section>
-					{isEditingWho && (
-						<GuestPicker
-							guests={guests}
-							onUpdateGuests={onUpdateGuests}
-						/>
-					)}
-				</section>
-				<section
-					className={`sec-search ${isAnyActive ? 'expanded' : ''}`}
-					onClick={onSearch}
-				>
-					<IoSearch />
-					{isAnyActive && <span className="search-text">Search</span>}
-				</section>
-			</div>
+				</div>
+			}
 			{isLoginOpen && <LoginModal onClose={() => setIsLoginOpen(false)} />}
 		</header>
 	)
