@@ -82,7 +82,6 @@ export function StayDetails() {
         </div>
 
         <section className='sides'>
-
           <section className='big-side'>
             <div className="description">
               <h2> {stay.type} {stay.name} </h2>
@@ -116,9 +115,44 @@ export function StayDetails() {
           </section>
 
           <section className='small-side'>
+
+            <section className="order-card">
+              <div className="order-header">
+                <span className="price">
+                  ₪{stay.price}
+                  <span className="per-night"> / night </span>
+                </span>
+                <div className="order-rating">
+                  <RiStarFill size={12} />
+                  <span>{stay.rate}</span>
+                  <span className="reviews">· {stay.reviews.length} reviews</span>
+                </div>
+              </div>
+              
+              <div className="order-dates">
+                <div className="date-box">
+                  <span className="label">CHECK-IN</span>
+                  <span className="value">Add date</span>
+                </div>
+                <div className="date-box">
+                  <span className="label">CHECK-OUT</span>
+                  <span className="value">Add date</span>
+                </div>
+              </div>
+              
+              <div className="order-guests">
+                <span className="label">GUESTS</span>
+                <span className="value">{stay.capacity} guests</span>
+              </div>
+              
+              <button className="reserve-btn"> Reserve </button>
+              
+              <p className="order-note"> You won’t be charged yet </p> 
+            </section>
           </section>
 
         </section>
+        
       </div>
       }
       <button onClick={() => { onAddStayMsg(stay._id) }}>Add stay msg</button>
