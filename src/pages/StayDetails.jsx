@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { RiStarFill, RiTvLine } from "react-icons/ri";
 import { HiOutlineTv } from "react-icons/hi2";
@@ -8,18 +8,22 @@ import { HiOutlineWifi } from "react-icons/hi";
 import { IoIosSnow } from "react-icons/io";
 import { TbToolsKitchen2, TbWindow } from "react-icons/tb";
 import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
 import { CgMenuGridO } from "react-icons/cg";
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { loadStay, addStayMsg } from '../store/actions/stay.actions'
+import { saveToStorage } from '../services/util.service'
+
 
 
 export function StayDetails() {
   const { stayId } = useParams()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const stay = useSelector(storeState => storeState.stayModule.stay)
-
+  const loggedInUser = useSelector(storeState => storeState.userModule.user)
   const iconMap = {
     "Wifi": <HiOutlineWifi />,
     "Air conditioning": <IoIosSnow />,
@@ -41,14 +45,30 @@ export function StayDetails() {
     }
   }
 
-  const OnStayDetailsPhotos = () => {
+  function OnStayDetailsPhotos() {
     navigate(`/stay/${stayId}/photos`, { state: stay });
   };
 
   function onSaveHeart(stayId) {
-    console.log('save', stayId);
-
+  if (!loggedInUser) {
+    showErrorMsg('Please log in to save')
+    return
   }
+
+  const saved = loggedInUser.saved || []
+  const isSaved = saved.includes(stayId)
+
+  const updatedUser = {
+    ...loggedInUser,
+    saved: isSaved
+      ? saved.filter(id => id !== stayId)
+      : [...saved, stayId]
+  }
+
+  saveToStorage('users', updatedUser)
+
+  dispatch({ type: 'SET_USER', user: updatedUser })
+}
 
   return (
     <section className="stay-details">
@@ -61,7 +81,7 @@ export function StayDetails() {
               <span>Share</span>
             </button>
             <button className='save' onClick={() => onSaveHeart(stay._id)}>
-              <FaRegHeart />
+              {loggedInUser?.saved?.includes(stay._id) ? <FaHeart /> : <FaRegHeart />}
               <span>Save</span>
             </button>
           </div>

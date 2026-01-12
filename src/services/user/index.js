@@ -14,6 +14,7 @@ export function getEmptyUser() {
         imgUrl: '',
         isHost: false,
         reviews: [],
+        saved: [],
         isMarketing: true,
     }
     // console.log('user: ', user);
