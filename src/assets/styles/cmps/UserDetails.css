@@ -1,7 +1,115 @@
 .user-details {
-    .user-img {
-        height: 200px;
-        width: 200px;
-        background-size: contain;
+    display: grid;
+    grid-template-columns: 3fr 5px 5fr;
+    grid-template-rows: 1fr;
+    height: 100%;
+
+    .img-profile {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .divider {
+        height: 100%;
+        border-right: 1px solid var(--gray-light-hover);
+        width: 1px;
+    }
+
+    .section {
+        padding: 2rem 4rem;
+
+    }
+
+    .profile {
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                text-decoration: none;
+                padding-block: 1em;
+                font-weight: 500;
+                height: 60px;
+                padding: .6em .8em;
+                border-radius: 10px;
+
+                display: flex;
+                gap: 1em;
+                align-items: center;
+
+                .img-profile {
+                    height: 40px;
+                    width: 40px;
+                }
+
+                .img-trip {
+                    font-size: 2.3em;
+                }
+
+                &:hover {
+                    background-color: var(--white-gray);
+                }
+            }
+        }
+    }
+
+    .details {
+        .top {
+            display: flex;
+            align-items: center;
+            gap: 2em;
+
+            .title {
+                margin: 0;
+            }
+
+            button {
+                font-size: .7rem;
+                font-weight: 600;
+                margin: .2em 0 0 0;
+                padding: .6rem .8rem;
+                border-radius: 8px;
+                background-color: var(--white-gray);
+            }
+
+        }
+
+        .main {
+            /* box-shadow:  0 6px 28px var(--gray-light-hover); */
+            box-shadow:  0 7px 28px var(--gray2);
+            border-radius: 20px;
+            margin: 2em 0 ;
+            width: 330px;
+            height: 250px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            .img-profile {
+                margin-top: 1.5em;
+                margin-bottom: .6em;
+                width: 140px;
+                height: 140px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1120px) {}
+
+@media (max-width: 950px) {
+    .user-details {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 2fr 1fr;
+
+        .divider {
+            height: 1px;
+            border-bottom: 1px solid var(--gray-light-hover);
+            width: 100%;
+        }
     }
 }
