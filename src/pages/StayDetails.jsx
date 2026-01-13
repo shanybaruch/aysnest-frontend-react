@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { ShareModal } from './ShareModal.jsx'
+
 import { RiStarFill, RiTvLine } from "react-icons/ri";
 import { HiOutlineTv } from "react-icons/hi2";
 import { HiOutlineWifi } from "react-icons/hi";
@@ -22,8 +24,12 @@ export function StayDetails() {
   const { stayId } = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
   const stay = useSelector(storeState => storeState.stayModule.stay)
   const loggedInUser = useSelector(storeState => storeState.userModule.user)
+
+  const [isShareOpen, setIsShareOpen] = useState(false)
+
   const iconMap = {
     "Wifi": <HiOutlineWifi />,
     "Air conditioning": <IoIosSnow />,
@@ -50,25 +56,25 @@ export function StayDetails() {
   };
 
   function onSaveHeart(stayId) {
-  if (!loggedInUser) {
-    showErrorMsg('Please log in to save')
-    return
+    if (!loggedInUser) {
+      showErrorMsg('Please log in to save')
+      return
+    }
+
+    const saved = loggedInUser.saved || []
+    const isSaved = saved.includes(stayId)
+
+    const updatedUser = {
+      ...loggedInUser,
+      saved: isSaved
+        ? saved.filter(id => id !== stayId)
+        : [...saved, stayId]
+    }
+
+    saveToStorage('users', updatedUser)
+
+    dispatch({ type: 'SET_USER', user: updatedUser })
   }
-
-  const saved = loggedInUser.saved || []
-  const isSaved = saved.includes(stayId)
-
-  const updatedUser = {
-    ...loggedInUser,
-    saved: isSaved
-      ? saved.filter(id => id !== stayId)
-      : [...saved, stayId]
-  }
-
-  saveToStorage('users', updatedUser)
-
-  dispatch({ type: 'SET_USER', user: updatedUser })
-}
 
   return (
     <section className="stay-details">
@@ -76,11 +82,20 @@ export function StayDetails() {
         <div className="heading flex">
           <h1 className='title'>{stay.name}</h1>
           <div className="right-heading flex">
-            <button className='share' >
+            <button
+              className='share'
+              onClick={() => setIsShareOpen(true)}>
               <FiShare />
               <span>Share</span>
             </button>
-            <button className='save' onClick={() => onSaveHeart(stay._id)}>
+            {isShareOpen && (
+              <ShareModal 
+              stayId={stayId}
+              onClose={() => setIsShareOpen(false)} />
+            )}
+            <button
+              className='save'
+              onClick={() => onSaveHeart(stay._id)}>
               {loggedInUser?.saved?.includes(stay._id) ? <FaHeart /> : <FaRegHeart />}
               <span>Save</span>
             </button>

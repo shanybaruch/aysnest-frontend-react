@@ -1,0 +1,63 @@
+.share-modal-overlay {
+    position: fixed;
+    position: absolute;
+    top: 50px;
+    left: 25%;
+    padding: 42px;
+    background: rgba(0, 0, 0, 0.3);
+
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+
+    background: var(--white);
+    width: 100%;
+    width: 520px;
+    max-width: 90%;
+    height: 496px;
+    border-radius: 30px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.share-modal-img {
+    height: 64px;
+    width: 64px;
+    border-radius: 5px;
+}
+
+.btn-share-modal {
+    background-color: var(--white);
+    border: solid 1px var(--gray-light-hover);
+    border-radius: 8px;
+}
+
+.btn-share-modal:hover {
+    background-color: var(--gray-light);
+}
+
+.btnX-share-modal {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--white);
+    margin: 0;
+    border-radius: 100%;
+    cursor: pointer;
+    background-color: var(--white);
+}
+
+.btnX-share-modal:hover {
+    background-color: var(--gray-light);
+}
+
+.share-modal-header {
+    display: flex;
+    align-items: center;
+    /* מיישר לגובה */
+    gap: 12px;
+}
+
+.share-modal-overlay h1 {
+    font-size: 30px;
+    margin: 40px 0;
+}
