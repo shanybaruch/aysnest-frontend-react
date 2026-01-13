@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router'
+import { Routes, Route, Navigate } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -16,17 +16,27 @@ import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { LoginSignup, Login, Signup } from './pages/LoginSignup.jsx'
+import { UserAbout } from './cmps/UserAbout.jsx'
+import { UserTrips } from './cmps/UserTrips.jsx'
+
 import "@fontsource/inter/200.css"; //thin
 import "@fontsource/inter/300.css";
 import "@fontsource/inter"; //400
-import "@fontsource/inter/500.css"; 
+import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css"; //bold
 
+import { useInView } from 'react-intersection-observer'
 
 export function RootCmp() {
+    const { ref, inView } = useInView({
+        threshold: 0,
+        initialInView: true,
+    })
+
     return (
         <div className="main-container">
-            <AppHeader />
+            <div ref={ref} className="scroll-sentinel"></div>
+            <AppHeader isAtTop={inView} />
             <UserMsg />
 
             <main>
@@ -40,7 +50,11 @@ export function RootCmp() {
                     <Route path="/stay" element={<StayIndex />} />
                     <Route path="stay/:stayId" element={<StayDetails />} />
                     <Route path="stay/:stayId/photos" element={<StayDetailsPhotos />} />
-                    <Route path="user/:id" element={<UserDetails />} />
+                    <Route path="user/:id" element={<UserDetails />} >
+                        <Route index element={<Navigate to="about" replace />} />
+                        <Route path="about" element={<UserAbout />} />
+                        <Route path="trips" element={<UserTrips />} />
+                    </Route>
                     <Route path="review" element={<ReviewIndex />} />
                     <Route path="chat" element={<ChatApp />} />
                     <Route path="admin" element={<AdminIndex />} />
