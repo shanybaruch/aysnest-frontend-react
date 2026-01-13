@@ -15,11 +15,14 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
 import { CgMenuGridO } from "react-icons/cg";
+import { useLocation } from 'react-router-dom'
+
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { loadStay, addStayMsg } from '../store/actions/stay.actions'
 import { saveToStorage } from '../services/util.service'
 
+import { Calendar } from '../cmps/Calendar';
 
 
 export function StayDetails() {
@@ -31,6 +34,9 @@ export function StayDetails() {
   const amenitiesRef = useRef(null)
 
   const stay = useSelector(storeState => storeState.stayModule.stay)
+  const location = useLocation()
+  const order = location.state?.order
+
   const loggedInUser = useSelector(storeState => storeState.userModule.user)
 
   const [isShareOpen, setIsShareOpen] = useState(false)
@@ -172,12 +178,50 @@ export function StayDetails() {
                     )}
                   </div>
                 </section>
-              </section>
+    
+            <section className="order-card">
+              <div className="order-header">
+                <span className="price">
+                  ₪{stay.price}
+                  <span className="per-night"> / night </span>
+                </span>
+                <div className="order-rating">
+                  <RiStarFill size={12} />
+                  <span>{stay.rate}</span>
+                  <span className="reviews">· {stay.reviews.length} reviews</span>
+                </div>
+              </div>
+              
+              <div className="order-dates">
+                <div className="date-box">
+                  <span className="label">CHECK-IN</span>
+                  <span className="value">{order?.checkIn || 'Add date'}</span>
+                </div>
+                <div className="date-box">
+                  <span className="label">CHECK-OUT</span>
+                  <span className="value">{order?.checkOut || 'Add date'}</span>
+                </div>
+              </div>
+              
+              <div className="order-guests">
+                <span className="label">GUESTS</span>
+                <span className="value">{order
+                ? `${order.guests.adults + order.guests.children} guests`
+                : 'Add guests'} 
+                </span>
+              </div>
+              
+              <button className="reserve-btn"> Reserve </button>
+              
+              <p className="order-note"> You won’t be charged yet </p> 
+            </section>
+          </section>
             </section>
           </div>
         )}
 
         <button onClick={() => onAddStayMsg(stay._id)}>Add stay msg</button>
+
       </div>
     </section>
   )
