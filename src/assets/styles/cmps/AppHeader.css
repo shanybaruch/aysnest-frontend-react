@@ -191,7 +191,7 @@
 
             .menu-dropdown {
                 position: absolute;
-                top: 70px;
+                top: 63px;
                 right: 0;
 
                 background-color: var(--white);
@@ -217,9 +217,15 @@
                 }
             }
 
+            .divider {
+                width: 100%;
+                border-top: 1px solid var(--gray-light-hover);
+                margin: 8px 0;
+            }
+
             .menu-item {
                 cursor: pointer;
-                padding: 0;
+                padding: .4em .1em;
                 text-decoration: none;
                 color: var(--black);
                 font-size: 14px;
@@ -230,161 +236,6 @@
                 font-weight: 400;
 
                 display: flex;
-            }
-        }
-
-    }
-
-    .selection {
-        display: flex;
-        justify-content: space-evenly;
-        gap: 0em;
-        padding: 0;
-
-        position: relative;
-        z-index: 30;
-
-        border-radius: 50px;
-        box-shadow: 0px 7px 24px 0px var(--gray-light-hover);
-        border: 1.5px solid var(--gray-light-hover);
-        margin-top: 1rem;
-        margin-bottom: 0.8rem;
-
-        opacity: 1;
-        max-height: 200px;
-        transform: scale(1) translateY(0);
-        transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
-
-        .select-when {
-            position: relative;
-        }
-
-        &:focus-within {
-            background-color: var(--gray-light);
-            border-color: var(--gray-light-hover);
-
-            box-shadow: 0px 5px 20px 0px var(--gray-light-hover);
-
-
-            .select-where,
-            .select-when,
-            .select-who {
-                background-color: transparent;
-                transition: 0.2s;
-            }
-
-            .select-where:focus-within,
-            .select-when:focus-within,
-            .select-who:focus-within {
-                background-color: var(--white);
-                border-radius: 50px;
-                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-            }
-
-            .v-line {
-                opacity: 0;
-            }
-        }
-
-        .select-where input {
-            border: none;
-            outline: none;
-            background: transparent;
-        }
-
-        .select-where,
-        .select-when {
-            display: flex;
-        }
-
-        .select-where,
-        .select-when,
-        .select-who {
-            cursor: pointer;
-
-            &:hover {
-                border-radius: 50px;
-                background-color: var(--gray-light);
-            }
-        }
-
-        .v-line {
-            border-right: 1px solid var(--gray-light-hover);
-            height: 32px;
-            margin-block: 16px;
-        }
-
-        .sec {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            padding-inline-start: 26px;
-            width: 280px;
-            height: 100%;
-
-            p {
-                font-size: .75rem;
-                font-weight: 600;
-                margin-bottom: .2em;
-            }
-
-            span {
-                color: var(--gray);
-                font-size: .85rem;
-                font-weight: 400;
-            }
-        }
-
-        .sec-search {
-            position: absolute;
-            right: 9px;
-            top: 8px;
-            height: 48px;
-            width: 48px;
-            border-radius: 50%;
-            background: linear-gradient(to right, var(--clr1), var(--clr1));
-            color: var(--white);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                background-color 0.2s ease,
-                border-radius 0.35s ease,
-                padding 0.35s ease;
-
-            svg {
-                font-size: 1.2rem;
-            }
-
-            .search-text {
-                max-width: 0;
-                opacity: 0;
-                overflow: hidden;
-                white-space: nowrap;
-                font-weight: 600;
-                font-size: .9rem;
-                transition: max-width 0.3s ease, opacity 0.2s ease, margin 0.3s ease;
-            }
-
-            &:hover {
-                background: linear-gradient(to right, var(--clr1), var(--clr1-hover));
-            }
-
-            &.expanded {
-                width: 105px;
-                border-radius: 24px;
-                padding-inline: 12px;
-                justify-content: flex-start;
-                background: linear-gradient(to right, var(--clr1), var(--clr1-hover));
-
-                .search-text {
-                    max-width: 70px;
-                    opacity: 1;
-                    margin-inline-start: 8px;
-                }
             }
         }
     }
@@ -400,22 +251,14 @@
         z-index: 10;
         padding: 10px;
     }
-
+    
     .user-info {
         display: flex;
         align-items: center;
         margin-inline-start: auto;
-
+        
         color: var(--black);
-
-        .score {
-            padding: 8px;
-            background-color: var(--clr1);
-            border-radius: 50%;
-            margin: 10px;
-            color: var(--white);
-        }
-
+        
         & img {
             width: 2em;
             aspect-ratio: 1;

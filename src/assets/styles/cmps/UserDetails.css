@@ -55,11 +55,8 @@
 
         .nav-links a.active {
             background-color: var(--white-gray);
-            font-weight: bold;
         }
     }
-
-
 }
 
 .user-about {
@@ -87,7 +84,7 @@
 
     .main {
         box-shadow: 0 7px 28px var(--gray2);
-        border-radius: 20px;
+        border-radius: 35px;
         margin: 2em 0;
         width: 330px;
         height: 250px;
@@ -96,15 +93,19 @@
         flex-direction: column;
         align-items: center;
 
+        .name {
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
 
         .img-profile {
-            margin-top: 1.5em;
+            margin-top: 1.8em;
             margin-bottom: .6em;
             width: 140px;
             height: 140px;
         }
     }
-
 }
 
 @media (max-width: 1120px) {}

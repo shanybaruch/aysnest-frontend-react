@@ -11,6 +11,7 @@ import { SET_FILTER_BY } from '../store/reducers/stay.reducer'
 import { Calendar } from './Calendar'
 import { GuestPicker } from './GuestPicker'
 import { LoginModal } from './LoginModal'
+import { StayFilter } from './StayFilter'
 
 export function AppHeader({ isAtTop }) {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -34,32 +35,12 @@ export function AppHeader({ isAtTop }) {
     const [isLoginOpen, setIsLoginOpen] = useState(false)
     const isAnyActive = isEditingWhere || isEditingWhen || isEditingWho
 
-    function onUpdateGuests(type, diff) {
-        const newVal = Math.max(0, guests[type] + diff)
-        dispatch({
-            type: SET_FILTER_BY,
-            filterBy: { ...filterBy, guests: { ...guests, [type]: newVal } }
-        })
-    }
-
     function getGuestLabel() {
         if (!totalGuests && !infants && !pets) return 'Add guests'
         let label = `${totalGuests} guests`
         if (infants) label += `, ${infants} infants`
         if (pets) label += `, ${pets} pets`
         return label
-    }
-
-    function onSetRange(range) {
-        dispatch({
-            type: SET_FILTER_BY,
-            filterBy: { ...filterBy, from: range?.from || null, to: range?.to || null }
-        })
-    }
-
-    const rangeForCalendar = {
-        from: filterBy.from ? new Date(filterBy.from) : undefined,
-        to: filterBy.to ? new Date(filterBy.to) : undefined
     }
 
     async function onLogout() {
@@ -73,16 +54,6 @@ export function AppHeader({ isAtTop }) {
         }
     }
 
-    function onSearch() {
-        const totalGuests = filterBy.guests.adults + filterBy.guests.children
-        const filterToSave = { ...filterBy, minCapacity: totalGuests }
-        dispatch({ type: SET_FILTER_BY, filterBy: filterToSave })
-        loadStays(filterToSave)
-        setIsEditingWhere(false)
-        setIsEditingWhen(false)
-        setIsEditingWho(false)
-    }
-
     return (
         <header className={`app-header full ${isCompact ? 'compact' : ''}`}>
             {(isMenuOpen || isAnyActive) && (
@@ -93,7 +64,7 @@ export function AppHeader({ isAtTop }) {
                     setIsEditingWho(false)
                 }}></div>
             )}
-            
+
             <nav className='header-nav'>
                 <NavLink to="/stay" className="logo">
                     <img src="/img/logo-ays.png" alt="logo" />
@@ -149,84 +120,17 @@ export function AppHeader({ isAtTop }) {
                     </div>
                 </section>
             </nav>
-
-            {!isUserPage && (
-                <div className='selection'>
-                    <section
-                        className={`select-where ${isEditingWhere ? 'active' : ''}`}
-                        onClick={() => {
-                            setIsEditingWhere(!isEditingWhere)
-                            setIsEditingWhen(false)
-                            setIsEditingWho(false)
-                        }}
-                    >
-                        <section className='sec'>
-                            <p>Where</p>
-                            {isEditingWhere ? (
-                                <input
-                                    type="text"
-                                    autoFocus
-                                    placeholder="Search destinations"
-                                    value={filterBy.txt || ''}
-                                    onChange={(e) => dispatch({ type: SET_FILTER_BY, filterBy: { ...filterBy, txt: e.target.value } })}
-                                    onBlur={() => setTimeout(() => setIsEditingWhere(false), 200)}
-                                />
-                            ) : (
-                                <span>{filterBy.txt || 'Search destinations'}</span>
-                            )}
-                        </section>
-                        <div className="v-line"></div>
-                    </section>
-
-                    <section
-                        className={`select-when ${isEditingWhen ? 'active' : ''}`}
-                        onClick={(e) => {
-                            e.stopPropagation()
-                            setIsEditingWhen(!isEditingWhen)
-                            setIsEditingWhere(false)
-                            setIsEditingWho(false)
-                        }}
-                    >
-                        <section className='sec'>
-                            <p>When</p>
-                            <span>
-                                {filterBy.from ? 
-                                    `${new Date(filterBy.from).toLocaleDateString()} - ${filterBy.to ? new Date(filterBy.to).toLocaleDateString() : ''}` 
-                                    : 'Add dates'}
-                            </span>
-                        </section>
-                        {isEditingWhen && (
-                            <div className="calendar-dropdown" onClick={(e) => e.stopPropagation()}>
-                                <Calendar range={rangeForCalendar} setRange={onSetRange} />
-                            </div>
-                        )}
-                        <div className="v-line"></div>
-                    </section>
-
-                    <section 
-                        className={`select-who ${isEditingWho ? 'active' : ''}`}
-                        onClick={(e) => {
-                            e.stopPropagation()
-                            setIsEditingWhere(false)
-                            setIsEditingWhen(false)
-                            setIsEditingWho(!isEditingWho)
-                        }}
-                    >
-                        <section className='sec'>
-                            <p>Who</p>
-                            <span>{getGuestLabel()}</span>
-                        </section>
-                        {isEditingWho && (
-                            <GuestPicker guests={guests} onUpdateGuests={onUpdateGuests} />
-                        )}
-                    </section>
-
-                    <section className={`sec-search ${isAnyActive ? 'expanded' : ''}`} onClick={onSearch}>
-                        <IoSearch />
-                        {isAnyActive && <span className="search-text">Search</span>}
-                    </section>
-                </div>
-            )}
+            {!isUserPage &&
+                <StayFilter
+                    isEditingWhere={isEditingWhere}
+                    isEditingWhen={isEditingWhen}
+                    isEditingWho={isEditingWho}
+                    setIsEditingWhere={setIsEditingWhere}
+                    setIsEditingWhen={setIsEditingWhen}
+                    setIsEditingWho={setIsEditingWho}
+                    getGuestLabel={getGuestLabel}
+                />
+            }
             {isLoginOpen && <LoginModal onClose={() => setIsLoginOpen(false)} />}
         </header>
     )
