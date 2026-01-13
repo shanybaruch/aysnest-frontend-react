@@ -5,6 +5,7 @@ import { userService } from '../user'
 
 const STORAGE_KEY = 'stay'
 
+
 export const stayService = {
     query,
     getById,
@@ -24,13 +25,15 @@ async function query(filterBy = getDefaultFilter()) {
     const { txt, minCapacity, sortField, sortDir, to, from } = filterBy
 
     if (txt) {
-        const regex = new RegExp(txt, 'i')
+        const searchWord = txt.split(',')[0].trim()
+        const regex = new RegExp(searchWord, 'i')
+
         stays = stays.filter(stay =>
             regex.test(stay.name) ||
             regex.test(stay.type) ||
-            regex.test(stay.description) ||
             regex.test(stay.loc?.city) ||
-            regex.test(stay.loc?.address)
+            regex.test(stay.loc?.address) ||
+            regex.test(stay.loc?.country)
         )
     }
 
@@ -161,3 +164,47 @@ function createStays() {
     }))
     saveToStorage(STORAGE_KEY, stays)
 }
+
+
+// function createStays() {
+//     let stays = loadFromStorage(STORAGE_KEY)
+//     if (stays && stays.length) return
+
+//     const workingImages = [
+//         "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+//         "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+//         "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800",
+//         "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800",
+//         "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800"
+//     ]
+
+//     const amenityPool = ["TV", "Wifi", "Air conditioning", "Pool", "Kitchen", "Free parking", "Doorman", "Gym", "Elevator", "Hot tub", "Heating", "Family/kid friendly", "Washer", "Dryer", "Essentials", "Shampoo", "24-hour check-in", "Hangers", "Hair dryer", "Iron", "Laptop friendly workspace", "Self check-in", "Private entrance", "Hot water", "Bed linens", "Waterfront", "Beachfront"]
+
+//     const cityData = [
+//         { city: 'Eilat', country: 'Israel', names: ['Royal Sea Villa', 'Coral Beach Loft', 'Eilat Marina Suite', 'Desert Oasis Home', 'Gulf View Penthouse', 'Dolphin Cove Studio'] },
+//         { city: 'Paris', country: 'France', names: ['Eiffel Tower View', 'Marais Chic Apt', 'Louvre Cozy Loft', 'Montmartre Studio', 'Latin Quarter Flat', 'Seine River House'] },
+//         { city: 'Rome', country: 'Italy', names: ['Colosseum Suite', 'Pantheon Square Flat', 'Trastevere Charm', 'Trevi Luxury Nest', 'Vatican Gold Loft', 'Spanish Steps Home'] },
+//         { city: 'Budapest', country: 'Hungary', names: ['Danube Pearl', 'Buda Castle View', 'Pest Opera Loft', 'Margaret Island Flat', 'Parliament Penthouse', 'Ruin Bar Studio'] }
+//     ]
+
+//     stays = cityData.flatMap((location) => 
+//         location.names.map((name) => ({
+//             _id: 's' + Math.random().toString(36).substr(2, 9),
+//             name,
+//             type: 'Entire home/apt',
+//             imgUrls: [...workingImages].sort(() => Math.random() - 0.5),
+//             price: Math.floor(Math.random() * 500) + 120,
+//             capacity: Math.floor(Math.random() * 6) + 2, 
+//             rate: (Math.random() * (5 - 3.5) + 3.5).toFixed(2),
+//             amenities: [...amenityPool].sort(() => Math.random() - 0.5).slice(0, 10),
+//             loc: {
+//                 country: location.country,
+//                 city: location.city,
+//                 address: "Main Street " + Math.floor(Math.random() * 50)
+//             },
+//             reviews: [],
+//             likedByUsers: []
+//         }))
+//     )
+//     saveToStorage(STORAGE_KEY, stays)
+// }

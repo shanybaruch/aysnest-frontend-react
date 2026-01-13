@@ -56,18 +56,22 @@
             box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
         }
 
-        &:has(.active) .v-line {
-            opacity: 0;
-        }
-
+        &:has(.select-where:hover),
+        &:has(.select-when:hover),
+        &:has(.select-who:hover),
+        &:has(.active),
         &:focus-within {
             .v-line {
                 opacity: 0;
             }
         }
-
+    
         .v-line {
-            opacity: 0;
+            border-right: 1px solid var(--gray-light-hover);
+            height: 32px;
+            margin-block: 16px;
+            transition: opacity 0.2s ease;
+            opacity: 1;
         }
 
         .select-where input {
@@ -90,12 +94,6 @@
                 border-radius: 50px;
                 background-color: var(--white-gray);
             }
-        }
-
-        .v-line {
-            border-right: 1px solid var(--gray-light-hover);
-            height: 32px;
-            margin-block: 16px;
         }
 
         .sec {

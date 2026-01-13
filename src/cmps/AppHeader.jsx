@@ -16,24 +16,23 @@ import { StayFilter } from './StayFilter'
 export function AppHeader({ isAtTop }) {
     const user = useSelector(storeState => storeState.userModule.user)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const location = useLocation()
-
-    const isUserPage = location.pathname.startsWith('/user')
-    const isStayDetails = location.pathname.startsWith('/stay/') && location.pathname !== '/stay'
-    const isCompact = !isAtTop || isStayDetails || isUserPage
-
-    const guests = filterBy.guests || { adults: 0, children: 0, infants: 0, pets: 0 }
-    const { adults, children, infants, pets } = guests
-    const totalGuests = adults + children
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isEditingWhere, setIsEditingWhere] = useState(false)
     const [isEditingWhen, setIsEditingWhen] = useState(false)
     const [isEditingWho, setIsEditingWho] = useState(false)
     const [isLoginOpen, setIsLoginOpen] = useState(false)
+    const isUserPage = location.pathname.startsWith('/user')
+    const isStayDetails = location.pathname.startsWith('/stay/') && location.pathname !== '/stay'
     const isAnyActive = isEditingWhere || isEditingWhen || isEditingWho
+    const isCompact = (!isAtTop || isStayDetails || isUserPage) && !isAnyActive
+    const guests = filterBy.guests || { adults: 0, children: 0, infants: 0, pets: 0 }
+    const { adults, children, infants, pets } = guests
+    const totalGuests = adults + children
+
 
     function getGuestLabel() {
         if (!totalGuests && !infants && !pets) return 'Add guests'
@@ -74,7 +73,7 @@ export function AppHeader({ isAtTop }) {
                 {!isUserPage && (
                     <section className='nav-middle'>
                         {isCompact ? (
-                            <button className="search-bar-mini" onClick={() => navigate('/stay')}>
+                            <button className="search-bar-mini" onClick={() => setIsEditingWhere(true)}>
                                 <span className="label">Anywhere</span>
                                 <div className="v-line"></div>
                                 <span className="label">Any week</span>

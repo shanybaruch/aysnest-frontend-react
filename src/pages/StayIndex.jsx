@@ -70,11 +70,6 @@ export function StayIndex() {
                 onRemoveStay={onRemoveStay}
                 onUpdateStay={onUpdateStay}
             />
-            <StayList
-                stays={stays}
-                onRemoveStay={onRemoveStay}
-                onUpdateStay={onUpdateStay}
-            />
         </section>
     )
 }
