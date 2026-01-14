@@ -23,6 +23,7 @@ import { loadStay, addStayMsg } from '../store/actions/stay.actions'
 import { saveToStorage } from '../services/util.service'
 
 import { Calendar } from '../cmps/Calendar';
+import { Loader } from '../cmps/Loader.jsx'
 
 
 export function StayDetails() {
@@ -57,6 +58,10 @@ export function StayDetails() {
 
   useEffect(() => {
     loadStay(stayId)
+
+    return () => {
+      dispatch({ type: 'SET_STAY', stay: null })
+    }
   }, [stayId])
 
   async function onAddStayMsg(stayId) {
@@ -93,7 +98,7 @@ export function StayDetails() {
     dispatch({ type: 'SET_USER', user: updatedUser })
   }
 
-  if (!stayId) return
+  if (!stay) return <Loader />
   return (
     <section>
       <StayDetailsHeader
@@ -181,46 +186,46 @@ export function StayDetails() {
                 </section>
 
               </section>
-                <section className="small-side">
-                  <section className="order-card">
-                    <div className="order-header">
-                      <span className="price">
-                        ₪{stay.price}
-                        <span className="per-night"> / night </span>
-                      </span>
-                      <div className="order-rating">
-                        <RiStarFill size={12} />
-                        <span>{stay.rate}</span>
-                        <span className="reviews">· {stay.reviews.length} reviews</span>
-                      </div>
+              <section className="small-side">
+                <section className="order-card">
+                  <div className="order-header">
+                    <span className="price">
+                      ₪{stay.price}
+                      <span className="per-night"> / night </span>
+                    </span>
+                    <div className="order-rating">
+                      <RiStarFill size={12} />
+                      <span>{stay.rate}</span>
+                      <span className="reviews">· {stay.reviews.length} reviews</span>
                     </div>
+                  </div>
 
-                    <div className="order-dates">
-                      <div className="date-box">
-                        <span className="label">CHECK-IN</span>
-                        <span className="value">{order?.checkIn || 'Add date'}</span>
-                      </div>
-                      <div className="date-box">
-                        <span className="label">CHECK-OUT</span>
-                        <span className="value">{order?.checkOut || 'Add date'}</span>
-                      </div>
+                  <div className="order-dates">
+                    <div className="date-box">
+                      <span className="label">CHECK-IN</span>
+                      <span className="value">{order?.checkIn || 'Add date'}</span>
                     </div>
-
-                    <div className="order-guests">
-                      <span className="label">GUESTS</span>
-                      <span className="value">{order
-                        ? `${order.guests.adults + order.guests.children} guests`
-                        : 'Add guests'}
-                      </span>
+                    <div className="date-box">
+                      <span className="label">CHECK-OUT</span>
+                      <span className="value">{order?.checkOut || 'Add date'}</span>
                     </div>
+                  </div>
 
-                    <button 
+                  <div className="order-guests">
+                    <span className="label">GUESTS</span>
+                    <span className="value">{order
+                      ? `${order.guests.adults + order.guests.children} guests`
+                      : 'Add guests'}
+                    </span>
+                  </div>
+
+                  <button
                     className="reserve-btn"
                     onClick={() => navigate('order')}> Reserve </button>
 
-                    <p className="order-note"> You won’t be charged yet </p>
-                  </section>
+                  <p className="order-note"> You won’t be charged yet </p>
                 </section>
+              </section>
             </section>
           </div>
         )}
