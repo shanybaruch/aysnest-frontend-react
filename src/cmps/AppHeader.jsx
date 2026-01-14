@@ -33,7 +33,6 @@ export function AppHeader({ isAtTop }) {
     const { adults, children, infants, pets } = guests
     const totalGuests = adults + children
 
-
     function getGuestLabel() {
         if (!totalGuests && !infants && !pets) return 'Add guests'
         let label = `${totalGuests} guests`

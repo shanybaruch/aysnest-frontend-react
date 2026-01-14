@@ -93,6 +93,7 @@ export function StayDetails() {
     dispatch({ type: 'SET_USER', user: updatedUser })
   }
 
+  if (!stayId) return
   return (
     <section>
       <StayDetailsHeader

@@ -36,5 +36,8 @@
 @import "cmps/Calendar.css";
 @import "cmps/GuestPicker.css";
 @import "cmps/LoginModal.css";
+@import "cmps/Loader.css";
 
-@import "cmps/order/OrderPage.css"
+
+@import "cmps/order/OrderPage.css";
+
