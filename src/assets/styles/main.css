@@ -11,13 +11,14 @@
 
 @import "cmps/AboutUs";
 @import "cmps/HomePage";
-@import "cmps/UserDetails";
 @import "cmps/LoginSignup";
 @import "cmps/Chat";
 
+@import "cmps/user/UserDetails";
+@import "cmps/user/UserMsg";
+
 @import "cmps/AppHeader";
 @import "cmps/AppFooter";
-@import "cmps/UserMsg";
 
 @import "cmps/stay/StayIndex";
 @import "cmps/stay/StayList";
@@ -25,13 +26,15 @@
 @import "cmps/stay/StayDetails.css";
 @import "cmps/stay/StayDetailsPhotos.css";
 @import "cmps/stay/StayDetailsHeader.css";
-@import "cmps/ShareModal.css";
 @import "cmps/stay/StayFilter";
 
 @import "cmps/review/ReviewEdit";
 @import "cmps/review/ReviewList";
 @import "cmps/review/ReviewPreview";
 
+@import "cmps/ShareModal.css";
 @import "cmps/Calendar.css";
 @import "cmps/GuestPicker.css";
 @import "cmps/LoginModal.css";
+
+@import "cmps/order/OrderPage.css"

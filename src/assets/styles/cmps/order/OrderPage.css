@@ -1,0 +1,100 @@
+.order-page {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 100px;
+    grid-template-rows: 100px 1fr 20px;
+    height: 100%;
+
+    header {
+        grid-column: 2 / 3;
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+
+        h1 {
+            margin: 0;
+        }
+
+        button {
+            background-color: transparent;
+            margin: 0 10px;
+            font-size: 1.1rem;
+        }
+    }
+
+    .form-pay {
+        position: relative;
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+
+        width: 380px;
+        padding: 1.5em 2em 0;
+        margin-block-end: 1.8em;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px 2px var(--gray-light-hover);
+
+        .card {
+            p {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+                font-weight: 400;
+                font-size: .9rem;
+            }
+        }
+
+        .card-details {
+            display: flex;
+            flex-direction: column;
+
+            border: 1px solid var(--gray2);
+            border-radius: 12px;
+            margin: 1.5em 0 0;
+
+            .card-name {
+                border-bottom: 1px solid var(--gray2)
+            }
+
+            div {
+                display: flex;
+
+                .validity {
+                    border-right: 1px solid var(--gray2);
+                }
+            }
+        }
+
+        .zip-code {
+            margin-block: 1.5em;
+            border: 1px solid var(--gray2);
+            border-radius: 12px;
+        }
+
+        input {
+            border: 0;
+            width: 100%;
+            background-color: transparent;
+            padding: 1.4em;
+        }
+
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            select {
+                padding: 12px 18px;
+                border: 1px solid var(--gray2);
+                border-radius: 12px;
+                cursor: pointer;
+            }
+
+            button {
+                margin: 0;
+                border-radius: 12px;
+                padding: 15px 20px;
+                background-color: var(--black);
+                color: var(--white);
+            }
+        }
+    }
+}

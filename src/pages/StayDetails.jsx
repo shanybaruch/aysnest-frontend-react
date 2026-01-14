@@ -213,7 +213,9 @@ export function StayDetails() {
                       </span>
                     </div>
 
-                    <button className="reserve-btn"> Reserve </button>
+                    <button 
+                    className="reserve-btn"
+                    onClick={() => navigate('order')}> Reserve </button>
 
                     <p className="order-note"> You won’t be charged yet </p>
                   </section>
