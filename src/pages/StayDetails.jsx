@@ -20,6 +20,8 @@ import { loadStay, addStayMsg } from '../store/actions/stay.actions'
 import { saveToStorage } from '../services/util.service'
 import { Calendar } from '../cmps/Calendar';
 import { Loader } from '../cmps/Loader.jsx'
+import { OrderCard } from '../cmps/OrderCard.jsx'
+
 
 
 export function StayDetails() {
@@ -180,13 +182,11 @@ export function StayDetails() {
                     )}
                   </div>
                 </section>
-
               </section>
                 <section className="small-side">
                   <OrderCard />
                 </section>
               </section>
-            </section>
           </div>
         )}
 
