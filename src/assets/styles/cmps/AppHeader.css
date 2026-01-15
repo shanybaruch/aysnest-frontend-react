@@ -10,8 +10,8 @@
     min-height: 170px;
 
     background-color: var(--white);
-    padding: .8rem 1rem .8rem;
-    /* border-bottom: 1px solid var(--gray-light); */
+    padding: .8rem 1rem 1.8rem;
+    border-bottom: 1px solid var(--gray-light);
     transition: min-height 0.2s cubic-bezier(0.2, 0, 0, 1), padding 0.4s ease;
 
     &.static-header {
@@ -146,7 +146,7 @@
             display: flex;
             gap: .5em;
 
-            margin-inline-end: 1em;
+            margin-inline-end: .5em;
 
             .menu-wrapper {
                 position: relative;
@@ -155,22 +155,22 @@
 
                 img {
                     object-fit: cover;
-                    width: 45px;
-                    height: 45px;
+                    width: 39px;
+                    height: 39px;
                     border-radius: 50%;
                     cursor: pointer;
+                    margin-inline: .3em;
                 }
 
                 .btn-menu {
-                    padding: 0 1em;
-                    width: 45px;
-                    height: 45px;
-                    font-size: .9rem;
+                    /* padding: 0 1em; */
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1rem;
                     border-radius: 2em;
                     color: var(--black);
                     background-color: var(--white-gray);
                     transition: .2s;
-
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -269,7 +269,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* background-color: rgba(80, 80, 80, 0.5); */
+    background-color: rgba(80, 80, 80, 0.5);
     z-index: 10;
     cursor: default;
 }

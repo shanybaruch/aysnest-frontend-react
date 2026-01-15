@@ -1,15 +1,13 @@
 import { Link, NavLink } from 'react-router-dom'
-import { Navigate, useLocation, useNavigate } from 'react-router'
-import { useDispatch, useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router'
+import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { FiMenu } from "react-icons/fi";
-import { useEffect, useState } from 'react'
+
+import { useState } from 'react';
 import { IoSearch } from "react-icons/io5";
-import { loadStays } from '../store/actions/stay.actions'
-import { SET_FILTER_BY } from '../store/reducers/stay.reducer'
-import { Calendar } from './Calendar'
-import { GuestPicker } from './GuestPicker'
+
 import { LoginModal } from './LoginModal'
 import { StayFilter } from './StayFilter'
 
@@ -99,6 +97,7 @@ export function AppHeader({ isAtTop }) {
                         )}
                         <button className="btn-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                             <FiMenu />
+
                         </button>
                         {isMenuOpen && (
                             <div className="menu-dropdown" onClick={() => setIsMenuOpen(false)}>

@@ -1,16 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaCreditCard } from "react-icons/fa6";
-
-import { useNavigate } from "react-router";
 
 export function OrderPage() {
     const navigate = useNavigate()
     const [isConfirm, setIsConfirm] = useState(false)
-    const [cardNumber, setCardNumber] = useState("1111111111111111");
+    const [cardNumber, setCardNumber] = useState("1111111111111111")
     const [expiry, setExpiry] = useState("11/35")
-    const [cvv, setCvv] = useState("111");
-    const [zipCode, setZipCode] = useState("1234567");
+    const [cvv, setCvv] = useState("111")
+    const [zipCode, setZipCode] = useState("1234567")
 
     function handleExpiryChange(e) {
         let value = e.target.value.replace(/\D/g, "")
