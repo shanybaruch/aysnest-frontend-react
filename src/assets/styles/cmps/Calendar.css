@@ -1,11 +1,11 @@
 .calendar {
   background: transparent;
-  padding: 15px;
+  padding: 20px;
   border-radius: 32px;
 
   .rdp-months {
     display: flex;
-    gap: 40px;
+    justify-content: space-around;
     flex-wrap: nowrap;
     position: relative;
   }
@@ -50,10 +50,8 @@
 
   .rdp-day {
     box-sizing: border-box;
-    width: 40px;
-    height: 40px;
-    /* padding-inline: 8px;
-    padding-block: 12px; */
+    width: 35px;
+    height: 35px;
     border: 1.5px solid transparent;
     border-radius: 50%;
     text-align: center;
@@ -67,7 +65,7 @@
     font-weight: 500;
     text-align: center;
     font-family: sans-serif;
-    padding: 18px;
+    padding: 15px;
     border: none;
     width: 100%;
     height: 100%;

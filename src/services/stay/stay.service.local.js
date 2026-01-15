@@ -187,7 +187,7 @@ function createStays() {
     ]
 
     stays = apartments.map((apt, idx) => {
-        const locationInfo = locations[Math.floor(idx / 5) % locations.length]
+        const locationInfo = locations[Math.floor(idx / 6) % locations.length]
         
         const shuffledAmenities = [...allAmenities].sort(() => 0.5 - Math.random())
         const selectedAmenities = shuffledAmenities.slice(0, getRandomIntInclusive(4, 19))
@@ -210,9 +210,9 @@ function createStays() {
             name: apt.name || `${locationInfo.city} Comfort Stay`,
             type: 'Apartment',
             imgUrl: apt.imgUrl,
-            price: getRandomIntInclusive(250, 1200),
+            price: getRandomIntInclusive(100, 1000),
             capacity: getRandomIntInclusive(1, 10),
-            description: makeLorem(),
+            description: makeLorem(40),
             rate: Number(avgRate),
             loc: {
                 country: locationInfo.country,

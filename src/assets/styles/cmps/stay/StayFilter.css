@@ -12,7 +12,7 @@
         border-radius: 50px;
         box-shadow: 0px 7px 24px 0px var(--gray-light-hover);
         border: 1.5px solid var(--gray-light-hover);
-        margin-top: 1rem;
+        margin-top: 1.2rem;
         margin-bottom: 0.8rem;
 
         opacity: 1;
@@ -108,14 +108,14 @@
 
             .suggestions-modal {
                 position: absolute;
-                top: 70px;
+                top: 75px;
                 left: 0;
-                width: 100%;
+                width: 150%;
 
                 background-color: var(--white);
                 border-radius: 30px;
                 padding: 20px 20px 0px;
-                box-shadow: 0px 7px 24px 0px var(--gray2);
+                box-shadow: 0px 7px 24px 0px var(--gray-light-hover);
                 cursor: auto;
 
                 ul {
@@ -124,7 +124,7 @@
 
                 li {
                     padding: .8em .8em;
-                    border-radius: 15px;
+                    border-radius: 10px;
                     cursor: pointer;
 
                     &:hover {
@@ -136,8 +136,9 @@
                     color: var(--black);
                     padding-top: 0;
                     margin: 0;
-                    font-size: .94rem;
-                    font-weight: 600;
+                    margin-bottom: 2px;
+                    font-size: .875rem;
+                    font-weight: 500;
                 }
 
                 p {
@@ -149,8 +150,8 @@
 
                 span {
                     color: var(--gray);
-                    font-size: .7rem;
-                    font-weight: 400;
+                    font-size: .87rem;
+                    font-weight: 300;
                 }
             }
 

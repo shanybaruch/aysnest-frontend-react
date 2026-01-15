@@ -48,10 +48,11 @@ export function StayFilter(
     }
 
     const destinations = [
-        { id: '1', name: 'Paris, France', desc: 'Because you wishlisted it' },
-        { id: '2', name: 'Budapest, Hungary', desc: 'For its bustling nightlife' },
-        { id: '3', name: 'Rome, Italy', desc: 'For sights like Trevi Fountain' },
-        { id: '4', name: 'Eilat, Israel', desc: 'Because your wishlist has stays in Eilat' },
+        { id: '1', name: 'Eilat, Israel', desc: 'Because your wishlist has stays in Eilat' },
+        { id: '2', name: 'New York, United States', desc: 'For its bustling nightlife' },
+        { id: '3', name: 'Paris, France', desc: 'Because you wishlisted it' },
+        { id: '4', name: 'Tokyo, Japan', desc: 'For sights like Trevi Fountain' },
+        { id: '5', name: 'Rome, Italy', desc: 'For sights like Trevi Fountain' },
     ]
 
     const handleSelect = (destinationName) => {
