@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 
 export function OrderCard(){
     const stay = useSelector(storeState => storeState.stayModule.stay)
+    const navigate = useNavigate()
 
     return (
         <section className="order-card">
