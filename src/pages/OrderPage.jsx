@@ -155,7 +155,7 @@ export function OrderPage() {
                         <img src={stay.imgUrl} alt={stay.name} />
                         <div>
                             <p style={{ fontWeight: 'bold', margin: 0 }}>{stay.name}</p>
-                            <p style={{ fontSize: '14px' }}>★ {stay.rate}</p>
+                            <p style={{ fontSize: '.7rem', fontWeight: 'bold' }}>★ {stay.rate}</p>
                         </div>
                     </div>
 
@@ -168,14 +168,18 @@ export function OrderPage() {
                             <span>{nights} nights x ₪{stay.price}</span> :
                             <span>{nights} night x ₪{stay.price}</span>
                         }
+                        <span>₪{totalPrice}</span>
                     </div>
-                    <div className="payment-row total" style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', marginTop: '10px' }}>
-                        <span>Total (ILS)</span>
+
+                    <hr />
+                
+                    <div className="payment-row total">
+                        <span>Total<span style={{textDecoration: 'underline', marginLeft:'4px'}}>ILS</span></span>
                         <span>₪{totalPrice}</span>
                     </div>
 
                     {isConfirm && (
-                        <div className="success-msg" style={{ marginTop: '20px', color: 'green', fontWeight: 'bold' }}>
+                        <div className="success-msg">
                             🎉 Reservation success!
                         </div>
                     )}

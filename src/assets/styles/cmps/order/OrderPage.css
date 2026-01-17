@@ -118,13 +118,14 @@
             grid-row: 2 / 3;
             grid-column: 4 / 5;
 
-            padding: 1.5em 2em;
+            padding: 1.5em;
             margin-block-end: 1em;
             border-radius: 25px;
             border: 1px solid var(--gray-light-hover);
 
             hr {
-                color: var(--white-gray);
+                border: .5px solid var(--white-gray);
+                margin-block: 1em;
             }
 
             .stay-preview-info {
@@ -142,13 +143,23 @@
                     border-radius: 10px;
                 }
             }
+            h5 {
+                font-size: .9rem;
+            }
 
             .payment-row {
                 display: flex; 
                 justify-content: space-between;
 
                 font-weight: 400;
-                font-size: .9rem;
+                font-size: .85rem;
+            }
+
+            .total {
+                display: flex;
+                justify-content: space-between; 
+                font-weight: 600;
+                font-size: .875rem;
             }
 
             h2 {
@@ -159,5 +170,11 @@
                 font-weight: 100;
             }
         }
+    }
+
+    .success-msg {
+        margin-top: 20px;
+        color: green;
+        font-weight: bold;
     }
 }
