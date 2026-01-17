@@ -32,10 +32,10 @@ export function OrderPage() {
 
     return (
         <section className="order-page">
-            <header>
-                <button onClick={() => navigate(-1)}>
+                <button className="btn-back" onClick={() => navigate(-1)}>
                     <FaArrowLeft />
                 </button>
+            <header>
                 <h1>Confirm and pay</h1>
             </header>
             <form className="form-pay" onSubmit={onConfirm}>
@@ -98,7 +98,7 @@ export function OrderPage() {
                         <option value="USA">USA</option>
                     </select>
                     <img src="" alt="" />
-                    <button type="submit">Confirm</button>
+                    <button type="submit">Next</button>
                 </section>
             </form>
             <section className="order-details">
