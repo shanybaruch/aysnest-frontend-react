@@ -1,110 +1,127 @@
 .small-side {
     position: relative;
-    
+
     .order-card {
         position: sticky;
         margin-top: 25px;
-        top: 90px; 
-        border: 1px solid var(--gray-light-hover);
+        top: 90px;
+        /* border: 1px solid var(--gray-light-hover); */
         border-radius: 12px;
         padding: 20px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         background-color: var(--white);
-        
+
         .order-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 24px;
             width: 100%;
-            
+
             .price {
-               margin: 0;
+                margin: auto;
+                display: flex;
+                gap: 5px;
+                align-items: center;
+
+                .span1 {
+                    font-weight: 500;
+                    font-size: 1.3rem;
+                }
+
+                .span2 {
+                    font-weight: 400;
+                    color: var(--gray);
+                    font-size: .9rem;
+                }
             }
-            
+
             .order-rating {
                 display: flex;
                 /* align-items: center;
                 font-size: 14px; */
                 gap: .3125em;
 
-                .reviews{
+                .reviews {
                     color: var(--gray);
                 }
             }
         }
 
-        .order-summary{
-            border: 1px solid var(--gray-light);
-            border-radius: 5px;
+        .order-summary {
+            border: 1px solid var(--gray);
+            border-radius: 10px;
         }
-        
+
         .order-dates {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            
+
             .date-box {
                 padding: 10px;
-                border-right: 1px solid var(--gray-light);
+                border-right: 1px solid var(--gray);
             }
-            
+
             .date-box:last-child {
                 border-right: none;
             }
         }
-        
+
         .order-guests {
-            border-top: 1px solid var(--gray-light);
+            border-top: 1px solid var(--gray);
             padding: 10px;
         }
-        
+
         .label {
             display: block;
-            font-size: 13px;
-            font-weight: bold;
+            font-size: .65rem;
+            font-weight: 600;
         }
-        
-        .value{
-            color: var(--gray);
-            font-size: 13px;
+
+        .value {
+            color: var(--black);
+            font-size: .8rem;
+            font-weight: 400;
         }
-        
+
         .reserve-btn {
             width: 100%;
             padding: 14px;
             background: linear-gradient(to right, var(--clr1-hover), var(--clr1));
-            background-size: 200% 100%; 
-            margin: 16px 0; 
+            background-size: 200% 100%;
+            margin: 16px 0;
             color: var(--white);
             font-size: 16px;
             border: none;
-            border-radius: 8px;
+            border-radius: 2rem;
             cursor: pointer;
-            transition: background-position 0.5s ease; 
-            
+            transition: background-position 0.5s ease;
+
             &:hover {
-                background-position: right; 
+                background-position: right;
             }
         }
-        
+
         .order-note {
-            margin-top: 10px;
-            font-size: 13px;
+            margin-block: .5em;
+            font-size: .85rem;
             text-align: center;
-            color: var(--gray);
+            font-weight: 400;
+            color: var(--balck);
         }
 
-        .order-payment{
+        .order-payment {
             margin-top: 16px;
 
-            .payment-row{
+            .payment-row {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 padding: 8px 0;
 
             }
-            .total{
+
+            .total {
                 color: var(--black);
                 font-weight: bold;
             }
