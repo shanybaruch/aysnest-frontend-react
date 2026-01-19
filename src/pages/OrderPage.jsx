@@ -23,10 +23,10 @@ export function OrderPage() {
     const user = useSelector(storeState => storeState.userModule.user)
 
     const [isConfirm, setIsConfirm] = useState(false)
-    const [cardNumber, setCardNumber] = useState("1111111111111111")
-    const [expiry, setExpiry] = useState("11/35")
-    const [cvv, setCvv] = useState("111")
-    const [zipCode, setZipCode] = useState("1234567")
+    const [cardNumber, setCardNumber] = useState("5804 3443 9082 1194")
+    const [expiry, setExpiry] = useState("11/31")
+    const [cvv, setCvv] = useState("142")
+    const [zipCode, setZipCode] = useState("5223098")
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -86,6 +86,15 @@ export function OrderPage() {
         setExpiry(value)
     }
 
+    function handleCardNumberChange(e) {
+        let value = e.target.value.replace(/\D/g, "")
+        if (value.length > 16) {
+            value = value.slice(0, 16)
+        }
+        value = value.replace(/(\d{4})(?=\d)/g, "$1 ")
+        setCardNumber(value)
+    }
+
     async function onConfirm(e) {
         e.preventDefault()
 
@@ -140,7 +149,7 @@ export function OrderPage() {
                             className="card-name"
                             placeholder="Card number"
                             value={cardNumber}
-                            onChange={(e) => setCardNumber(e.target.value)}
+                            onChange={handleCardNumberChange}
                             inputMode="numeric"
                             maxLength="19"
                             required
