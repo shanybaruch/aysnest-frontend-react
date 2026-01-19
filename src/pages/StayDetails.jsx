@@ -26,6 +26,7 @@ import { saveToStorage, loadFromStorage } from '../services/util.service'
 import { Calendar } from '../cmps/Calendar';
 import { Loader } from '../cmps/Loader.jsx'
 import { OrderCard } from '../cmps/OrderCard.jsx'
+import { BiColor } from 'react-icons/bi'
 
 export function StayDetails() {
   const { stayId } = useParams()
@@ -132,7 +133,7 @@ export function StayDetails() {
                   onClick={() => onSaveHeart(stay._id)}
                 >
                   {loadFromStorage('loggedinUser')?.saved?.includes(stay._id)
-                    ? <FaHeart />
+                    ? <FaHeart  style={{ color: '#ff385c' }} />
                     : <FaRegHeart />}
                   <span>Save</span>
                 </button>
