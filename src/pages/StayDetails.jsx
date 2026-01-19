@@ -22,7 +22,7 @@ import { CgMenuGridO } from "react-icons/cg";
 import { useLocation } from 'react-router-dom'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { loadStay, addStayMsg } from '../store/actions/stay.actions'
-import { saveToStorage } from '../services/util.service'
+import { saveToStorage, loadFromStorage } from '../services/util.service'
 import { Calendar } from '../cmps/Calendar';
 import { Loader } from '../cmps/Loader.jsx'
 import { OrderCard } from '../cmps/OrderCard.jsx'
@@ -42,7 +42,7 @@ export function StayDetails() {
   const order = location.state?.order
 
   const loggedInUser = useSelector(storeState => storeState.userModule.user)
-
+  const [, forceRender] = useState(0)
   const [isShareOpen, setIsShareOpen] = useState(false)
 
   const { ref: photosInViewRef, inView: isPhotosInView } = useInView({
@@ -78,25 +78,24 @@ export function StayDetails() {
     navigate(`/stay/${stayId}/photos`, { state: stay });
   };
 
+
   function onSaveHeart(stayId) {
-    if (!loggedInUser) {
+    forceRender(prev => prev + 1)
+    const user = loadFromStorage('loggedinUser')
+
+    if (!user) {
       showErrorMsg('Please log in to save')
       return
     }
 
-    const saved = loggedInUser.saved || []
+    const saved = user.saved || []
     const isSaved = saved.includes(stayId)
 
-    const updatedUser = {
-      ...loggedInUser,
-      saved: isSaved
-        ? saved.filter(id => id !== stayId)
-        : [...saved, stayId]
-    }
+    user.saved = isSaved
+      ? saved.filter(id => id !== stayId)
+      : [...saved, stayId]
 
-    saveToStorage('users', updatedUser)
-
-    dispatch({ type: 'SET_USER', user: updatedUser })
+    saveToStorage('loggedinUser', user)
   }
 
   if (!stay) return <Loader />
@@ -129,9 +128,12 @@ export function StayDetails() {
                 )}
 
                 <button
-                  className='save'
-                  onClick={() => onSaveHeart(stay._id)}>
-                  {loggedInUser?.saved?.includes(stay._id) ? <FaHeart /> : <FaRegHeart />}
+                  className="save"
+                  onClick={() => onSaveHeart(stay._id)}
+                >
+                  {loadFromStorage('loggedinUser')?.saved?.includes(stay._id)
+                    ? <FaHeart />
+                    : <FaRegHeart />}
                   <span>Save</span>
                 </button>
               </div>
