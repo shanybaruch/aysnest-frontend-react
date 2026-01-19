@@ -1,4 +1,5 @@
 .review-list {
+    margin: 40px;
     --min-column-size: 220px;
 
     display: grid;

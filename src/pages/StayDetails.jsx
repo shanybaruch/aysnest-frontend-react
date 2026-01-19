@@ -6,6 +6,8 @@ import { ShareModal } from './ShareModal.jsx'
 
 import { StayDetailsHeader } from './StayDetailsHeader.jsx'
 import { Amenities } from "./Amenities.jsx";
+import { Reviews } from "./Reviews.jsx";
+
 
 import { useInView } from 'react-intersection-observer'
 import { RiStarFill, RiTvLine } from "react-icons/ri";
@@ -32,6 +34,8 @@ export function StayDetails() {
 
   const photosRef = useRef(null)
   const amenitiesRef = useRef(null)
+  const reviewsRef = useRef(null)
+
 
   const stay = useSelector(storeState => storeState.stayModule.stay)
   const location = useLocation()
@@ -101,6 +105,7 @@ export function StayDetails() {
       <StayDetailsHeader
         hidden={isPhotosInView}
         amenitiesRef={amenitiesRef}
+        reviewsRef={reviewsRef}
       />
 
       <div className="stay-details">
@@ -152,7 +157,7 @@ export function StayDetails() {
               <section className='big-side'>
                 <div className="description">
                   <h2>{stay.type} {stay.name}</h2>
-                  <p className="guests">{stay.capacity} guests · {stay.capacity / 2} bedroom</p>
+                  <p className="guests">{stay.capacity} guest{stay.capacity > 1 ? 's' : ''} · {stay.capacity / 2} bedroom{stay.capacity / 2 > 1 ? 's' : ''}</p>
                   <div className="meta-item">
                     <RiStarFill size={10} />
                     <span className='rate'>{stay.rate} · </span>
@@ -178,7 +183,9 @@ export function StayDetails() {
                     )}
                   </div>
                 </section>
+                 
               </section>
+              
               <section className="small-side">
                 <OrderCard />
               </section>
@@ -189,6 +196,17 @@ export function StayDetails() {
         {/* <button onClick={() => onAddStayMsg(stay._id)}>Add stay msg</button> */}
 
       </div>
+      <section ref={reviewsRef}>
+                  <div className="reviews">
+                    <div className="divider"></div>
+
+                    {stay.reviews && (
+                      <Reviews
+                        reviews={stay.reviews}
+                      />
+                    )}
+                  </div>
+                </section>
     </section>
   )
 }

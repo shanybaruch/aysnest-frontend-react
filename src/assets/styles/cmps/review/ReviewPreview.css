@@ -13,3 +13,10 @@
 		font-size: 1.2em;
 	}
 }
+
+.review-avatar{
+	width: 3em;
+	height: 3em;
+	border-radius: 50%;
+	object-fit: cover;
+}

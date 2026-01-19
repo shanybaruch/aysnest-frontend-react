@@ -69,6 +69,7 @@
 
             .amenities {
                 list-style: none;
+                margin-bottom: 48px;
 
                 .amenity-item {
                     display: flex;
@@ -94,7 +95,7 @@
         width: 207px;
         height: 48px;
         padding: 14px 24px ;
-        margin: 0;
+        margin: 10px 0;
         border-radius: 10px;
         font-size: 16px;
         font-weight: 500;
@@ -199,10 +200,17 @@
   width: 316px;
 }
 
+.reviews{
+    padding: 0 80px;
+    .divider {
+        border-bottom: 0.8px solid var(--gray2);
+        margin: 5px 0;
+    }
+}
 
 
 @media (max-width: 1120px) {
-    .stay-details:not(.gallery) {
+    .stay-details, .reviews:not(.gallery) {
         padding: 0 40px;
     }
 }
@@ -239,3 +247,4 @@
         gap: 24px;
     }
 }
+
