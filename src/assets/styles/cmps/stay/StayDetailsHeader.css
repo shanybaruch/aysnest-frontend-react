@@ -54,3 +54,9 @@
     opacity: 0;
     pointer-events: none;
 }
+
+@media (max-width: 1120px) {
+    .stay-header-nav {
+        padding: 30px 40px;
+    }
+}
