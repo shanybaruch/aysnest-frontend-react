@@ -3,7 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { ShareModal } from './ShareModal.jsx'
+
 import { StayDetailsHeader } from './StayDetailsHeader.jsx'
+import { Amenities } from "./Amenities.jsx";
+
 import { useInView } from 'react-intersection-observer'
 import { RiStarFill, RiTvLine } from "react-icons/ri";
 import { HiOutlineTv } from "react-icons/hi2";
@@ -165,24 +168,21 @@ export function StayDetails() {
                 <section ref={amenitiesRef}>
                   <div className="amenities">
                     <div className="divider"></div>
-                    <h2 className='title-place-offers'>What this place offers</h2>
+                    <h2 className="title-place-offers">What this place offers</h2>
+
                     {stay.amenities && (
-                      <ul className="amenities">
-                        {stay.amenities.map((item, idx) => (
-                          <li key={idx} className='amenity-item'>
-                            {iconMap[item] || null}
-                            <span> {item} </span>
-                          </li>
-                        ))}
-                      </ul>
+                      <Amenities
+                        amenities={stay.amenities}
+                        iconMap={iconMap}
+                      />
                     )}
                   </div>
                 </section>
               </section>
-                <section className="small-side">
-                  <OrderCard />
-                </section>
+              <section className="small-side">
+                <OrderCard />
               </section>
+            </section>
           </div>
         )}
 

@@ -72,7 +72,6 @@
 
                 .amenity-item {
                     display: flex;
-                    gap: 15px;
                     align-items: center;
 
                     font-weight: 400;
@@ -83,9 +82,22 @@
                         height: 1.8em;
                         width: 1.8em;
                     }
+
+
                 }
             }
         }
+    }
+
+    .btn-amenities-more {
+        background-color: var(--white-gray);
+        width: 207px;
+        height: 48px;
+        padding: 14px 24px ;
+        margin: 0;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 500;
     }
 
     .description-p {
