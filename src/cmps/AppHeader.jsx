@@ -1,13 +1,16 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useLocation, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
-import { FiMenu } from "react-icons/fi";
-
 import { useState } from 'react';
-import { IoSearch } from "react-icons/io5";
 
+import { FiMenu } from "react-icons/fi";
+import { IoSearch } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
+
+import { FaRegHeart } from "react-icons/fa";
+
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { LoginModal } from './LoginModal'
 import { StayFilter } from './StayFilter'
 
@@ -23,17 +26,17 @@ export function AppHeader({ isAtTop }) {
     const [isEditingWhen, setIsEditingWhen] = useState(false)
     const [isEditingWho, setIsEditingWho] = useState(false)
     const [isLoginOpen, setIsLoginOpen] = useState(false)
-    
+
     const isUserPage = location.pathname.startsWith('/user')
     const isOrderPage = location.pathname.startsWith('/order')
     const shouldHideFilter = isUserPage || isOrderPage
 
     const isHomePage = location.pathname === '/' || location.pathname === '/stay'
-    
+
 
     const isAnyActive = isEditingWhere || isEditingWhen || isEditingWho
     const isCompact = (!isAtTop || !isHomePage) && !isAnyActive
-    
+
     const isStayDetails = location.pathname.startsWith('/stay/') && location.pathname !== '/stay' && !isOrderPage
 
     const guests = filterBy.guests || { adults: 0, children: 0, infants: 0, pets: 0 }
@@ -120,9 +123,16 @@ export function AppHeader({ isAtTop }) {
                                     </section>
                                 ) : (
                                     <>
-                                        <Link to={`/user/${user._id}/about`} className="menu-item bold">Profile</Link>
+                                        <Link to={`/user/${user._id}/wishlist`} className='menu-item wishlist-link'>
+                                            <FaRegHeart className='wishlist-icon' />
+                                            <span className='wishlist-span'>Wishlists</span>
+                                        </Link>
+                                        <Link to={`/user/${user._id}/about`} className="menu-item profile-link">
+                                            <CgProfile className='profile-icon' />
+                                            <span className='profile-span'>Profile</span>
+                                        </Link>
                                         <div className='divider'></div>
-                                        <button onClick={onLogout} className="menu-item logout-btn">Logout</button>
+                                        <button onClick={onLogout} className="menu-item logout-btn">Log out</button>
                                     </>
                                 )}
                             </div>
@@ -130,7 +140,7 @@ export function AppHeader({ isAtTop }) {
                     </div>
                 </section>
             </nav>
-            
+
             {!shouldHideFilter &&
                 <StayFilter
                     isEditingWhere={isEditingWhere}

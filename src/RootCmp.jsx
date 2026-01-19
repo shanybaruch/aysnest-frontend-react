@@ -24,6 +24,7 @@ import "@fontsource/inter/600.css"; //bold
 
 import { useInView } from 'react-intersection-observer'
 import { OrderPage } from './pages/OrderPage.jsx'
+import { Wishlist } from './cmps/Wishlist.jsx'
 
 export function RootCmp() {
     const { ref, inView } = useInView({
@@ -42,16 +43,17 @@ export function RootCmp() {
                     <Route path="/" element={<StayIndex />} />
                     <Route path="/stay" element={<StayIndex />} />
                     <Route path="stay/:stayId" element={<StayDetails />} />
-                    
+
                     <Route path="order/:orderId" element={<OrderPage />} />
                     <Route path="stay/:stayId/order" element={<OrderPage />} />
-                    
+
                     <Route path="stay/:stayId/photos" element={<StayDetailsPhotos />} />
                     <Route path="user/:id" element={<UserDetails />} >
                         <Route index element={<Navigate to="about" replace />} />
                         <Route path="about" element={<UserAbout />} />
                         <Route path="trips" element={<UserTrips />} />
                     </Route>
+                    <Route path="user/:id/wishlist" element={<Wishlist />} />
                     <Route path="review" element={<ReviewIndex />} />
                     <Route path="chat" element={<ChatApp />} />
                     <Route path="admin" element={<AdminIndex />} />

@@ -186,8 +186,8 @@
                 }
 
                 .btn-menu {
-                    width: 40px;
-                    height: 40px;
+                    width: 41px;
+                    height: 41px;
                     font-size: 1rem;
                     border-radius: 2em;
                     color: var(--black);
@@ -196,6 +196,10 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+
+                    svg {
+                        stroke-width: 2;
+                    }
 
                     &:hover {
                         background-color: var(--gray-light-hover);
@@ -216,7 +220,7 @@
                 min-width: 230px;
                 box-shadow: 0 0px 16px var(--gray2);
                 border-radius: 16px;
-                padding: 15px 20px;
+                padding: 15px 0;
                 z-index: 100;
 
                 display: flex;
@@ -227,18 +231,38 @@
                     border: 0;
                     border-top: 1px solid var(--gray-light-hover);
                     margin: 4px 0;
-                    width: 85%;
+                    width: 87%;
                 }
 
-                .menu-item.logout-btn {
-                    margin: 0;
+                .wishlist-link {
+                    margin-bottom: 7px;
+
+                    .wishlist-icon {
+                        font-size: 1.1rem;
+                    }
+
+                    .wishlist-span {
+                        font-weight: 500;
+                    }
+
+                }
+
+                .profile-link {
+
+                    .profile-icon {
+                        font-size: 1.1rem;
+                    }
+
+                    .profile-span {
+                        font-weight: 500;
+                    }
                 }
             }
 
             .divider {
-                width: 100%;
+                width: 80%;
                 border-top: 1px solid var(--gray-light-hover);
-                margin: 8px 0;
+                margin: 12px 0;
             }
 
             .menu-item {
@@ -246,14 +270,34 @@
                 padding: .4em .1em;
                 text-decoration: none;
                 color: var(--black);
-                font-size: 14px;
+                font-size: .84rem;
                 text-align: left;
                 background: none;
                 border: none;
                 width: 100%;
                 font-weight: 400;
+                padding: 10px 25px 10px 25px;
 
                 display: flex;
+                gap: 8px;
+                align-items: center;
+
+
+                &.logout-btn {
+                    margin: 0;
+                    letter-spacing: .2px;
+                    font-size: .91rem;
+                    padding-block: 6px;
+                }
+
+                &:not(:has(img)):hover {
+                    background-color: var(--white-gray);
+                }
+
+                &.user-img-link {
+                    padding-inline: 0;
+
+                }
             }
         }
     }
