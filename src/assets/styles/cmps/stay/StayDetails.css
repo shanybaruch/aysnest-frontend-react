@@ -253,9 +253,16 @@
     }
 }
 
-@media (max-width: 425px) {
-    .sides {
+@media (max-width: 600px) {
+    .stay-details .sides {
         grid-template-columns: 1fr;
         gap: 24px;
     }
+}
+
+@media (max-width: 420px) {
+    .stay-details {
+        padding-bottom: 90px;
+    }
+}
 }
