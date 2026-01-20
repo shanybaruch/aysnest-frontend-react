@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { ShareModal } from './ShareModal.jsx'
+import { updateUser } from '../store/actions/user.actions'
 
 import { StayDetailsHeader } from './StayDetailsHeader.jsx'
 import { Amenities } from "./Amenities.jsx";
@@ -65,14 +66,14 @@ export function StayDetails() {
     if (searchParams.size === 0) return
 
     const filterFromUrl = {
-        from: searchParams.get('from') || '',
-        to: searchParams.get('to') || '',
-        guests: {
-            adults: +searchParams.get('adults') || 0,
-            children: +searchParams.get('children') || 0,
-            infants: +searchParams.get('infants') || 0,
-            pets: +searchParams.get('pets') || 0,
-        }
+      from: searchParams.get('from') || '',
+      to: searchParams.get('to') || '',
+      guests: {
+        adults: +searchParams.get('adults') || 0,
+        children: +searchParams.get('children') || 0,
+        infants: +searchParams.get('infants') || 0,
+        pets: +searchParams.get('pets') || 0,
+      }
     }
     dispatch({ type: SET_FILTER_BY, filterBy: filterFromUrl })
   }, [])
@@ -98,24 +99,34 @@ export function StayDetails() {
   };
 
 
-  function onSaveHeart(stayId) {
-    forceRender(prev => prev + 1)
-    const user = loadFromStorage('loggedinUser')
-
+  async function onSaveHeart(stayId) {
+    const user = userService.getLoggedinUser()
+    console.log(user);
+    
     if (!user) {
       showErrorMsg('Please log in to save')
       return
     }
 
-    const saved = user.saved || []
+    const saved = Array.isArray(user.saved) ? user.saved : []
     const isSaved = saved.includes(stayId)
 
-    user.saved = isSaved
-      ? saved.filter(id => id !== stayId)
-      : [...saved, stayId]
+    const userToUpdate = {
+      ...user,
+      saved: isSaved
+        ? saved.filter(id => id !== stayId)
+        : [...saved, stayId]
+    }
+console.log(userToUpdate);
 
-    saveToStorage('loggedinUser', user)
+    try {
+      await updateUser(userToUpdate)
+    } catch (err) {
+      showErrorMsg('Could not save stay to favorites')
+    }
   }
+
+
 
   if (!stay) return <Loader />
   return (
@@ -151,7 +162,7 @@ export function StayDetails() {
                   onClick={() => onSaveHeart(stay._id)}
                 >
                   {loadFromStorage('loggedinUser')?.saved?.includes(stay._id)
-                    ? <FaHeart  style={{ color: '#ff385c' }} />
+                    ? <FaHeart style={{ color: '#ff385c' }} />
                     : <FaRegHeart />}
                   <span>Save</span>
                 </button>
@@ -160,7 +171,7 @@ export function StayDetails() {
 
             <section ref={photosInViewRef} className="gallery">
               <button className="btn-photos" onClick={OnStayDetailsPhotos}>
-                <CgMenuGridO size={16}/> Show all photos
+                <CgMenuGridO size={16} /> Show all photos
               </button>
               <div className="gallery-main">
                 <img src={stay.imgUrl} alt={stay.name} className="left-img" />

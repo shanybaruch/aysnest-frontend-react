@@ -33,6 +33,7 @@
 @import "cmps/review/ReviewEdit.css";
 @import "cmps/review/ReviewList.css";
 @import "cmps/review/ReviewPreview.css";
+@import "cmps/review/ReviewsModal.css";
 
 @import "cmps/ShareModal.css";
 @import "cmps/AmenitiesModal.css";

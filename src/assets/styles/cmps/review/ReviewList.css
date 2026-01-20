@@ -33,6 +33,20 @@
     background-color: var(--gray-light);
 }
 
+.btn-review-more {
+    background-color: var(--white);
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: solid 2px var(--black);
+    cursor: pointer;
+}
+
+.btn-review-more:hover {
+    background-color: var(--white);
+}
+
 @media (max-width: 950px) {
     .review-list {
         grid-template-columns: 1fr;
