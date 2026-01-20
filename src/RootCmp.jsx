@@ -40,8 +40,7 @@ export function RootCmp() {
 
             <main>
                 <Routes>
-                    <Route path="/" element={<StayIndex />} />
-                    <Route path="/stay" element={<StayIndex />} />
+                    <Route path="/" element={<Navigate to="/stay" replace />} />                    <Route path="/stay" element={<StayIndex />} />
                     <Route path="stay/:stayId" element={<StayDetails />} />
 
                     <Route path="order/:orderId" element={<OrderPage />} />
