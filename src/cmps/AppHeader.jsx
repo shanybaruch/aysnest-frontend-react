@@ -13,6 +13,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { LoginModal } from './LoginModal'
 import { StayFilter } from './StayFilter'
+import { UserImg } from './UserImg';
 
 export function AppHeader({ isAtTop }) {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -108,7 +109,10 @@ export function AppHeader({ isAtTop }) {
                     <div className="menu-wrapper">
                         {user && (
                             <Link to={`/user/${user._id}/about`} className="menu-item user-img-link">
-                                <img src={user.imgUrl} alt="user" className="user-nav-img" />
+                                <UserImg
+                                    url={user.imgUrl}
+                                    className="user-nav-img"
+                                />
                             </Link>
                         )}
                         <button className="btn-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>

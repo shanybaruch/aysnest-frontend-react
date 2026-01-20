@@ -8,6 +8,7 @@ import { showSuccessMsg } from '../services/event-bus.service'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
 import { ImgUploader } from '../cmps/ImgUploader'
 import { UserAbout } from '../cmps/UserAbout'
+import { UserImg } from '../cmps/UserImg'
 
 export function UserDetails() {
   const dispatch = useDispatch()
@@ -37,7 +38,11 @@ export function UserDetails() {
         <h1 className='title'>Profile</h1>
         <div className='nav-links'>
           <NavLink to={`/user/${params.id}/about`}>
-            <img src={user?.imgUrl} alt="img-profile" className='img-profile' />
+            <UserImg
+              url={user.imgUrl}
+              className="img-profile"
+              alt="img-profile"
+            />
             <span>About me</span>
           </NavLink>
           <NavLink to={`/user/${params.id}/trips`}>

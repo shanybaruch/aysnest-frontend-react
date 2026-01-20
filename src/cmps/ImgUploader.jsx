@@ -5,16 +5,24 @@ export function ImgUploader({ onUploaded = null }) {
   const [isUploading, setIsUploading] = useState(false)
 
   async function uploadImg(ev) {
+    if (!ev.target.files || ev.target.files.length === 0) {
+      return
+    }
     setIsUploading(true)
     try {
       const url = await uploadService.uploadImg(ev)
-      setIsUploading(false)
-      if (onUploaded) onUploaded(url)
+      if (url && typeof url === 'string') {
+        if (onUploaded) onUploaded(url)
+      } else {
+        console.error('Upload failed: Invalid URL returned', url)
+      }
     } catch (err) {
       console.error('Failed to upload', err)
+    } finally {
       setIsUploading(false)
     }
   }
+
 
   return (
     <div className="img-uploader-container">
