@@ -102,7 +102,7 @@ export function StayDetails() {
   async function onSaveHeart(stayId) {
     const user = userService.getLoggedinUser()
     console.log(user);
-    
+
     if (!user) {
       showErrorMsg('Please log in to save')
       return
@@ -117,7 +117,7 @@ export function StayDetails() {
         ? saved.filter(id => id !== stayId)
         : [...saved, stayId]
     }
-console.log(userToUpdate);
+    console.log(userToUpdate);
 
     try {
       await updateUser(userToUpdate)

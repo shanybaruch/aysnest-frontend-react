@@ -30,16 +30,6 @@ function remove(userId) {
     return storageService.remove('user', userId)
 }
 
-// async function update({ _id, imgUrl }) {
-//     const user = await storageService.get('user', _id)
-//     user.imgUrl = imgUrl
-//     await storageService.put('user', user)
-
-//     const loggedinUser = getLoggedinUser()
-//     if (loggedinUser._id === user._id) saveLoggedinUser(user)
-
-//     return user
-// }
 async function update(userToUpdate) {
     const user = await storageService.get('user', userToUpdate._id)
     const updatedUser = { ...user, ...userToUpdate }
