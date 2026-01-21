@@ -30,16 +30,26 @@ function remove(userId) {
     return storageService.remove('user', userId)
 }
 
-async function update({ _id, imgUrl }) {
-    const user = await storageService.get('user', _id)
-    user.imgUrl = imgUrl
-    await storageService.put('user', user)
+// async function update({ _id, imgUrl }) {
+//     const user = await storageService.get('user', _id)
+//     user.imgUrl = imgUrl
+//     await storageService.put('user', user)
 
-	// When admin updates other user's details, do not update loggedinUser
+//     const loggedinUser = getLoggedinUser()
+//     if (loggedinUser._id === user._id) saveLoggedinUser(user)
+
+//     return user
+// }
+async function update(userToUpdate) {
+    const user = await storageService.get('user', userToUpdate._id)
+    const updatedUser = { ...user, ...userToUpdate }
+    await storageService.put('user', updatedUser)
+
     const loggedinUser = getLoggedinUser()
-    if (loggedinUser._id === user._id) saveLoggedinUser(user)
-
-    return user
+    if (loggedinUser && loggedinUser._id === updatedUser._id) {
+        saveLoggedinUser(updatedUser)
+    }
+    return updatedUser
 }
 
 async function login(userCred) {
@@ -71,7 +81,9 @@ function saveLoggedinUser(user) {
         lastName: user.lastName, 
         imgUrl: user.imgUrl, 
         isHost: user.isHost,
-        reviews: user.reviews
+        reviews: user.reviews,
+        saved: user.saved || [], 
+        orders: user.orders || []
     }
 	sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
 	return user
