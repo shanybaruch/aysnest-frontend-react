@@ -216,7 +216,6 @@
         &:has(.active),
         &:focus-within {
             background-color: var(--gray-light);
-            box-shadow: 0;
 
             .select-where,
             .select-when,
@@ -282,7 +281,7 @@
 
     .stay-filter .selection .sec {
         width: 100%;
-        padding: 10px 26px;
+        padding: 0 26px;
     }
 
     .stay-filter .selection .v-line {

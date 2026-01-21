@@ -109,18 +109,19 @@
     }
 }
 
-@media (max-width: 1120px) {}
 
 @media (max-width: 950px) {
     .user-details {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 2fr 1fr;
+        grid-template-rows: minmax(auto, 1fr);
+        
 
         .divider {
-            height: 1px;
+            /* height: 1px;
             border-bottom: 1px solid var(--gray-light-hover);
-            width: 100%;
+            width: 100%; */
+            display: none;
         }
     }
 }

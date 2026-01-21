@@ -9,8 +9,6 @@
 
 @import "RootCmp.css";
 
-@import "cmps/AboutUs.css";
-@import "cmps/HomePage.css";
 @import "cmps/LoginSignup.css";
 @import "cmps/Chat.css";
 

@@ -64,7 +64,7 @@ export function AppHeader({ isAtTop }) {
     }
 
     return (
-        <header className={`app-header full ${isCompact ? 'compact' : ''} ${isStayDetails ? 'static-header' : ''}`}>
+        <header className={`app-header ${isCompact ? 'compact' : ''} ${isStayDetails ? 'static-header' : ''}`}>
             {(isMenuOpen || isAnyActive) && (
                 <div className="main-screen" onClick={() => {
                     setIsMenuOpen(false)
