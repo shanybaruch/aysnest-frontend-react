@@ -243,7 +243,7 @@ export function OrderPage() {
 
                     {isConfirm && (
                         <div className="success-msg">
-                            🎉 Reservation success!
+                            ✔️ Reservation success!
                         </div>
                     )}
                 </section>

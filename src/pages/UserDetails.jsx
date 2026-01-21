@@ -49,7 +49,7 @@ export function UserDetails() {
             <span>About me</span>
           </NavLink>
           <NavLink to={`/user/${params.id}/trips`}>
-            <div className='img-trip'>🧳</div>
+            <img className='img-trip' src='/img/trip.png'></img>
             <span>Past trips</span>
           </NavLink>
         </div>
@@ -61,3 +61,6 @@ export function UserDetails() {
     </section>
   )
 }
+
+
+
