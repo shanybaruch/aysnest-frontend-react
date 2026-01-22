@@ -31,7 +31,6 @@ import { Loader } from '../cmps/Loader.jsx'
 import { OrderCard } from '../cmps/OrderCard.jsx'
 import { BiColor } from 'react-icons/bi'
 
-import { Cleanliness } from '../cmps/SvgIcon.jsx'
 
 export function StayDetails() {
   const { stayId } = useParams()
@@ -233,10 +232,7 @@ export function StayDetails() {
       </div>
       <section className='info-bar'>
         <ul className='info-bar-list'>
-          <li>
-            <Cleanliness />
-            <span>Cleanliness</span>
-          </li>
+          <li>Cleanliness</li>
           <li>Accuracy</li>
           <li>Communication</li>
           <li>Location</li>
@@ -246,11 +242,11 @@ export function StayDetails() {
       </section>
       <div className="divider"></div>
       <section className='reviews' ref={reviewsRef}>
-        {stay.reviews && (
-          <Reviews
-            reviews={stay.reviews}
-          />
-        )}
+          {stay.reviews && (
+            <Reviews
+              reviews={stay.reviews}
+            />
+          )}
       </section>
 
     </section>
