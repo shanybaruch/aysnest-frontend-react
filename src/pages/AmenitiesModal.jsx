@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { SvgIcon } from "../cmps/SvgIcon";
+
 
 export function AmenitiesModal({ amenities, iconMap, onClose }) {
 
@@ -27,7 +29,7 @@ export function AmenitiesModal({ amenities, iconMap, onClose }) {
                     <ul className="amenities-modal-list-full">
                         {amenities.map((item, idx) => (
                             <li key={idx} className="amenity-item">
-                                {iconMap[item] || null}
+                                <SvgIcon iconName={item} />
                                 <span>{item}</span>
                             </li>
                         ))}

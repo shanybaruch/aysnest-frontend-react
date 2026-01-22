@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AmenitiesModal } from "./AmenitiesModal.jsx";
+import { SvgIcon } from "../cmps/SvgIcon.jsx";
 
 export function Amenities({ amenities, iconMap }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,7 +17,7 @@ export function Amenities({ amenities, iconMap }) {
         <ul className="amenities-list">
           {firstCol.map((item, idx) => (
             <li key={idx} className="amenity-item">
-              {iconMap[item] || null}
+              <SvgIcon iconName={item} />
               <span>{item}</span>
             </li>
           ))}
@@ -24,7 +25,7 @@ export function Amenities({ amenities, iconMap }) {
         <ul className="amenities-list">
           {secondCol.map((item, idx) => (
             <li key={idx} className="amenity-item">
-              {iconMap[item] || null}
+              <SvgIcon iconName={item} />
               <span>{item}</span>
             </li>
           ))}
