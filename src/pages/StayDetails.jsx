@@ -31,6 +31,8 @@ import { Loader } from '../cmps/Loader.jsx'
 import { OrderCard } from '../cmps/OrderCard.jsx'
 import { BiColor } from 'react-icons/bi'
 
+import { Cleanliness } from '../cmps/SvgIcon.jsx'
+
 export function StayDetails() {
   const { stayId } = useParams()
   const navigate = useNavigate()
@@ -214,6 +216,7 @@ export function StayDetails() {
                       />
                     )}
                   </div>
+
                 </section>
 
               </section>
@@ -228,16 +231,28 @@ export function StayDetails() {
         {/* <button onClick={() => onAddStayMsg(stay._id)}>Add stay msg</button> */}
 
       </div>
+      <section className='info-bar'>
+        <ul className='info-bar-list'>
+          <li>
+            <Cleanliness />
+            <span>Cleanliness</span>
+          </li>
+          <li>Accuracy</li>
+          <li>Communication</li>
+          <li>Location</li>
+          <li>Check-in</li>
+          <li>Value</li>
+        </ul>
+      </section>
       <div className="divider"></div>
       <section className='reviews' ref={reviewsRef}>
-        <div className="reviews">
-          {stay.reviews && (
-            <Reviews
-              reviews={stay.reviews}
-            />
-          )}
-        </div>
+        {stay.reviews && (
+          <Reviews
+            reviews={stay.reviews}
+          />
+        )}
       </section>
+
     </section>
   )
 }

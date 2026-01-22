@@ -12,8 +12,8 @@ function _getIcon(iconName) {
         home: (
             <svg aria-label="Home" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
                 <title>Home</title>
-                <path d="M9.005 16.545a2.997 2.997 0 0 1 2.997-2.997A2.997 2.997 0 0 1 15 16.545V22h7V11.543L12 2 2 11.543V22h7.005Z" 
-                fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></path>
+                <path d="M9.005 16.545a2.997 2.997 0 0 1 2.997-2.997A2.997 2.997 0 0 1 15 16.545V22h7V11.543L12 2 2 11.543V22h7.005Z"
+                    fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></path>
             </svg>
         ),
 
@@ -65,44 +65,44 @@ function _getIcon(iconName) {
         globe: (
             <svg aria-label="Language" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>Globe</title>
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" stroke="currentColor" strokeWidth="2"/>
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" stroke="currentColor" strokeWidth="2" />
             </svg>
         ),
-        
+
         menu: (
             <svg aria-label="Menu" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>Menu</title>
                 <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" strokeWidth="2" />
-                <line x1="3" y1="12" x2="21" y2="12"stroke="currentColor" strokeWidth="2" />
-                <line x1="3" y1="18" x2="21" y2="18"stroke="currentColor" strokeWidth="2" />
+                <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" strokeWidth="2" />
+                <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" strokeWidth="2" />
             </svg>
         ),
-        
+
         user: (
             <svg aria-label="User" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>User</title>
-                <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2"/>
-                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" strokeWidth="2"/>
+                <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" />
+                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" strokeWidth="2" />
             </svg>
         ),
-        
+
         heart: (
             <svg aria-label="Favorite" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>Heart</title>
                 <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" stroke="currentColor" strokeWidth="2" />
             </svg>
         ),
-        
+
         instagram: (
             <svg aria-label="Instagram" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>Instagram</title>
-                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke="currentColor" strokeWidth="2"/>
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke="currentColor" strokeWidth="2" />
                 <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
             </svg>
         ),
-        
+
         git: (
             <svg aria-label="GitHub" fill="currentColor" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>Git</title>
@@ -182,7 +182,7 @@ function _getIcon(iconName) {
                 <path d="M26.29 2a3 3 0 0 1 2.96 2.58c.5 3.56.75 7.37.75 11.42s-.25 7.86-.75 11.42a3 3 0 0 1-2.79 2.57l-.17.01H5.7a3 3 0 0 1-2.96-2.58C2.25 23.86 2 20.05 2 16s.25-7.86.75-11.42a3 3 0 0 1 2.79-2.57L5.7 2zm0 2H5.72a1 1 0 0 0-1 .86A80.6 80.6 0 0 0 4 16c0 3.96.24 7.67.73 11.14a1 1 0 0 0 .87.85l.11.01h20.57a1 1 0 0 0 1-.86c.48-3.47.72-7.18.72-11.14 0-3.96-.24-7.67-.73-11.14a1 1 0 0 0-.87-.85zM16 7a9 9 0 1 1 0 18 9 9 0 0 1 0-18zm0 2a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm-4.8 5.58c1.36.2 2.64.8 3.68 1.75l.46.45a8.97 8.97 0 0 0 4.62 2.28 5.02 5.02 0 0 1-2.01 1.55 10.98 10.98 0 0 1-4.26-2.65 4.96 4.96 0 0 0-2.66-1.38 4.68 4.68 0 0 1 .17-2zm3.09-3.28c1.34.55 2.58 1.36 3.64 2.42a4.97 4.97 0 0 0 3 1.44 4.99 4.99 0 0 1-.07 2 6.97 6.97 0 0 1-4.11-1.8l-.47-.45a8.96 8.96 0 0 0-4.07-2.17 5 5 0 0 1 2.08-1.44zM7 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
             </svg>
         ),
-        
+
         Hangers: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Hangers</title>
@@ -196,7 +196,7 @@ function _getIcon(iconName) {
                 <path d="M12 28a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-6-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM16.03 3h.3a12.5 12.5 0 0 1 11.82 9.48l.07.3 1.73 7.79.03.14A2 2 0 0 1 28.15 23H2.1a2 2 0 0 1-1.85-1.84v-7.38a5 5 0 0 1 4.77-4.77L5.25 9h9V5h-14V3zm11.53 16H2.25v2H28zM16.24 5v6H5.07a3 3 0 0 0-2.82 2.82V17H27.1l-.84-3.78-.07-.28a10.5 10.5 0 0 0-9.6-7.92L16.32 5z"></path>
             </svg>
         ),
-        
+
         ExtraPillowsAndBlankets: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>ExtraPillowsAndBlankets</title>
@@ -208,11 +208,11 @@ function _getIcon(iconName) {
         TV: (
             <svg aria-label="TV" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <title>TV</title>
-                <rect x="3" y="5" width="18" height="12" rx="2" ry="2"/>
-                <line x1="8" y1="21" x2="16" y2="21"/>
+                <rect x="3" y="5" width="18" height="12" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
             </svg>
         ),
-        
+
         SoundSystem: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>SoundSystem</title>
@@ -256,7 +256,7 @@ function _getIcon(iconName) {
                 <path d="M16 0a5 5 0 0 1 5 4.78v12.98l.26.21a7.98 7.98 0 0 1 2.72 5.43l.02.3v.3a8 8 0 1 1-13.25-6.04l.25-.2V5A5 5 0 0 1 15.56.02l.22-.01zm0 2a3 3 0 0 0-3 2.82V18.78l-.43.3a6 6 0 1 0 7.06.15l-.2-.16-.43-.3V11h-4V9h4V7h-4V5h4a3 3 0 0 0-3-3zm1 11v7.13A4 4 0 0 1 16 28a4 4 0 0 1-1-7.87V13zm-1 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
             </svg>
         ),
-        
+
         HotTub: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>HotTub</title>
@@ -321,7 +321,7 @@ function _getIcon(iconName) {
                 <path d="M24 1a5 5 0 0 1 5 4.78V26a5 5 0 0 1-4.78 5H19v-2h5a3 3 0 0 0 3-2.82V6a3 3 0 0 0-2.82-3H8a3 3 0 0 0-3 2.82V26a3 3 0 0 0 2.82 3H15v-8h-2a2 2 0 0 1-2-1.85V13a2 2 0 0 1 1.85-2H19a2 2 0 0 1 2 1.85V19a2 2 0 0 1-1.85 2H17v8a2 2 0 0 1-1.85 2H8a5 5 0 0 1-5-4.78V6a5 5 0 0 1 4.78-5H8zm-5 12h-6v6h2v-4h2v4h2z"></path>
             </svg>
         ),
-        
+
         Workspace: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Workspace</title>
@@ -431,7 +431,7 @@ function _getIcon(iconName) {
                 <path d="M16.84 27.16v-3.4l-.26.09c-.98.32-2.03.51-3.11.55h-.7A11.34 11.34 0 0 1 1.72 13.36v-.59A11.34 11.34 0 0 1 12.77 1.72h.59c6.03.16 10.89 5.02 11.04 11.05V13.45a11.3 11.3 0 0 1-.9 4.04l-.13.3 7.91 7.9v5.6H25.7l-4.13-4.13zM10.31 7.22a3.1 3.1 0 1 1 0 6.19 3.1 3.1 0 0 1 0-6.2zm0 2.06a1.03 1.03 0 1 0 0 2.06 1.03 1.03 0 0 0 0-2.06zM22.43 25.1l4.12 4.13h2.67v-2.67l-8.37-8.37.37-.68.16-.3c.56-1.15.9-2.42.96-3.77v-.64a9.28 9.28 0 0 0-9-9h-.55a9.28 9.28 0 0 0-9 9v.54a9.28 9.28 0 0 0 13.3 8.1l.3-.16 1.52-.8v4.62z"></path>
             </svg>
         ),
-        
+
         RoomDarkeningShades: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>RoomDarkeningShades</title>
@@ -444,8 +444,16 @@ function _getIcon(iconName) {
                 <title>LongTermStaysAllowed</title>
                 <path d="M11.67 0v1.67h8.66V0h2v1.67h6a2 2 0 0 1 2 1.85v16.07a2 2 0 0 1-.46 1.28l-.12.13L21 29.75a2 2 0 0 1-1.24.58H6.67a5 5 0 0 1-5-4.78V3.67a2 2 0 0 1 1.85-2h6.15V0zm16.66 11.67H3.67v13.66a3 3 0 0 0 2.82 3h11.18v-5.66a5 5 0 0 1 4.78-5h5.88zm-.08 8h-5.58a3 3 0 0 0-3 2.82v5.76zm-18.58-16h-6v6h24.66v-6h-6v1.66h-2V3.67h-8.66v1.66h-2z"></path>
             </svg>
-        ), 
+        ),
 
+        Cleanliness: (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;"><path d="M24 0v6h-4.3c.13 1.4.67 2.72 1.52 3.78l.2.22-1.5 1.33a9.05 9.05 0 0 1-2.2-5.08c-.83.38-1.32 1.14-1.38 2.2v4.46l4.14 4.02a5 5 0 0 1 1.5 3.09l.01.25.01.25v8.63a3 3 0 0 1-2.64 2.98l-.18.01-.21.01-12-.13A3 3 0 0 1 4 29.2L4 29.02v-8.3a5 5 0 0 1 1.38-3.45l.19-.18L10 12.9V8.85l-4.01-3.4.02-.7A5 5 0 0 1 10.78 0H11zm-5.03 25.69a8.98 8.98 0 0 1-6.13-2.41l-.23-.23A6.97 6.97 0 0 0 6 21.2v7.82c0 .51.38.93.87 1H7l11.96.13h.13a1 1 0 0 0 .91-.88l.01-.12v-3.52c-.34.04-.69.06-1.03.06zM17.67 2H11a3 3 0 0 0-2.92 2.3l-.04.18-.01.08 3.67 3.1h2.72l.02-.1a4.29 4.29 0 0 1 3.23-3.4zM30 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-3-2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-5 0h-2.33v2H22zm8-2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM20 20.52a3 3 0 0 0-.77-2l-.14-.15-4.76-4.61v-4.1H12v4.1l-5.06 4.78a3 3 0 0 0-.45.53 9.03 9.03 0 0 1 7.3 2.34l.23.23A6.98 6.98 0 0 0 20 23.6z">
+                <title>Cleanliness</title>
+            </path>
+            </svg>
+
+
+        )
     }
     return icons[iconName]
 }
