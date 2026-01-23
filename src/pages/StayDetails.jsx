@@ -8,6 +8,7 @@ import { updateUser } from '../store/actions/user.actions'
 import { StayDetailsHeader } from './StayDetailsHeader.jsx'
 import { Amenities } from "./Amenities.jsx";
 import { Reviews } from "./Reviews.jsx";
+import { Calendar } from '../cmps/Calendar.jsx'
 
 import { useSearchParams } from 'react-router-dom'
 import { SET_FILTER_BY } from '../store/reducers/stay.reducer'
@@ -26,7 +27,6 @@ import { useLocation } from 'react-router-dom'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { loadStay, addStayMsg } from '../store/actions/stay.actions'
 import { saveToStorage, loadFromStorage } from '../services/util.service'
-import { Calendar } from '../cmps/Calendar';
 import { Loader } from '../cmps/Loader.jsx'
 import { OrderCard } from '../cmps/OrderCard.jsx'
 import { BiColor } from 'react-icons/bi'
@@ -44,6 +44,7 @@ export function StayDetails() {
 
 
   const stay = useSelector(storeState => storeState.stayModule.stay)
+  const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
   const location = useLocation()
   const order = location.state?.order
 
@@ -51,17 +52,15 @@ export function StayDetails() {
   const [, forceRender] = useState(0)
   const [isShareOpen, setIsShareOpen] = useState(false)
 
+  const rangeForCalendar = {
+    from: filterBy.from ? new Date(filterBy.from) : undefined,
+    to: filterBy.to ? new Date(filterBy.to) : undefined
+  }
+
+
   const { ref: photosInViewRef, inView: isPhotosInView } = useInView({
     threshold: 0.1,
   })
-
-  const iconMap = {
-    "Wifi": <HiOutlineWifi />,
-    "Air conditioning": <IoIosSnow />,
-    "Kitchen": <TbToolsKitchen2 />,
-    "TV": <HiOutlineTv />,
-    "Balcony": <TbWindow />
-  }
 
   useEffect(() => {
     if (searchParams.size === 0) return
@@ -98,6 +97,14 @@ export function StayDetails() {
   function OnStayDetailsPhotos() {
     navigate(`/stay/${stayId}/photos`, { state: stay });
   };
+
+  function onSetRange(range) {
+    dispatch({
+      type: SET_FILTER_BY,
+      filterBy: { ...filterBy, from: range?.from || null, to: range?.to || null }
+    })
+  }
+
   const user = userService.getLoggedinUser()
 
   async function onSaveHeart(stayId) {
@@ -211,13 +218,37 @@ export function StayDetails() {
                     {stay.amenities && (
                       <Amenities
                         amenities={stay.amenities}
-                        iconMap={iconMap}
                       />
                     )}
                   </div>
-
+                  <div className='divider'></div>
                 </section>
-
+                <section className="booking-section">
+                <h3>
+                  {Math.round((new Date(filterBy.to) - new Date(filterBy.from)) / (1000 * 60 * 60 * 24)) + 1} night in {stay.loc.city}
+                </h3>
+                <p>
+                  {
+                    filterBy.from
+                      ? `${new Date(filterBy.from).toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric',
+                      })} - ${filterBy.to
+                        ? new Date(filterBy.to).toLocaleDateString('en-US', {
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric',
+                        })
+                        : ''
+                      }`
+                      : 'Add dates'
+                  }
+                </p>
+                <div className="calendar-dropdown" onClick={(e) => e.stopPropagation()}>
+                  <Calendar range={rangeForCalendar} setRange={onSetRange} />
+                </div>
+                </section>
               </section>
 
               <section className="small-side">
@@ -242,12 +273,13 @@ export function StayDetails() {
       </section>
       <div className="divider"></div>
       <section className='reviews' ref={reviewsRef}>
-          {stay.reviews && (
-            <Reviews
-              reviews={stay.reviews}
-            />
-          )}
+        {stay.reviews && (
+          <Reviews
+            reviews={stay.reviews}
+          />
+        )}
       </section>
+
 
     </section>
   )

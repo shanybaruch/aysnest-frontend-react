@@ -3,7 +3,7 @@
         border-bottom: 0.8px solid var(--gray-light);
         margin: 5px 0;
     }
-    
+
 }
 
 .stay-details {
@@ -96,11 +96,16 @@
                         stroke-width: 1.3;
                         height: 1.5em;
                         width: 1.5em;
-                       margin: 0 8px 0 0;
+                        margin: 0 8px 0 0;
                     }
 
 
                 }
+            }
+
+            .booking-section{
+                padding-top: 40px;
+
             }
         }
 
@@ -261,6 +266,12 @@
 @media (max-width: 740px) {
     .third-page {
         width: 100%;
+    }
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 }
 
