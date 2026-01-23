@@ -254,7 +254,7 @@
                     gap: 4px;
                     padding: 12px 25px 12px 25px;
                     padding-inline-start: 20px;
-                    
+
                     .trip-icon {
                         object-fit: cover;
                         height: 22px;
@@ -302,7 +302,6 @@
                 gap: 8px;
                 align-items: center;
 
-
                 &.logout-btn {
                     margin: 0;
                     letter-spacing: .2px;
@@ -310,13 +309,16 @@
                     padding-block: 6px;
                 }
 
-                &:not(:has(img)):hover {
+                &:hover {
                     background-color: var(--white-gray);
                 }
 
                 &.user-img-link {
                     padding-inline: 0;
 
+                    &:hover {
+                        background-color: transparent;
+                    }
                 }
             }
         }
