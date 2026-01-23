@@ -238,7 +238,6 @@
                 }
 
                 .wishlist-link {
-                    margin-bottom: 7px;
 
                     .wishlist-icon {
                         font-size: 1.1rem;
@@ -251,9 +250,10 @@
                 }
 
                 .trip-link {
-                    gap: 1px;
-                    padding-top: 0;
-                    padding-inline-start: 17px;
+                    align-items: center;
+                    gap: 4px;
+                    padding: 12px 25px 12px 25px;
+                    padding-inline-start: 20px;
                     
                     .trip-icon {
                         object-fit: cover;
@@ -267,6 +267,7 @@
                 }
 
                 .profile-link {
+                    gap: 10px;
 
                     .profile-icon {
                         font-size: 1.1rem;
@@ -281,7 +282,7 @@
             .divider {
                 width: 80%;
                 border-top: 1px solid var(--gray-light-hover);
-                margin: 12px 0;
+                margin: 7px 0 12px;
             }
 
             .menu-item {
@@ -295,7 +296,7 @@
                 border: none;
                 width: 100%;
                 font-weight: 400;
-                padding: 10px 25px 10px 25px;
+                padding: 12px 25px 12px 25px;
 
                 display: flex;
                 gap: 8px;
