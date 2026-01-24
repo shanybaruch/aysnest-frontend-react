@@ -48,7 +48,7 @@ export function UserDetails() {
             />
             <span>About me</span>
           </NavLink>
-          <NavLink to={`/user/${params.id}/trips`}>
+          <NavLink to={`/user/${params.id}/pasttrips`}>
             <img className='img-trip' src='/img/trip.png'></img>
             <span>Past trips</span>
           </NavLink>
