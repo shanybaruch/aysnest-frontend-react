@@ -62,6 +62,10 @@ export function StayDetails() {
   })
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [stayId])
+
+  useEffect(() => {
     if (searchParams.size === 0) return
 
     const filterFromUrl = {
@@ -75,7 +79,10 @@ export function StayDetails() {
       }
     }
     dispatch({ type: SET_FILTER_BY, filterBy: filterFromUrl })
+
   }, [])
+
+
 
   useEffect(() => {
     loadStay(stayId)
@@ -191,10 +198,10 @@ export function StayDetails() {
               </div>
 
               <div className="gallery-side">
-                <div><img src={stay.imgUrls[1]} alt={stay.name} /></div>
+                {/* <div><img src={stay.imgUrls[1]} alt={stay.name} /></div>
                 <div><img src={stay.imgUrls[2]} alt={stay.name} className="top-right" /></div>
                 <div><img src={stay.imgUrls[3]} alt={stay.name} /></div>
-                <div><img src={stay.imgUrls[4]} alt={stay.name} className="bottom-right" /></div>
+                <div><img src={stay.imgUrls[4]} alt={stay.name} className="bottom-right" /></div> */}
               </div>
             </section>
 

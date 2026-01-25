@@ -1,4 +1,4 @@
-export function StayDetailsHeader({ photosRef, amenitiesRef, hidden }) {
+export function StayDetailsHeader({ photosRef, amenitiesRef, reviewsRef, hidden }) {
 
     function scrollTo(ref) {
         ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
