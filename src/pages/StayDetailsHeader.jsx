@@ -1,3 +1,5 @@
+// import { OrderCard } from '../cmps/OrderCard.jsx'
+
 export function StayDetailsHeader({ photosRef, amenitiesRef, hidden }) {
 
     function scrollTo(ref) {
@@ -18,6 +20,11 @@ export function StayDetailsHeader({ photosRef, amenitiesRef, hidden }) {
                 <li onClick={() => scrollTo(amenitiesRef)}>Amenities</li>
                 <li onClick={() => scrollTo(reviewsRef)}>Reviews</li>
             </ul>
+
+            {/* <section className="header-order hidden">
+                <OrderCard />
+            </section> */}
         </nav>
+        
     )
 }
