@@ -5,7 +5,8 @@
 
   .rdp-months {
     display: flex;
-    justify-content: space-around;
+    /* gap: 2em; */
+    justify-content: space-between;
     flex-wrap: nowrap;
     position: relative;
   }
