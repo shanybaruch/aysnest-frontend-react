@@ -26,7 +26,6 @@ export function TripPage() {
 
             {orders.length === 0 ? (
                 <div className="no-trips">
-                    <hr />
                     <h3>No trips booked... yet!</h3>
                     <p>Time to dust off your bags and start planning your next adventure.</p>
                 </div>

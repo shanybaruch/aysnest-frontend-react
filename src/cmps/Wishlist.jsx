@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { stayService } from '../services/stay/stay.service.local'
+import { stayService } from '../services/stay/stay.service.remote'
 import { Loader } from './Loader'
 import { StayPreview } from './StayPreview'
 
@@ -12,41 +12,52 @@ import { showErrorMsg } from '../services/event-bus.service';
 export function Wishlist() {
     const user = userService.getLoggedinUser()
     const [stays, setStays] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        if (user && user.saved && user.saved.length > 0) {
+        if (user?.saved?.length > 0) {
             loadSavedStays()
+        } else {
+            setIsLoading(false)
         }
     }, [])
 
     async function loadSavedStays() {
         try {
-            const promises = user.saved.map(id => stayService.getById(id))
+            const promises = user.saved.map(async (id) => {
+                try {
+                    return await stayService.getById(id)
+                } catch (err) {
+                    console.warn(`Stay ${id} not found in DB - skipping`)
+                    return null
+                }
+            })
             const savedStays = await Promise.all(promises)
-            setStays(savedStays)
+            const validStays = savedStays.filter(stay => stay !== null)
+            setStays(validStays)
         } catch (err) {
-            console.log('Cannot load stays', err)
+            console.log('Cannot load wishlist:', err)
+        } finally {
+            setIsLoading(false)
         }
     }
 
     async function removeSave(stayId) {
-        const updateSaveId = user.saved.filter(id => id !== stayId)
-        const userToUpdate = {
-            ...user,
-            saved: updateSaveId
-        }
+        const updatedSavedIds = user.saved.filter(id => id !== stayId)
+        const userToUpdate = { ...user, saved: updatedSavedIds }
+
         try {
             await updateUser(userToUpdate)
             setStays(prevStays => prevStays.filter(stay => stay._id !== stayId))
         } catch (err) {
-            showErrorMsg('Could not save stay to favorites')
+            showErrorMsg('Could not remove from wishlist')
         }
     }
 
     console.log('user, stays: ', user, stays)
 
     if (!user) return <Loader />
-    if (!stays.length && user.saved?.length > 0) return <Loader />
+    if (isLoading) return <Loader />
 
     return (
         <section className="wishlist-page">

@@ -93,12 +93,7 @@
     }
 
     .no-trips {
-        padding: 40px 0;
-
-        hr {
-            margin-bottom: 30px;
-            border: 0.5px solid var(--white-gray);
-        }
+        padding: 0 18px;
 
         h3 {
             font-size: 1.1rem;

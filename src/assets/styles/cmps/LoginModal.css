@@ -312,4 +312,12 @@
         border: 1px solid var(--gray2);
         border-radius: 10px;
     }
+
+    .input-pass {
+        border: 1px solid var(--gray2);
+        border-radius: 10px;
+        padding-block: 1rem;
+        margin-bottom: 1.5em;
+    }
+
 }

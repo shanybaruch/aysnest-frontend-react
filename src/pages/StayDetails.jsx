@@ -48,16 +48,15 @@ export function StayDetails() {
   const order = location.state?.order
 
   const loggedInUser = useSelector(storeState => storeState.userModule.user)
-  const [, forceRender] = useState(0)
   const [isShareOpen, setIsShareOpen] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
-  const [savedIds, setSavedIds] = useState([])
+  // const [savedIds, setSavedIds] = useState([])
+  const isSaved = (loggedInUser && stay) ? loggedInUser?.saved?.includes(stay?._id) : false
 
   const rangeForCalendar = {
     from: filterBy.from ? new Date(filterBy.from) : undefined,
     to: filterBy.to ? new Date(filterBy.to) : undefined
   }
-
 
   const { ref: photosInViewRef, inView: isPhotosInView } = useInView({
     threshold: 0.1,
@@ -93,10 +92,6 @@ export function StayDetails() {
     }
   }, [stayId])
 
-  useEffect(() => {
-    setSavedIds(loggedInUser?.saved || [])
-  }, [loggedInUser])
-
 
   async function onAddStayMsg(stayId) {
     try {
@@ -120,30 +115,43 @@ export function StayDetails() {
 
   const user = userService.getLoggedinUser()
 
+  // async function onSaveHeart(stayId) {
+  //   if (!loggedInUser) {
+  //     showErrorMsg('Please log in to save')
+  //     return
+  //   }
+
+  //   const newSavedIds = savedIds.includes(stayId)
+  //     ? savedIds.filter(id => id !== stayId)
+  //     : [...savedIds, stayId]
+
+  //   setSavedIds(newSavedIds)
+
+  //   try {
+  //     await updateUser({
+  //       ...loggedInUser,
+  //       saved: newSavedIds
+  //     })
+  //   } catch (err) {
+  //     showErrorMsg('Could not save stay')
+  //     setSavedIds(loggedInUser?.saved || [])
+  //   }
+  // }
+
   async function onSaveHeart(stayId) {
-    if (!loggedInUser) {
-      showErrorMsg('Please log in to save')
-      return
-    }
+    if (!loggedInUser) return showErrorMsg('Please log in to save')
 
-    const newSavedIds = savedIds.includes(stayId)
-      ? savedIds.filter(id => id !== stayId)
-      : [...savedIds, stayId]
-
-    setSavedIds(newSavedIds)
+    const newSavedIds = loggedInUser.saved?.includes(stayId)
+      ? loggedInUser.saved.filter(id => id !== stayId)
+      : [...(loggedInUser.saved || []), stayId]
 
     try {
-      await updateUser({
-        ...loggedInUser,
-        saved: newSavedIds
-      })
+      await updateUser({ ...loggedInUser, saved: newSavedIds })
+      showSuccessMsg('Updated successfully')
     } catch (err) {
-      showErrorMsg('Could not save stay')
-      setSavedIds(loggedInUser?.saved || [])
+      showErrorMsg('Could not save')
     }
   }
-
-
 
   //calendar
   const nightsCount = (filterBy.from && filterBy.to)
@@ -166,7 +174,7 @@ export function StayDetails() {
         {stay && (
           <div>
             <div className="heading flex">
-              <h1 className='title'>{stay.name}</h1>
+              <h1 className='title'>{stay?.name}</h1>
               <div className="right-heading flex">
                 <button
                   className='share'
@@ -182,8 +190,8 @@ export function StayDetails() {
                   />
                 )}
 
-                <button className="save" onClick={() => onSaveHeart(stay._id)}>
-                  {savedIds.includes(stay._id)
+                <button className="save" onClick={() => onSaveHeart(stay?._id)}>
+                  {isSaved
                     ? <FaHeart style={{ color: '#ff385c' }} />
                     : <FaRegHeart />}
                   <span>Save</span>
@@ -196,33 +204,33 @@ export function StayDetails() {
                 <CgMenuGridO size={16} /> Show all photos
               </button>
               <div className="gallery-main">
-                <img src={stay.imgUrl} alt={stay.name} className="left-img" />
+                <img src={stay?.imgUrl} alt={stay?.name} className="left-img" />
               </div>
 
               <div className="gallery-side">
-                <div><img src={stay.imgUrls?.[1]} alt={stay.name} /></div>
-                <div><img src={stay.imgUrls?.[2]} alt={stay.name} className="top-right" /></div>
-                <div><img src={stay.imgUrls?.[3]} alt={stay.name} /></div>
-                <div><img src={stay.imgUrls?.[4]} alt={stay.name} className="bottom-right" /></div>
+                <div><img src={stay?.imgUrls?.[1]} alt={stay?.name} /></div>
+                <div><img src={stay?.imgUrls?.[2]} alt={stay?.name} className="top-right" /></div>
+                <div><img src={stay?.imgUrls?.[3]} alt={stay?.name} /></div>
+                <div><img src={stay?.imgUrls?.[4]} alt={stay?.name} className="bottom-right" /></div>
               </div>
             </section>
 
             <section className='sides'>
               <section className='big-side'>
                 <div className="description">
-                  <h2>{stay.type} {stay.name}</h2>
-                  <p className="guests">{stay.capacity} guest{stay.capacity > 1 ? 's' : ''} · {stay.capacity / 2} bedroom{stay.capacity / 2 > 1 ? 's' : ''}</p>
+                  <h2>{stay?.type} {stay?.name}</h2>
+                  <p className="guests">{stay?.capacity} guest{stay?.capacity > 1 ? 's' : ''} · {stay.capacity / 2} bedroom{stay.capacity / 2 > 1 ? 's' : ''}</p>
                   <div className="meta-item">
                     <RiStarFill size={10} />
-                    <span className='rate'>{stay.rate} · </span>
-                    <span className='reviews-txt'>{stay.reviews?.length} review {stay.reviews?.length > 1 ? 's' : ''}</span>
+                    <span className='rate'>{stay?.rate} · </span>
+                    <span className='reviews-txt'>{stay?.reviews?.length} review {stay?.reviews?.length > 1 ? 's' : ''}</span>
                   </div>
                 </div>
 
                 <div className="">
                   <div className="divider"></div>
                   <p className={`description-p ${isExpanded ? 'expanded' : ''}`}>
-                    {stay.description}
+                    {stay?.description}
                   </p>
 
                   <button
@@ -238,7 +246,7 @@ export function StayDetails() {
                     <div className="divider"></div>
                     <h2 className="title-place-offers">What this place offers</h2>
 
-                    {stay.amenities && (
+                    {stay?.amenities && (
                       <Amenities
                         amenities={stay.amenities}
                       />
@@ -248,7 +256,7 @@ export function StayDetails() {
                 </section>
                 <section className="booking-section">
                   <h3>
-                    {nightsCount} {nightLabel} in {stay.loc.city}                  </h3>
+                    {nightsCount} {nightLabel} in {stay?.loc.city}                  </h3>
                   <p>
                     {
                       filterBy.from
@@ -285,7 +293,7 @@ export function StayDetails() {
       </div>
       <InfoBar className='info-bar' />
       <section className='reviews' ref={reviewsRef}>
-        {stay.reviews?.length > 0 && (
+        {stay?.reviews?.length > 0 && (
           <Reviews
             reviews={stay.reviews}
           />

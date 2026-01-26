@@ -1,7 +1,8 @@
 export function SvgIcon({ iconName }) {
-    const icon = _getIcon(iconName)
+    const normalizedName = iconName.charAt(0).toUpperCase() + iconName.slice(1)
+    const icon = _getIcon(normalizedName)
     if (!icon) {
-        console.error(`Icon '${iconName}' does not exist.`)
+        console.error(`Icon '${iconName}' (normalized: '${normalizedName}') does not exist.`)
         return null
     }
     return <>{icon}</>
@@ -13,8 +14,8 @@ function _getIcon(iconName) {
         Home: (
             <svg aria-label="Home" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
                 <title>Home</title>
-                <path d="M9.005 16.545a2.997 2.997 0 0 1 2.997-2.997A2.997 2.997 0 0 1 15 16.545V22h7V11.543L12 2 2 11.543V22h7.005Z" 
-                fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></path>
+                <path d="M9.005 16.545a2.997 2.997 0 0 1 2.997-2.997A2.997 2.997 0 0 1 15 16.545V22h7V11.543L12 2 2 11.543V22h7.005Z"
+                    fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></path>
             </svg>
         ),
 
@@ -52,44 +53,44 @@ function _getIcon(iconName) {
         Globe: (
             <svg aria-label="Language" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>Globe</title>
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" stroke="currentColor" strokeWidth="2"/>
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" stroke="currentColor" strokeWidth="2" />
             </svg>
         ),
-        
+
         Menu: (
             <svg aria-label="Menu" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>Menu</title>
                 <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" strokeWidth="2" />
-                <line x1="3" y1="12" x2="21" y2="12"stroke="currentColor" strokeWidth="2" />
-                <line x1="3" y1="18" x2="21" y2="18"stroke="currentColor" strokeWidth="2" />
+                <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" strokeWidth="2" />
+                <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" strokeWidth="2" />
             </svg>
         ),
-        
+
         User: (
             <svg aria-label="User" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>User</title>
-                <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2"/>
-                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" strokeWidth="2"/>
+                <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" />
+                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" strokeWidth="2" />
             </svg>
         ),
-        
+
         Heart: (
             <svg aria-label="Favorite" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>Heart</title>
                 <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" stroke="currentColor" strokeWidth="2" />
             </svg>
         ),
-        
+
         Instagram: (
             <svg aria-label="Instagram" fill="none" height="16" width="16" viewBox="0 0 24 24" role="img">
                 <title>Instagram</title>
-                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke="currentColor" strokeWidth="2"/>
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke="currentColor" strokeWidth="2" />
                 <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
             </svg>
         ),
-        
+
         Facebook: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Facebook</title>
@@ -117,14 +118,14 @@ function _getIcon(iconName) {
                 <path d="M16 1a15 15 0 1 1 0 30 15 15 0 0 1 0-30zm0 2a13 13 0 1 0 0 26 13 13 0 0 0 0-26zm7 7.59L24.41 12 13.5 22.91 7.59 17 9 15.59l4.5 4.5z"></path>
             </svg>
         ),
-        
+
         CheckIn: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Check In</title>
                 <path d="M16.84 27.16v-3.4l-.26.09c-.98.32-2.03.51-3.11.55h-.7A11.34 11.34 0 0 1 1.72 13.36v-.59A11.34 11.34 0 0 1 12.77 1.72h.59c6.03.16 10.89 5.02 11.04 11.05V13.45a11.3 11.3 0 0 1-.9 4.04l-.13.3 7.91 7.9v5.6H25.7l-4.13-4.13zM10.31 7.22a3.1 3.1 0 1 1 0 6.19 3.1 3.1 0 0 1 0-6.2zm0 2.06a1.03 1.03 0 1 0 0 2.06 1.03 1.03 0 0 0 0-2.06zM22.43 25.1l4.12 4.13h2.67v-2.67l-8.37-8.37.37-.68.16-.3c.56-1.15.9-2.42.96-3.77v-.64a9.28 9.28 0 0 0-9-9h-.55a9.28 9.28 0 0 0-9 9v.54a9.28 9.28 0 0 0 13.3 8.1l.3-.16 1.52-.8v4.62z"></path>
             </svg>
         ),
-        
+
         Communication: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="none" stroke="currentColor" strokeWidth="2">
                 <title>Communication</title>
@@ -145,7 +146,7 @@ function _getIcon(iconName) {
                 <path d="M16.17 2a3 3 0 0 1 1.98.74l.14.14 11 11a3 3 0 0 1 .14 4.1l-.14.14L18.12 29.3a3 3 0 0 1-4.1.14l-.14-.14-11-11A3 3 0 0 1 2 16.37l-.01-.2V5a3 3 0 0 1 2.82-3h11.35zm0 2H5a1 1 0 0 0-1 .88v11.29a1 1 0 0 0 .2.61l.1.1 11 11a1 1 0 0 0 1.31.08l.1-.08L27.88 16.7a1 1 0 0 0 .08-1.32l-.08-.1-11-11a1 1 0 0 0-.58-.28L16.17 4zM9 6a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
             </svg>
         ),
-        
+
         //Host icons
         Balloon: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
@@ -160,7 +161,7 @@ function _getIcon(iconName) {
                 <path d="M20 2a2 2 0 0 1 2 1.85V6h6a3 3 0 0 1 3 2.82V27a3 3 0 0 1-2.82 3H4a3 3 0 0 1-3-2.82V9a3 3 0 0 1 2.82-3H10V4a2 2 0 0 1 1.85-2H12zm8 6H4a1 1 0 0 0-1 .88V12a3 3 0 0 0 2.82 3H13v2H6a4.98 4.98 0 0 1-3-1v11a1 1 0 0 0 .88 1H28a1 1 0 0 0 1-.88V16c-.78.59-1.74.95-2.78 1h-7.17v-2H26a3 3 0 0 0 3-2.82V9a1 1 0 0 0-.88-1zm-10 4a1 1 0 0 1 1 .88V19a1 1 0 0 1-.88 1H14a1 1 0 0 1-1-.88V13a1 1 0 0 1 .88-1H14zm-1 2h-2v4h2zm3-10h-8v2h8z"></path>
             </svg>
         ),
-        
+
         //Things to know
         Cancellation: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
@@ -255,7 +256,7 @@ function _getIcon(iconName) {
                 <path d="M26.29 2a3 3 0 0 1 2.96 2.58c.5 3.56.75 7.37.75 11.42s-.25 7.86-.75 11.42a3 3 0 0 1-2.79 2.57l-.17.01H5.7a3 3 0 0 1-2.96-2.58C2.25 23.86 2 20.05 2 16s.25-7.86.75-11.42a3 3 0 0 1 2.79-2.57L5.7 2zm0 2H5.72a1 1 0 0 0-1 .86A80.6 80.6 0 0 0 4 16c0 3.96.24 7.67.73 11.14a1 1 0 0 0 .87.85l.11.01h20.57a1 1 0 0 0 1-.86c.48-3.47.72-7.18.72-11.14 0-3.96-.24-7.67-.73-11.14a1 1 0 0 0-.87-.85zM16 7a9 9 0 1 1 0 18 9 9 0 0 1 0-18zm0 2a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm-4.8 5.58c1.36.2 2.64.8 3.68 1.75l.46.45a8.97 8.97 0 0 0 4.62 2.28 5.02 5.02 0 0 1-2.01 1.55 10.98 10.98 0 0 1-4.26-2.65 4.96 4.96 0 0 0-2.66-1.38 4.68 4.68 0 0 1 .17-2zm3.09-3.28c1.34.55 2.58 1.36 3.64 2.42a4.97 4.97 0 0 0 3 1.44 4.99 4.99 0 0 1-.07 2 6.97 6.97 0 0 1-4.11-1.8l-.47-.45a8.96 8.96 0 0 0-4.07-2.17 5 5 0 0 1 2.08-1.44zM7 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
             </svg>
         ),
-        
+
         Hangers: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Hangers</title>
@@ -269,7 +270,7 @@ function _getIcon(iconName) {
                 <path d="M12 28a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-6-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM16.03 3h.3a12.5 12.5 0 0 1 11.82 9.48l.07.3 1.73 7.79.03.14A2 2 0 0 1 28.15 23H2.1a2 2 0 0 1-1.85-1.84v-7.38a5 5 0 0 1 4.77-4.77L5.25 9h9V5h-14V3zm11.53 16H2.25v2H28zM16.24 5v6H5.07a3 3 0 0 0-2.82 2.82V17H27.1l-.84-3.78-.07-.28a10.5 10.5 0 0 0-9.6-7.92L16.32 5z"></path>
             </svg>
         ),
-        
+
         ExtraPillowsAndBlankets: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Extra Pillows And Blankets</title>
@@ -281,11 +282,11 @@ function _getIcon(iconName) {
         TV: (
             <svg aria-label="TV" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <title>TV</title>
-                <rect x="3" y="5" width="18" height="12" rx="2" ry="2"/>
-                <line x1="8" y1="21" x2="16" y2="21"/>
+                <rect x="3" y="5" width="18" height="12" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
             </svg>
         ),
-        
+
         SoundSystem: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Sound System</title>
@@ -329,7 +330,7 @@ function _getIcon(iconName) {
                 <path d="M16 0a5 5 0 0 1 5 4.78v12.98l.26.21a7.98 7.98 0 0 1 2.72 5.43l.02.3v.3a8 8 0 1 1-13.25-6.04l.25-.2V5A5 5 0 0 1 15.56.02l.22-.01zm0 2a3 3 0 0 0-3 2.82V18.78l-.43.3a6 6 0 1 0 7.06.15l-.2-.16-.43-.3V11h-4V9h4V7h-4V5h4a3 3 0 0 0-3-3zm1 11v7.13A4 4 0 0 1 16 28a4 4 0 0 1-1-7.87V13zm-1 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
             </svg>
         ),
-        
+
         HotTub: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Hot Tub</title>
@@ -394,7 +395,7 @@ function _getIcon(iconName) {
                 <path d="M24 1a5 5 0 0 1 5 4.78V26a5 5 0 0 1-4.78 5H19v-2h5a3 3 0 0 0 3-2.82V6a3 3 0 0 0-2.82-3H8a3 3 0 0 0-3 2.82V26a3 3 0 0 0 2.82 3H15v-8h-2a2 2 0 0 1-2-1.85V13a2 2 0 0 1 1.85-2H19a2 2 0 0 1 2 1.85V19a2 2 0 0 1-1.85 2H17v8a2 2 0 0 1-1.85 2H8a5 5 0 0 1-5-4.78V6a5 5 0 0 1 4.78-5H8zm-5 12h-6v6h2v-4h2v4h2z"></path>
             </svg>
         ),
-        
+
         Workspace: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Workspace</title>
@@ -451,7 +452,7 @@ function _getIcon(iconName) {
                 <path d="M25 2a1 1 0 0 1 .94.65l.03.1 1 4A1 1 0 0 1 26.11 8L26 8h-9v2h-2V8H5v20h3a5 5 0 0 1-.72-4.66l.1-.26 2.52-6.04-1.8-3.6a1 1 0 0 1 .78-1.43L9 12h14a1 1 0 0 1 .94 1.34l-.05.1L22.62 16H24a5 5 0 0 1 5 4.78V25h-2v-4a3 3 0 0 0-2.82-3H22.5l2.12 5.08A5 5 0 0 1 24 28h3v2H4a1 1 0 0 1-1-.88V3a1 1 0 0 1 .88-1H4zM12.65 22a6.64 6.64 0 0 0-2.91.63l-.5 1.22a3 3 0 0 0-.2.68l-.03.23L9 25a3 3 0 0 0 2.82 3h8.19l.23-.01a3 3 0 0 0 2.6-2.02c-1.7-.12-2.93-.67-4.84-1.9l-.37-.23c-2.14-1.4-3.18-1.84-4.98-1.84zm7.68-4h-8.66l-.92 2.19a9.06 9.06 0 0 1 1.9-.19c2.19 0 3.51.52 5.75 1.95l.38.25c1.74 1.13 2.74 1.62 4.03 1.76l-.04-.11zm1.05-4H10.62l1 2h8.76zm2.84-10H5v2h19.72z"></path>
             </svg>
         ),
-        
+
         //Location features:
         PrivateEntrance: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
@@ -511,7 +512,7 @@ function _getIcon(iconName) {
                 <path d="M16.84 27.16v-3.4l-.26.09c-.98.32-2.03.51-3.11.55h-.7A11.34 11.34 0 0 1 1.72 13.36v-.59A11.34 11.34 0 0 1 12.77 1.72h.59c6.03.16 10.89 5.02 11.04 11.05V13.45a11.3 11.3 0 0 1-.9 4.04l-.13.3 7.91 7.9v5.6H25.7l-4.13-4.13zM10.31 7.22a3.1 3.1 0 1 1 0 6.19 3.1 3.1 0 0 1 0-6.2zm0 2.06a1.03 1.03 0 1 0 0 2.06 1.03 1.03 0 0 0 0-2.06zM22.43 25.1l4.12 4.13h2.67v-2.67l-8.37-8.37.37-.68.16-.3c.56-1.15.9-2.42.96-3.77v-.64a9.28 9.28 0 0 0-9-9h-.55a9.28 9.28 0 0 0-9 9v.54a9.28 9.28 0 0 0 13.3 8.1l.3-.16 1.52-.8v4.62z"></path>
             </svg>
         ),
-        
+
         RoomDarkeningShades: (
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Room Darkening Shades</title>
@@ -524,7 +525,7 @@ function _getIcon(iconName) {
                 <title>Long Term Stays Allowed</title>
                 <path d="M11.67 0v1.67h8.66V0h2v1.67h6a2 2 0 0 1 2 1.85v16.07a2 2 0 0 1-.46 1.28l-.12.13L21 29.75a2 2 0 0 1-1.24.58H6.67a5 5 0 0 1-5-4.78V3.67a2 2 0 0 1 1.85-2h6.15V0zm16.66 11.67H3.67v13.66a3 3 0 0 0 2.82 3h11.18v-5.66a5 5 0 0 1 4.78-5h5.88zm-.08 8h-5.58a3 3 0 0 0-3 2.82v5.76zm-18.58-16h-6v6h24.66v-6h-6v1.66h-2V3.67h-8.66v1.66h-2z"></path>
             </svg>
-        ), 
+        ),
 
     }
     return icons[iconName]

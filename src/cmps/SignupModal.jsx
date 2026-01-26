@@ -107,7 +107,6 @@ export function SignupModal({ credentials, setCredentials, onBack, onClose, isSi
                             max={maxDateString}
                             value={credentials.birthDate || ''}
                             type="date"
-                            // onChange={handleChange}
                             onChange={(e) => setCredentials(prev => ({ ...prev, birthDate: e.target.value }))}
                             className="input-date"
                             placeholder="Birthdate"
@@ -131,8 +130,9 @@ export function SignupModal({ credentials, setCredentials, onBack, onClose, isSi
                     <input
                         type="password"
                         name="password"
-                        placeholder="Create a password"
                         onChange={handleChange}
+                        className="input-pass"
+                        placeholder="Password"
                         required
 
                     />
