@@ -92,3 +92,15 @@ export async function updateUser(user) {
         throw err
     }
 }
+
+export async function verifyUser() {
+    const user = store.getState().userModule.user
+    if (!user) return
+    try {
+        const freshUser = await userService.getById(user._id)
+        store.dispatch({ type: SET_USER, user: freshUser })
+    } catch (err) {
+        console.log('User session invalid or user deleted, logging out...')
+        await logout()
+    }
+}

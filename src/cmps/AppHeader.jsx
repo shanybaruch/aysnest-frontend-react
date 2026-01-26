@@ -1,8 +1,8 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useLocation, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
-import { logout } from '../store/actions/user.actions'
-import { useState } from 'react'
+import { logout, verifyUser } from '../store/actions/user.actions'
+import { useEffect, useState } from 'react'
 
 import { FiMenu } from "react-icons/fi"
 import { IoSearch } from "react-icons/io5"
@@ -17,7 +17,6 @@ import { UserImg } from './UserImg'
 export function AppHeader({ isAtTop }) {
     const user = useSelector(storeState => storeState.userModule.user)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
-
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -29,18 +28,21 @@ export function AppHeader({ isAtTop }) {
 
     const isUserPage = location.pathname.startsWith('/user')
     const isOrderPage = location.pathname.startsWith('/order')
-    const shouldHideFilter = isUserPage || isOrderPage
-
     const isHomePage = location.pathname === '/' || location.pathname === '/stay'
-
     const isAnyActive = isEditingWhere || isEditingWhen || isEditingWho
     const isCompact = (!isAtTop || !isHomePage) && !isAnyActive
-
     const isStayDetails = location.pathname.startsWith('/stay/') && location.pathname !== '/stay' && !isOrderPage
+    const shouldHideFilter = isUserPage || isOrderPage
 
     const guests = filterBy.guests || { adults: 0, children: 0, infants: 0, pets: 0 }
     const { adults, children, infants, pets } = guests
     const totalGuests = adults + children
+
+    useEffect(() => {
+        if (user) {
+            verifyUser()
+        }
+    }, [location.pathname])
 
     function getGuestLabel() {
         if (!totalGuests && !infants && !pets) return 'Add guests'
@@ -147,7 +149,7 @@ export function AppHeader({ isAtTop }) {
                 </section>
             </nav>
 
-           
+
 
             {!shouldHideFilter &&
                 <StayFilter
