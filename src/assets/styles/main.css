@@ -42,7 +42,7 @@
 
 
 @import "cmps/order/OrderPage.css";
-@import "cmps/order/TripsPage.css";
 
 
 @import "cmps/user/Wishlist.css";
+@import "cmps/user/TripsPage.css";

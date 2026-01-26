@@ -116,7 +116,8 @@ export function OrderPage() {
             stay: {
                 _id: stay._id,
                 name: stay.name,
-                price: stay.price
+                price: stay.price,
+                imgUrls: stay.imgUrls
             },
             hostId: stay.host?._id || stay.hostId,
             paymentDetails: { cardNum: cardNumber },
