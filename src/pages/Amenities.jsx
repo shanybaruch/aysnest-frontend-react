@@ -6,6 +6,7 @@ export function Amenities({ amenities, iconMap }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const amenitiesToShow = amenities.slice(0, 10);
+  const isSingleColumn = amenitiesToShow.length < 5;
 
   const mid = Math.ceil(amenitiesToShow.length / 2);
   const firstCol = amenitiesToShow.slice(0, mid);
@@ -13,23 +14,26 @@ export function Amenities({ amenities, iconMap }) {
 
   return (
     <>
-      <div className="amenities-columns">
+      <div className={`amenities-columns ${isSingleColumn ? "single" : ""}`}>
         <ul className="amenities-list">
-          {firstCol.map((item, idx) => (
+          {(isSingleColumn ? amenitiesToShow : firstCol).map((item, idx) => (
             <li key={idx} className="amenity-item">
               <SvgIcon iconName={item} />
               <span>{item}</span>
             </li>
           ))}
         </ul>
-        <ul className="amenities-list">
-          {secondCol.map((item, idx) => (
-            <li key={idx} className="amenity-item">
-              <SvgIcon iconName={item} />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+
+        {!isSingleColumn && (
+          <ul className="amenities-list">
+            {secondCol.map((item, idx) => (
+              <li key={idx} className="amenity-item">
+                <SvgIcon iconName={item} />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {amenities.length > 10 && (
