@@ -317,7 +317,6 @@
 @media (max-width: 744px) {
     .stay-filter {
         width: 100%;
-        padding-inline: 15px;
 
         .mini-selection {
             display: flex;
