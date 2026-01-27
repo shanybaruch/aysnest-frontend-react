@@ -1,6 +1,6 @@
 .app-footer {
     position: relative;
-   
+    
     hr {
         position: absolute;
         bottom: 70px;
@@ -10,12 +10,13 @@
         border: 0;
         border-bottom: 1px solid var(--gray-light);
     }
-
+    
     .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        /* border-top: 1px solid var(--gray-light); */
+        background-color: var(--background-gray);
+        border-top: 1px solid var(--gray-light);
         min-height: 3.5rem;
         font-size: 0.8rem;
         font-weight: 400;

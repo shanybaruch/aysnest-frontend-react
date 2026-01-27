@@ -6,7 +6,6 @@ export function AppFooter() {
 
 	return (
 		<footer className="app-footer full">
-			<hr />
 			<section className='nav'>
 			<div className="footer-left">
 				<p><span>&copy;</span> 2026 AYS Nest</p>
