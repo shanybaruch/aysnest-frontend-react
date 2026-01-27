@@ -79,6 +79,7 @@
 
 @media (max-width: 743px) {
     .gallery {
+         max-width: 743;
         grid-template-columns: 1fr;
         border-radius: 0;
     }
@@ -98,7 +99,7 @@
     .gallery {
         height: 499px;
         aspect-ratio: 2 / 1;
-        width: 100%;
+        /* width: 100%; */
     }
 
     .gallery-side {

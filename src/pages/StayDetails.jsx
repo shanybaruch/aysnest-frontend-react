@@ -176,7 +176,7 @@ export function StayDetails() {
               </div>
             </div>
             <section ref={photosInViewRef} className="gallery">
-              <button className="btn-photos" onClick={OnStayDetailsPhotos}>
+              <button className="btn-photos btn-responsive" onClick={OnStayDetailsPhotos}>
                 <CgMenuGridO size={16} /> Show all photos
               </button>
 
