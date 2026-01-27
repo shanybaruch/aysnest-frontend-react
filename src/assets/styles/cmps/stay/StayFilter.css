@@ -315,6 +315,14 @@
 }
 
 @media (max-width: 744px) {
+    .app-header {
+        background-color: var(--white);
+    }
+
+    .filter-backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
     .stay-filter {
         width: 100%;
 
@@ -334,5 +342,92 @@
         .selection {
             display: none;
         }
+    }
+
+    .stay-filter:not(.mini) .selection {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        flex-direction: column;
+        z-index: 1000;
+        padding: 10px;
+
+        .select-where,
+        .select-when,
+        .select-who {
+            background: var(--white);
+            margin-bottom: 6px;
+            border-radius: 16px;
+            display: flex;
+            padding-block: 10px;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: flex 0.3s ease;
+            overflow: hidden;
+            
+
+            .suggestions-modal {
+                position: fixed;
+                top: 210px;
+                width: 100%;
+                flex: 1;
+                overflow-y: hidden;
+            }
+
+            &.active {
+                flex: 1;
+                background-color: var(--white);
+                min-height: 0;
+                overflow-y: auto;
+                box-shadow: 0 0 0 0;
+            }
+        }
+
+        .suggestions-modal {
+            position: static;
+            width: 100%;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .sec-search {
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .sec {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+          
+            p {
+                margin: 0;
+            }
+        }
+
+        .sec.first-sec {
+            padding-inline-start: 27px;
+            padding-inline-end: 28px;
+        }
+
+        .select-when .sec > span {
+            padding-inline-end: 30px;
+            font-size: .79rem;
+        }
+
+        .select-who .sec {
+            padding-inline-end: 30px;
+
+            span {
+
+                font-size: .79rem;
+            }
+        }
+    }
+
+    .stay-filter:not(.mini) .mini-selection {
+        display: none;
     }
 }

@@ -390,6 +390,10 @@
         padding-bottom: 0;
         padding-top: 10px;
 
+        .filter-backdrop {
+            top: 155px;
+        }
+
         .header-nav {
             justify-content: center;
 
@@ -468,14 +472,36 @@
         }
 
         .calendar-dropdown {
-            position: absolute;
-            top: 65px;
+            position: fixed;
+            top: 210px;
             left: 50%;
             width: 101%;
             padding: 10px 15px 13px;
 
             .calendar {
-                padding: 10px;
+                padding: 5px 0 0;
+
+                .rdp-root {
+                    display: grid;
+                    justify-content: center;
+                }
+
+                .rdp-month_grid {
+                    margin: 2px;
+                }
+
+                .rdp-caption_label {
+                    font-size: .8rem;
+                }
+
+                .rdp-day_button {
+                    padding: 5px;
+                }
+
+                .rdp-months {
+                    display: grid;
+                    width: 100%;
+                }
 
                 .rdp-nav {
                     button {
@@ -486,7 +512,7 @@
                 .rdp-months {
                     width: 100%;
                     overflow-y: auto;
-                    gap: 8px;
+                    gap: 10px;
                 }
 
                 .rdp-month {
