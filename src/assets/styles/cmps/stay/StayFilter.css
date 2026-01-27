@@ -12,7 +12,7 @@
 .stay-filter {
     width: 100%;
     max-width: 850px;
-    min-width: 550px;
+    min-width: 200px;
 
     margin-inline: auto;
     z-index: 25;
@@ -26,16 +26,16 @@
         position: relative;
         z-index: 25;
 
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        width: 100%;
+        max-height: 210px;
+
         border-radius: 50px;
         box-shadow: 0px 7px 24px 0px var(--gray-light-hover);
         border: 1.5px solid var(--gray-light-hover);
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-
-        background-color: transparent;
         opacity: 1;
-        width: 100%;
-        max-height: 210px;
+        background-color: transparent;
         transform: scale(1) translateY(0);
         transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
 
@@ -282,15 +282,16 @@
     }
 }
 
-@media (max-width: 745px) {
+@media (max-width: 900px) {
     .stay-filter {
-        width: 400px;
+        width: 95%;
 
         .selection {
             flex-direction: column;
             max-height: none;
-            padding-block: 15px;
+            padding-block: 10px;
             border-radius: 32px;
+            margin: 0;
         }
     }
 
@@ -310,7 +311,7 @@
     }
 
     .stay-filter .selection .sec-search.expanded {
-        width: 90%;
+        width: 20%;
     }
 
     .stay-filter .selection .sec .suggestions-modal {
@@ -324,9 +325,65 @@
     }
 }
 
-
-@media (max-width: 580px) {
+@media (max-width: 630px) {
     .stay-filter {
-        width: 250px;
+        .selection {
+            .sec {
+                .suggestions-modal {
+                    position: absolute;
+                    top: 55px;
+                    bottom: inherit;
+                    width: 101%;
+                    border-radius: 32px;
+                    left: -2px;
+
+                    ul {
+                        background-color: var(--white);
+                    }
+                }
+            }
+
+            .guests-dropdown {
+                top: 205px;
+                width: 101%;
+                left: -1px;
+                padding-block: 10px;
+
+                .guest-row {
+                    padding: 5px 0 20px;
+
+                    .info {
+                        .title {
+                            display: block;
+                            font-size: .9rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .selection .sec-search {
+            bottom: 17px;
+        }
+     
+        .selection .sec-search.expanded {
+            width: auto;
+        }
+        
+        .sec-search.expanded {
+            bottom: 0;
+
+            width: 44px;
+            height: 44px;
+            bottom: 18px;
+
+            .search-text {
+                display: none;
+            }
+        }
+    }
+
+    .filter-backdrop {
+        opacity: 0;
     }
 }
