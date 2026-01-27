@@ -256,7 +256,8 @@ export function StayDetails() {
                 </section>
                 <section className="booking-section">
                   <h3>
-                    {nightsCount} {nightLabel} in {stay?.loc.city}                  </h3>
+                    {Math.max(nightsCount - 1, 0)} {nightLabel} in {stay?.loc.city}
+                  </h3>
                   <p>
                     {
                       filterBy.from
