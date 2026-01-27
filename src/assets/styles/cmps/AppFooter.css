@@ -1,5 +1,6 @@
 .app-footer {
     position: relative;
+    max-width: 100%;
     
     hr {
         position: absolute;

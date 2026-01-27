@@ -1,5 +1,6 @@
 .gallery {
     position: relative;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-radius: 16px;
@@ -106,4 +107,10 @@
         height: 499px;
     }
 
+}
+
+@media (max-width: 450px ) {
+    .gallery-side{
+        display: none;
+    }
 }

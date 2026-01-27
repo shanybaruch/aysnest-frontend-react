@@ -1,4 +1,5 @@
 .all-stay-details {
+    max-width: 100%;
     .divider {
         border-bottom: 0.8px solid var(--gray-light);
         margin: 5px 0;
@@ -282,7 +283,7 @@
     }
 
     .stay-details .sides {
-        max-width: 743;
+        max-width: 500;
         display: block;
         /* grid-template-columns: 1fr;
         gap: 24px; */
@@ -357,5 +358,12 @@
     .stay-details .share svg,
     .stay-details .save svg {
         width: 16px;
+    }
+    .stay-details .calendar-dropdown {
+        .rdp-months {
+            button {
+                padding: 5px;
+            }
+        }
     }
 }

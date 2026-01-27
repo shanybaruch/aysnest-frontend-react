@@ -5,7 +5,7 @@ import { SvgIcon } from './SvgIcon'
 export function AppFooter() {
 
 	return (
-		<footer className="app-footer full">
+		<footer className="app-footer">
 			<section className='nav'>
 			<div className="footer-left">
 				<p><span>&copy;</span> 2026 AYS Nest</p>
