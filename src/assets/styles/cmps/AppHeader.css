@@ -381,6 +381,22 @@
     }
 }
 
+@media (min-width: 743px) and (max-width: 870px) {
+    .app-header {
+
+        .calendar {
+            .rdp-months {
+                justify-content: space-evenly;
+            }
+
+            .rdp-day_button {
+                padding: 11px;
+            }
+        }
+    }
+}
+
+
 @media (max-width: 744px) {
     .app-header.details-page {
         display: none;
@@ -390,6 +406,26 @@
         flex-direction: column-reverse;
         padding-bottom: 0;
         padding-top: 10px;
+
+        .calendar-dropdown {
+            position: fixed;
+            top: 210px;
+            left: 50%;
+            width: 100%;
+            padding: 10px 15px 13px;
+
+            .calendar {
+                padding: 5px 0 0;
+
+                .rdp-months {
+                    justify-content: space-evenly;
+                }
+
+                .rdp-day_button {
+                    padding: 9px;
+                }
+            }
+        }
 
         .filter-backdrop {
             top: 155px;
@@ -476,11 +512,11 @@
             position: fixed;
             top: 210px;
             left: 50%;
-            width: 101%;
+            width: max-content;
             padding: 10px 15px 13px;
 
             .calendar {
-                padding: 5px 0 0;
+                padding: 0;
 
                 .rdp-root {
                     display: grid;
@@ -492,16 +528,18 @@
                 }
 
                 .rdp-caption_label {
-                    font-size: .8rem;
+                    font-size: .7rem;
                 }
 
                 .rdp-day_button {
-                    padding: 5px;
+                    padding: 4px;
                 }
 
                 .rdp-months {
                     display: grid;
                     width: 100%;
+                    gap: 0;
+                    overflow-y: auto;
                 }
 
                 .rdp-nav {
@@ -510,17 +548,11 @@
                     }
                 }
 
-                .rdp-months {
-                    width: 100%;
-                    overflow-y: auto;
-                    gap: 10px;
-                }
-
                 .rdp-month {
                     width: 100%;
 
                     button {
-                        padding: 10px;
+                        padding: 8px;
                     }
                 }
 

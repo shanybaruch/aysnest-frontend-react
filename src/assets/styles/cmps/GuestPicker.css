@@ -1,6 +1,6 @@
 .guests-dropdown {
     position: absolute;
-    top: 210px;
+    top: 75px;
     right: 0;
     background: var(--white);
     border-radius: 32px;
@@ -91,4 +91,12 @@
             }
         }
     }
+}
+
+@media (max-width: 744px) {
+    .guests-dropdown {
+        top: 210px;
+
+    }
+
 }
