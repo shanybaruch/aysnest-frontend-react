@@ -72,7 +72,8 @@ function saveLoggedinUser(user) {
         birthDate: user.birthDate,
         score: user.score,
         isAdmin: user.isAdmin,
-        saved: user.saved || []
+        saved: user.saved || [],
+        trips: user.trips || [],
     }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
