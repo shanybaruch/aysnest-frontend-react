@@ -1,8 +1,7 @@
 .order-page {
     display: grid;
-    grid-template-columns: 130px 1fr 80px 1fr 130px;
+    grid-template-columns: 85px 1fr 80px 1fr 38px;
     grid-template-rows: 100px 1fr 20px;
-    /* height: 100%; */
     position: relative;
 
     header {
@@ -14,7 +13,6 @@
         h1 {
             margin: 0;
         }
-
     }
 
     .btn-back {
