@@ -101,43 +101,46 @@ export function LoginModal({ onClose }) {
                     {isNextStep ? <span>Finish signing up</span> : <span>Log in or sign up</span>}
                 </header>
 
-                {isNextStep ?
+                {isNextStep && isSignup ? (
+
                     <SignupModal
                         credentials={credentials}
                         setCredentials={setCredentials}
                         isSignup={isSignup}
                         onBack={onBack}
                         onClose={onClose}
-                    /> :
+                    />
+                ) :
                     <main className="modal-body">
                         <h2>Welcome to AYS Nest</h2>
 
                         <form className="login-form" onSubmit={onContinue}>
                             <div className="inputs-container">
-                                {isPhoneOption ?
-                                    <section>
-                                        <div className="input-box top">
-                                            <label>Country code</label>
-                                            <select
-                                                value={countryCode}
-                                                onChange={(e) => setCountryCode(e.target.value)}>
-                                                <option value='972'>Israel (+972)</option>
-                                            </select>
-                                        </div>
-                                        <div className="input-box bottom">
-                                            <label>Phone number</label>
-                                            <section>
-                                                <span>+{countryCode}</span>
-                                                <input
-                                                    type="tel"
-                                                    required
-                                                    name="phone"
-                                                    onChange={handleChange}
-                                                    value={credentials.phone || ''} />
-                                            </section>
-                                        </div>
-                                    </section>
-                                    : <section>
+                                {!isLogin ? (
+                                    isPhoneOption ? (
+                                        <section>
+                                            <div className="input-box top">
+                                                <label>Country code</label>
+                                                <select
+                                                    value={countryCode}
+                                                    onChange={(e) => setCountryCode(e.target.value)}>
+                                                    <option value='972'>Israel (+972)</option>
+                                                </select>
+                                            </div>
+                                            <div className="input-box bottom">
+                                                <label>Phone number</label>
+                                                <section>
+                                                    <span>+{countryCode}</span>
+                                                    <input
+                                                        type="tel"
+                                                        required
+                                                        name="phone"
+                                                        onChange={handleChange}
+                                                        value={credentials.phone || ''} />
+                                                </section>
+                                            </div>
+                                        </section>
+                                    ) : (
                                         <div className="input-box top">
                                             <input
                                                 type="email"
@@ -147,8 +150,21 @@ export function LoginModal({ onClose }) {
                                                 value={credentials.email || ''}
                                                 onChange={handleChange} />
                                         </div>
-                                    </section>
-                                }
+                                    )
+                                ) : (
+                                    <div className="input-box">
+                                        <label>Password</label>
+                                        <input
+                                            type="password"
+                                            placeholder="Enter your password"
+                                            required
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            autoFocus
+                                        />
+                                    </div>
+
+                                )}
                             </div>
 
                             <p className="policy-text">
@@ -156,61 +172,35 @@ export function LoginModal({ onClose }) {
                                 <a href="https://www.airbnb.com/help/article/2855">Privacy Policy</a>
                             </p>
 
-                            {isNextStep ? (
-                                isSignup ? (
-                                    <SignupModal
-                                        credentials={credentials}
-                                        setCredentials={setCredentials}
-                                        onBack={onBack}
-                                        onClose={onClose}
-                                    />
-                                ) : (
-                                    <main className="modal-body">
-                                        <form className="login-form" onSubmit={onLogin}>
-                                            <div className="input-box">
-                                                <label>Password</label>
-                                                <input
-                                                    type="password"
-                                                    placeholder="Enter your password"
-                                                    required
-                                                    value={password}
-                                                    onChange={(e) => setPassword(e.target.value)}
-                                                    autoFocus
-                                                />
-                                            </div>
-                                            <button type="submit" className="btn-continue">Log in</button>
-                                        </form>
-                                    </main>
-                                )
-                            ) : (
-                                <main className="modal-body">...</main>
-                            )}
-
                             <button
                                 type="submit"
                                 className="btn-continue"
                             >{isLoading ? 'Checking...' : 'Continue'}</button>
                         </form>
+                        
+                        {!isLogin && (
+                            <>
+                                <div className="divider">
+                                    <span>or</span>
+                                </div>
 
-                        <div className="divider">
-                            <span>or</span>
-                        </div>
-
-                        <div className="social-logins">
-                            <button className="social-btn">
-                                {isPhoneOption ?
-                                    <span onClick={toggleOption}>
-                                        <HiOutlineMail className="icon" />
-                                        Continue with email
-                                    </span>
-                                    :
-                                    <span onClick={toggleOption}>
-                                        <CgSmartphone className="icon" />
-                                        Continue with Phone
-                                    </span>
-                                }
-                            </button>
-                        </div>
+                                <div className="social-logins">
+                                    <button className="social-btn">
+                                        {isPhoneOption ?
+                                            <span onClick={toggleOption}>
+                                                <HiOutlineMail className="icon" />
+                                                Continue with email
+                                            </span>
+                                            :
+                                            <span onClick={toggleOption}>
+                                                <CgSmartphone className="icon" />
+                                                Continue with Phone
+                                            </span>
+                                        }
+                                    </button>
+                                </div>
+                            </>
+                        )}
                     </main>
                 }
             </div>
