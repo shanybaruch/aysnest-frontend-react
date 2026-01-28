@@ -8,6 +8,7 @@ import { SignupModal } from "./SignupModal";
 import { userService } from "../services/user";
 import { login } from "../store/actions/user.actions";
 import { storageService } from "../services/async-storage.service";
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 
 export function LoginModal({ onClose }) {
     const [countryCode, setCountryCode] = useState('972')
@@ -70,8 +71,11 @@ export function LoginModal({ onClose }) {
     }
 
     function onBack(ev) {
-        ev.preventDefault()
+        if (ev) ev.preventDefault()
         setIsNextStep(false)
+        setIsLogin(false)
+        setIsSignup(false)
+        setPassword('')
     }
 
     function toggleOption() {
@@ -94,11 +98,13 @@ export function LoginModal({ onClose }) {
         <div className="modal-overlay" onClick={onClose}>
             <div className="login-modal" onClick={(e) => e.stopPropagation()}>
                 <header className="modal-header">
-                    {isNextStep ?
+                    {(isNextStep || isLogin) ?
                         <button className="btn-back" onClick={onBack} style={{ fontSize: '1.2rem', backgroundColor: 'transparent', margin: 0 }}><IoIosArrowBack /> </button>
                         : <button className="btn-close" onClick={onClose}><IoClose /></button>
                     }
-                    {isNextStep ? <span>Finish signing up</span> : <span>Log in or sign up</span>}
+                    {isNextStep ?
+                        <span>
+                            {isSignup ? 'Finish signing up' : (isLogin ? 'Log in' : 'Log in or sign up')}                        </span> : <span>Log in or sign up</span>}
                 </header>
 
                 {isNextStep && isSignup ? (
@@ -114,9 +120,9 @@ export function LoginModal({ onClose }) {
                     <main className="modal-body">
                         <h2>Welcome to AYS Nest</h2>
 
-                        <form className="login-form" onSubmit={onContinue}>
+                        <form className="login-form" onSubmit={isLogin ? onLogin : onContinue}>
                             <div className="inputs-container">
-                                {!isLogin ? (
+                                {!isLogin && (
                                     isPhoneOption ? (
                                         <section>
                                             <div className="input-box top">
@@ -151,12 +157,13 @@ export function LoginModal({ onClose }) {
                                                 onChange={handleChange} />
                                         </div>
                                     )
-                                ) : (
+                                )}
+
+                                {isLogin && (
                                     <div className="input-box">
                                         <label>Password</label>
                                         <input
                                             type="password"
-                                            placeholder="Enter your password"
                                             required
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
@@ -175,9 +182,11 @@ export function LoginModal({ onClose }) {
                             <button
                                 type="submit"
                                 className="btn-continue"
-                            >{isLoading ? 'Checking...' : 'Continue'}</button>
+                            >
+                                {isLoading ? 'Checking...' : (isLogin ? 'Log in' : 'Continue')}
+                            </button>
                         </form>
-                        
+
                         {!isLogin && (
                             <>
                                 <div className="divider">

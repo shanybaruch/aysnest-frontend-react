@@ -38,10 +38,6 @@ export function SignupModal({ credentials, setCredentials, onBack, onClose, isSi
         ev.preventDefault()
         try {
             if (isSignup) {
-                if (!credentials.email || !credentials.firstName || !credentials.lastName) {
-                    console.error('Missing required fields')
-                    return
-                }
                 await signup(credentials)
             } else {
                 await login(credentials)
@@ -51,26 +47,6 @@ export function SignupModal({ credentials, setCredentials, onBack, onClose, isSi
         } catch (err) {
             console.error('Action failed:', err)
         }
-    }
-    if (!isSignup) {
-        return (
-            <section className="signup-modal">
-                <main className="modal-body">
-                    <h2>Welcome back, {credentials.email || credentials.phone}</h2>
-                    <form className="signup-form" onSubmit={handleSubmit}>
-                        <label>Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Enter your password"
-                            onChange={handleChange}
-                            required
-                        />
-                        <button className="btn-continue">Log in</button>
-                    </form>
-                </main>
-            </section>
-        )
     }
 
     const maxDateString = new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split("T")[0]
@@ -136,7 +112,7 @@ export function SignupModal({ credentials, setCredentials, onBack, onClose, isSi
                         required
 
                     />
-                    <button className="btn-continue">Agree and continue</button>
+                    <button className="btn-continue" disabled={!credentials.password}>Agree and continue</button>
                 </form>
                 <div className="divider"></div>
                 <p className="p-notification">
