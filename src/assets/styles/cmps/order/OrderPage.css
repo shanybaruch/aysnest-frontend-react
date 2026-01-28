@@ -1,8 +1,7 @@
 .order-page {
     display: grid;
-    grid-template-columns: 130px 1fr 80px 1fr 130px;
+    grid-template-columns: 85px 1fr 80px 1fr 38px;
     grid-template-rows: 100px 1fr 20px;
-    /* height: 100%; */
     position: relative;
 
     header {
@@ -14,7 +13,6 @@
         h1 {
             margin: 0;
         }
-
     }
 
     .btn-back {
@@ -181,14 +179,29 @@
                 font-size: 1rem;
                 font-weight: 100;
             }
+         
+            .success-msg-div {
+                display: flex;
+                align-items: center;
+                gap: .2em;
+                justify-content: center;
+                
+                margin-top: 20px;
+                padding-inline-end: 2em;
+               
+                svg {
+                    font-size: 2.1rem;
+                }
+                
+                .success-msg-span {
+                    font-size: 1.3rem;
+                    color: var(--clr1);
+                    font-weight: 600;
+                }
+            }
         }
     }
 
-    .success-msg {
-        margin-top: 20px;
-        color: green;
-        font-weight: bold;
-    }
 }
 
 @media (max-width: 950px) {
@@ -243,7 +256,7 @@
 
         .btn-back {
             position: fixed;
-            top: 15px;
+            top: 50px;
             right: 10px;
 
             font-size: .9rem;

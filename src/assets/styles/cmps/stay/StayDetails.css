@@ -267,6 +267,9 @@
     .info-bar-list {
         padding-left: 24px;
         padding-right: 24px;
+        .title {
+            display: none;
+        }
     }
 
     .heading {
@@ -278,9 +281,6 @@
         display: none !important;
     }
 
-    .title {
-        display: none;
-    }
 
     .stay-details .sides {
         max-width: 500;

@@ -6,7 +6,7 @@
     border-radius: 32px;
     padding: 22px 34px 8px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-    width: 50%;
+    width: 100%;
     z-index: 10;
 
     .guest-row {
@@ -91,4 +91,12 @@
             }
         }
     }
+}
+
+@media (max-width: 744px) {
+    .guests-dropdown {
+        top: 210px;
+
+    }
+
 }

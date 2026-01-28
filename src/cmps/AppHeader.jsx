@@ -160,6 +160,7 @@ export function AppHeader({ isAtTop }) {
                     setIsEditingWhen={setIsEditingWhen}
                     setIsEditingWho={setIsEditingWho}
                     getGuestLabel={getGuestLabel}
+                    isCompact={isCompact}
                 />
             }
             {isLoginOpen && <LoginModal onClose={() => setIsLoginOpen(false)} />}

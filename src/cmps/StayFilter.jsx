@@ -11,7 +11,7 @@ import { loadStays } from '../store/actions/stay.actions'
 export function StayFilter(
     { isEditingWhere, isEditingWhen, isEditingWho,
         setIsEditingWhere, setIsEditingWhen, setIsEditingWho,
-        getGuestLabel
+        getGuestLabel, isCompact
     }) {
 
     const dispatch = useDispatch()
@@ -89,7 +89,6 @@ export function StayFilter(
         setIsEditingWhere(false)
         setIsEditingWhen(false)
         setIsEditingWho(false)
-        setIsMini(true)
     }
 
     return (
@@ -97,20 +96,24 @@ export function StayFilter(
             {isAnyActive && (
                 <div className="filter-backdrop" onClick={closeAllModals}></div>
             )}
-            <section className={`stay-filter ${!isMini ? 'mini-selection' : ''}`}>
+            <section className={`stay-filter ${!isAnyActive ? 'mini' : ''}`}>
 
-                <div className="mini-selection"
-                    onClick={() => {
-                        setIsMini(false)
-                        setIsEditingWhere(true)
-                        setMiniSelectionOpen(true)
-                    }}>
-                    <IoSearch />
-                    <span>Search for homes</span>
-                </div>
+                {!isCompact && (
+                    <div className="mini-selection"
+                        onClick={() => {
+                            setMiniSelectionOpen(!miniSelectionOpen)
+                            setIsEditingWhere(!isEditingWhere)
+                            setIsEditingWhen(false)
+                            setIsEditingWho(false)
+                        }}>
+                        <IoSearch />
+                        <span>Search for homes</span>
+                    </div>
+
+                )}
 
                 <div className='selection'>
-                    <button className="mobile-close-btn" onClick={closeAllModals}>✕</button>
+                    {/* <button className="mobile-close-btn" onClick={closeAllModals}>✕</button> */}
                     <section
                         className={`select-where ${isEditingWhere ? 'active' : ''}`}
                         onClick={(ev) => {

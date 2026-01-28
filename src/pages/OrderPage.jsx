@@ -12,6 +12,9 @@ import { FaCreditCard } from "react-icons/fa6";
 import { loadStay } from "../store/actions/stay.actions.js";
 import { showSuccessMsg } from "../services/event-bus.service.js";
 
+import { MdOutlineDone } from "react-icons/md";
+
+
 export function OrderPage() {
     const navigate = useNavigate()
     const { orderId } = useParams()
@@ -133,7 +136,6 @@ export function OrderPage() {
                 await updateUser(userToUpdate)
             }
             setIsConfirm(true)
-            dispatch({ type: SET_ORDER, order: null })
             showSuccessMsg('Order confirmed!')
         } catch (err) {
             console.error('Failed to save order', err)
@@ -203,12 +205,10 @@ export function OrderPage() {
                         <select
                             name="country"
                             placeholder="Country/region"
-                            id=""
                         >
                             <option value="israel" default>Israel</option>
                             <option value="USA">USA</option>
                         </select>
-                        <img src="" alt="" />
                         <button type="submit">Next</button>
                     </section>
                 </form>
@@ -255,8 +255,9 @@ export function OrderPage() {
                     </div>
 
                     {isConfirm && (
-                        <div className="success-msg">
-                            ✔️ Reservation success!
+                        <div className="success-msg-div">
+                            <MdOutlineDone />
+                            <span className="success-msg-span">Reservation success</span>
                         </div>
                     )}
                 </section>

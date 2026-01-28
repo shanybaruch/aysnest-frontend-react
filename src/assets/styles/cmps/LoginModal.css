@@ -76,6 +76,7 @@
                     font-size: .8rem;
                     color: var(--gray);
                     font-weight: 400;
+                    padding-top: 3px;
                 }
 
                 select,
@@ -94,6 +95,9 @@
                     &:has(input[type="email"]) {
                         padding: 14px 12px;
                         border-bottom: none;
+                    }
+                    select {
+                        padding-inline-start: -9px;
                     }
                 }
 
