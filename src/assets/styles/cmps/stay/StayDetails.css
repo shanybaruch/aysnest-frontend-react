@@ -263,17 +263,18 @@
 }
 
 @media (max-width: 743px) {
-    .all-stay-details{
+    .all-stay-details {
         width: 100vw;
     }
 
-    .stay-details-padding{
+    .stay-details-padding {
         padding: 24px;
     }
 
-    .description{
+    .description {
         padding-top: 10px !important;
     }
+
     .stay-details,
     .reviews,
     .info-bar-list {
@@ -285,9 +286,11 @@
         }
     }
 
-    .heading {
-        width: 100%;
+    .stay-details .heading {
+        display: flex;
+        justify-content: flex-end;
         gap: 12px;
+        width: 100%;
     }
 
     .btn-responsive {

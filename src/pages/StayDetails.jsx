@@ -152,6 +152,7 @@ export function StayDetails() {
           <div>
             <div className="heading flex">
               <h1 className='title'>{stay?.name}</h1>
+              <button></button>
               <div className="right-heading flex">
                 <button
                   className='share'
