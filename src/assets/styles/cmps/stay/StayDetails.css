@@ -260,7 +260,7 @@
 
 }
 
-@media (max-width: 743px) {
+@media (max-width: 768px) {
 
     .stay-details,
     .reviews,
@@ -313,7 +313,7 @@
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 743px) {
 
     .stay-details,
     .reviews,
