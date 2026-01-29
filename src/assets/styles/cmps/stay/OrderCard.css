@@ -2,6 +2,8 @@
     position: relative;
 
     .order-card {
+        display: grid;
+        justify-self: end;
         position: sticky;
         margin-top: 25px;
         top: 90px;
@@ -56,6 +58,9 @@
             border: 1px solid var(--gray2);
             border-radius: 10px;
             margin-top: 20px;
+            white-space: nowrap;      
+            overflow: hidden;        
+            text-overflow: ellipsis; 
         }
 
         .order-dates {
@@ -63,7 +68,8 @@
             grid-template-columns: 1fr 1fr;
 
             .date-box {
-                padding-inline-start: 15px;
+
+                padding: 10px 12px 10px;
                 border-right: 1px solid var(--gray2);
                 min-height: 56px;
 
@@ -74,6 +80,7 @@
 
             .date-box:last-child {
                 border-right: none;
+                padding: 10px 12px 10px;
             }
         }
 
@@ -156,8 +163,6 @@
 
 @media (max-width: 743px) {
     .small-side{
-        /* display: flex;
-        justify-content: center; */
         position: fixed;
         bottom: 0;
         left: 0;
@@ -169,7 +174,6 @@
         background-color: var(--white);
         border-top: 1px solid var(--gray-light);
         z-index: 999;
-        /* gap: 10px; */
 
         .order-card {
             width: 100%;
@@ -222,8 +226,9 @@
                     display: flex;
                     gap: 4px;
                     font-size: 0.875rem;
-
+                    
                     .date-box {
+                        padding: 0px;
                         display: inline;
                         border-right: 0px;
 
@@ -262,6 +267,38 @@
 
                 .order-note {
                     display: none;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 394px){
+    .small-side {
+        .order-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            align-items: stretch;
+
+            .order-top{
+                align-self: flex-start;
+            }
+
+            .order-summary {
+                .order-dates {
+                    .date-box {
+                        padding: 0px;
+                        min-height: 42px;
+                    }
+                }
+            }
+            .order-bottom{
+                display: flex;
+                flex-grow: 4;
+
+                .reserve-btn{
+                    margin: auto;
                 }
             }
         }
