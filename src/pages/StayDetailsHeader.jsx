@@ -1,4 +1,7 @@
-export function StayDetailsHeader({ photosRef, amenitiesRef, reviewsRef, hidden }) {
+import { OrderCard } from "../cmps/OrderCard"
+
+
+export function StayDetailsHeader({ photosRef, amenitiesRef, reviewsRef, hidden, showOrderCard }) {
 
     function scrollTo(ref) {
         ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -14,15 +17,17 @@ export function StayDetailsHeader({ photosRef, amenitiesRef, reviewsRef, hidden 
     return (
         <nav className={`stay-header ${hidden ? 'hidden' : ''}`}>
             <ul className="stay-header-nav">
-                <li onClick={scrollToTop}>Photos</li>
-                <li onClick={() => scrollTo(amenitiesRef)}>Amenities</li>
-                <li onClick={() => scrollTo(reviewsRef)}>Reviews</li>
-            </ul>
 
-            {/* <section className="header-order hidden">
-                <OrderCard />
-            </section> */}
+                <div className="small-stay-header">
+                    <li onClick={scrollToTop}>Photos</li>
+                    <li onClick={() => scrollTo(amenitiesRef)}>Amenities</li>
+                    <li onClick={() => scrollTo(reviewsRef)}>Reviews</li>
+                </div>
+                
+                <section className={`header-order ${showOrderCard ? '' : 'hidden'}`}>
+                    <OrderCard />
+                </section>
+            </ul>
         </nav>
-        
     )
 }

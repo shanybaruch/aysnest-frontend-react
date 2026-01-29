@@ -43,6 +43,7 @@ export function StayDetails() {
   const photosRef = useRef(null)
   const amenitiesRef = useRef(null)
   const reviewsRef = useRef(null)
+  const calendarRef = useRef(null)
 
 
   const stay = useSelector(storeState => storeState.stayModule.stay)
@@ -53,6 +54,7 @@ export function StayDetails() {
   const loggedInUser = useSelector(storeState => storeState.userModule.user)
   const [isShareOpen, setIsShareOpen] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
+  const [showOrderInHeader, setShowOrderInHeader] = useState(false)
   // const [savedIds, setSavedIds] = useState([])
   const isSaved = (loggedInUser && stay) ? loggedInUser?.saved?.includes(stay?._id) : false
 
@@ -64,6 +66,27 @@ export function StayDetails() {
   const { ref: photosInViewRef, inView: isPhotosInView } = useInView({
     threshold: 0.1,
   })
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (calendarRef.current) {
+        const calendarRect = calendarRef.current.getBoundingClientRect()
+        const calendarBottom = calendarRect.bottom
+        const windowHeight = window.innerHeight
+        
+        if (calendarBottom <= 50) {
+          setShowOrderInHeader(true)
+        } else {
+          setShowOrderInHeader(false)
+        }
+        console.log('Calendar bottom:', calendarRect.bottom, 'Show in header:', calendarBottom <= 50)
+      }
+    }
+    
+    handleScroll()
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -86,15 +109,12 @@ export function StayDetails() {
 
   }, [])
 
-
-
   useEffect(() => {
     loadStay(stayId)
     return () => {
       dispatch({ type: 'SET_STAY', stay: null })
     }
   }, [stayId])
-
 
   async function onAddStayMsg(stayId) {
     try {
@@ -148,6 +168,7 @@ export function StayDetails() {
         hidden={isPhotosInView}
         amenitiesRef={amenitiesRef}
         reviewsRef={reviewsRef}
+        showOrderCard={showOrderInHeader}
       />
 
       <div className="stay-details">
@@ -238,7 +259,7 @@ export function StayDetails() {
                   </div>
 
                 </section>
-                <section className="booking-section">
+                <section className="booking-section " ref={calendarRef}>
                   <h3>
                     {Math.max(nightsCount - 1, 0)} {nightLabel} in {stay?.loc.city}
                   </h3>
