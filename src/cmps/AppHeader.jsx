@@ -73,7 +73,7 @@ export function AppHeader({ isAtTop }) {
         setIsHosting(prev => !prev);
 
         if (!isHosting) {
-            navigate(`/user/${user._id}/host`);
+            navigate(`/user/${user._id}/host/orders`);
         } else {
             navigate('/stay');
         }
