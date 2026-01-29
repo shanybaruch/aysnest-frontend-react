@@ -1,0 +1,29 @@
+.user-img {
+
+    &.user-nav-img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .user-img-src {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .user-initials-fallback {
+        width: 100%;
+        height: 100%;
+        background-color: var(--clr1);
+        color: var(--white);
+        font-size: .9rem;
+        font-weight: 400;
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+    }
+}
+

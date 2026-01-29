@@ -27,6 +27,7 @@ export function UserAbout() {
             </section>
             <section className='main'>
                 <UserImg
+                    fullname={user.fullname}
                     url={user.imgUrl}
                     className='img-profile'
                     alt="img-profile"

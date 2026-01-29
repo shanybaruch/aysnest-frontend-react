@@ -42,6 +42,7 @@ export function UserDetails() {
         <div className='nav-links'>
           <NavLink to={`/user/${params.id}/about`}>
             <UserImg
+              fullname={user.fullname}
               url={user.imgUrl}
               className="img-profile"
               alt="img-profile"

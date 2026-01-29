@@ -94,6 +94,12 @@
         flex-direction: column;
         align-items: center;
 
+        .user-img {
+            .user-initials-fallback {
+                font-size: 3rem;
+            }
+        }
+
         .name {
             margin: 0;
             font-size: 1.6rem;

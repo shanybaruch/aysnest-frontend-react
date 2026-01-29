@@ -313,6 +313,8 @@
                 }
 
                 &.user-img-link {
+                    height: 38px;
+                    width: 38px;
                     padding-inline: 0;
 
                     &:hover {
@@ -364,28 +366,6 @@
             border-radius: 50%;
         }
     }
-
-    .user-img {
-
-        .user-img-src {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .user-initials-fallback {
-            width: 100%;
-            height: 100%;
-            background-color: var(--clr1);
-            color: var(--white);
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-        }
-    }
-
 }
 
 .main-screen {
