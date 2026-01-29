@@ -23,7 +23,7 @@
     }
 
     &.compact {
-        padding: 0.6rem 30px .4rem;
+        padding: 1.1rem 30px 1.1rem;;
 
         .selection {
             max-height: 0;
@@ -44,7 +44,6 @@
 
         width: 100%;
         padding-inline: 0;
-        max-width: 1440px;
         margin: 0 auto;
         color: var(--gray);
         font-size: .9em;
