@@ -128,6 +128,7 @@ export function AppHeader({ isAtTop }) {
                         {user && (
                             <Link to={`/user/${user._id}/about`} className="menu-item user-img-link">
                                 <UserImg
+                                    fullname={user.fullname}
                                     url={user.imgUrl}
                                     className="user-nav-img"
                                 />
