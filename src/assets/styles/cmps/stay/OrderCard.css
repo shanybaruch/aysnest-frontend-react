@@ -2,6 +2,8 @@
     position: relative;
 
     .order-card {
+        display: grid;
+        justify-self: end;
         position: sticky;
         margin-top: 25px;
         top: 90px;
@@ -56,6 +58,9 @@
             border: 1px solid var(--gray2);
             border-radius: 10px;
             margin-top: 20px;
+            white-space: nowrap;      
+            overflow: hidden;        
+            text-overflow: ellipsis; 
         }
 
         .order-dates {
@@ -63,7 +68,8 @@
             grid-template-columns: 1fr 1fr;
 
             .date-box {
-                padding-inline-start: 15px;
+
+                padding: 10px 12px 10px;
                 border-right: 1px solid var(--gray2);
                 min-height: 56px;
 
@@ -74,6 +80,7 @@
 
             .date-box:last-child {
                 border-right: none;
+                padding: 10px 12px 10px;
             }
         }
 
