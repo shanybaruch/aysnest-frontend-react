@@ -13,7 +13,8 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { LoginModal } from './LoginModal'
 import { StayFilter } from './StayFilter'
 import { UserImg } from './UserImg'
-import { HostPage } from '../pages/HostPage.jsx'
+import { HostHeader } from './HostHeader.jsx'
+
 
 export function AppHeader({ isAtTop }) {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -35,6 +36,8 @@ export function AppHeader({ isAtTop }) {
     const isCompact = (!isAtTop || !isHomePage) && !isAnyActive
     const isStayDetails = location.pathname.startsWith('/stay/') && location.pathname !== '/stay' && !isOrderPage
     const shouldHideFilter = isUserPage || isOrderPage
+    const isHostingPage = location.pathname.startsWith('/user/') && location.pathname.endsWith('/host');
+    const shouldHost = isHostingPage
 
     const guests = filterBy.guests || { adults: 0, children: 0, infants: 0, pets: 0 }
     const { adults, children, infants, pets } = guests
@@ -117,7 +120,7 @@ export function AppHeader({ isAtTop }) {
                         )}
                     </section>
                 )}
-
+                {shouldHost && <HostHeader />}
                 <section className='nav-end'>
                     <div>
                         <button className="btn-hosting" onClick={handleSwitch}>
@@ -166,6 +169,7 @@ export function AppHeader({ isAtTop }) {
                         )}
                     </div>
                 </section>
+
             </nav>
 
 
@@ -182,6 +186,7 @@ export function AppHeader({ isAtTop }) {
                     isCompact={isCompact}
                 />
             }
+
             {isLoginOpen && <LoginModal onClose={() => setIsLoginOpen(false)} />}
         </header>
     )
