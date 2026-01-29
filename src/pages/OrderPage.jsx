@@ -136,7 +136,7 @@ export function OrderPage() {
                 await updateUser(userToUpdate)
             }
             setIsConfirm(true)
-            showSuccessMsg('Order confirmed!')
+            showSuccessMsg('The order was successfully!')
         } catch (err) {
             console.error('Failed to save order', err)
         }
@@ -144,11 +144,12 @@ export function OrderPage() {
 
     return (
         <section className="order-page">
+            
+            <header>
             <button className="btn-back" onClick={() => navigate(-1)}>
                 <FaArrowLeft />
             </button>
 
-            <header>
                 <h1>Confirm and pay</h1>
             </header>
 

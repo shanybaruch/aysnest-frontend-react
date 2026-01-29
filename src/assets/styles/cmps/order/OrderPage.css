@@ -1,8 +1,10 @@
 .order-page {
     display: grid;
-    grid-template-columns: 85px 1fr 80px 1fr 38px;
+    grid-template-columns: 90px 1fr 140px 1fr 90px;
     grid-template-rows: 100px 1fr 20px;
     position: relative;
+
+    padding-inline: 30px;
 
     header {
         grid-column: 2 / 3;
@@ -20,7 +22,6 @@
         grid-column: 1;
         grid-row: 1;
         background-color: var(--white-gray);
-        margin: 2em 1.2em .7em 0;
         padding: 3px 2px 0 3px;
         font-size: 1rem;
         font-weight: 200;
@@ -39,10 +40,13 @@
             grid-column: 2 / 3;
 
             padding: 1.5em 2em;
-            margin-block-end: 4.5em;
             border-radius: 25px;
             border: 1px solid var(--white-gray);
             box-shadow: 0px 3px 20px 0px var(--gray-light);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
 
             .card {
                 p {
@@ -179,20 +183,22 @@
                 font-size: 1rem;
                 font-weight: 100;
             }
-         
+
             .success-msg-div {
                 display: flex;
                 align-items: center;
                 gap: .2em;
                 justify-content: center;
-                
+
                 margin-top: 20px;
                 padding-inline-end: 2em;
-               
+                position: fixed;
+                top: 75px;
+
                 svg {
                     font-size: 2.1rem;
                 }
-                
+
                 .success-msg-span {
                     font-size: 1.3rem;
                     color: var(--clr1);
@@ -204,7 +210,7 @@
 
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
     .order-page {
         grid-template-columns: 1fr;
         grid-template-rows: auto;

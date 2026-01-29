@@ -9,7 +9,6 @@
     z-index: 25;
     top: 0;
     width: 100%;
-    max-width: 1480px;
 
     background-color: var(--gray-light2);
     padding: .3rem 30px 1.9rem;

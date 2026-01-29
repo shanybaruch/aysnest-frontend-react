@@ -127,7 +127,7 @@ export function StayDetails() {
 
     try {
       await updateUser({ ...loggedInUser, saved: newSavedIds })
-      showSuccessMsg('Updated successfully')
+      showSuccessMsg('Saved')
     } catch (err) {
       showErrorMsg('Could not save')
     }
