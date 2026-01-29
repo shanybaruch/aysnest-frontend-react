@@ -226,8 +226,9 @@
                     display: flex;
                     gap: 4px;
                     font-size: 0.875rem;
-
+                    
                     .date-box {
+                        padding: 0px;
                         display: inline;
                         border-right: 0px;
 
@@ -266,6 +267,39 @@
 
                 .order-note {
                     display: none;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 394px){
+    .small-side {
+        .order-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            align-items: stretch;
+
+            .order-top{
+                align-self: flex-start;
+            }
+
+            .order-summary {
+                .order-dates {
+                    .date-box {
+                        padding: 0px;
+                        min-height: 42px;
+                    }
+
+                }
+            }
+            .order-bottom{
+                display: flex;
+                flex-grow: 4;
+
+                .reserve-btn{
+                    margin: auto;
                 }
             }
         }
