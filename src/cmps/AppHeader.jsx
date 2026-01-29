@@ -36,8 +36,10 @@ export function AppHeader({ isAtTop }) {
     const isCompact = (!isAtTop || !isHomePage) && !isAnyActive
     const isStayDetails = location.pathname.startsWith('/stay/') && location.pathname !== '/stay' && !isOrderPage
     const shouldHideFilter = isUserPage || isOrderPage
-    const isHostingPage = location.pathname.startsWith('/user/') && location.pathname.endsWith('/host');
-    const shouldHost = isHostingPage
+    const isHostingOrders = location.pathname.startsWith('/user/') && location.pathname.endsWith('/orders');
+    const isHostingCalendar = location.pathname.startsWith('/user/') && location.pathname.endsWith('/calendar');
+    const isHostingListings = location.pathname.startsWith('/user/') && location.pathname.endsWith('/listings');
+    const shouldHost = isHostingOrders || isHostingCalendar || isHostingListings
 
     const guests = filterBy.guests || { adults: 0, children: 0, infants: 0, pets: 0 }
     const { adults, children, infants, pets } = guests
@@ -73,7 +75,7 @@ export function AppHeader({ isAtTop }) {
         setIsHosting(prev => !prev);
 
         if (!isHosting) {
-            navigate(`/user/${user._id}/host`);
+            navigate(`/user/${user._id}/host/orders`);
         } else {
             navigate('/stay');
         }
