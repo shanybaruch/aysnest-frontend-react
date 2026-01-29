@@ -65,11 +65,11 @@
     pointer-events: none;
 }
 
-@media (max-width: 1120px) {
+/* @media (max-width: 1120px) {
     .stay-header-nav {
         padding: 30px 40px;
     }
-}
+} */
 
 @media (max-width: 743px){
     .stay-header-nav{
