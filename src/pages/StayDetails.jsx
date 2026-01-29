@@ -23,7 +23,7 @@ import { useInView } from 'react-intersection-observer'
 import { RiStarFill, RiTvLine } from "react-icons/ri";
 
 import { FaRegHeart } from "react-icons/fa";
-import { FaHeart , FaArrowLeft} from "react-icons/fa6";
+import { FaHeart, FaArrowLeft } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
 import { CgMenuGridO } from "react-icons/cg";
 
@@ -274,8 +274,9 @@ export function StayDetails() {
         )}
 
         {/* <button onClick={() => onAddStayMsg(stay._id)}>Add stay msg</button> */}
-
+        <div className="divider btn-responsive"></div>
       </div>
+
       <InfoBar className='info-bar' />
       <section className='reviews' ref={reviewsRef}>
         <div className="divider"></div>

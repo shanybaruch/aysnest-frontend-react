@@ -198,8 +198,8 @@
 
     .btn-description-more {
         background-color: var(--white-gray);
-        height: 48px;
-        padding: 14px 24px;
+        height: 40px;
+        padding: 10px 15px;
         margin: 10px 0;
         border-radius: 10px;
         font-size: 16px;
@@ -270,7 +270,7 @@
     }
 
     .stay-details-padding {
-        padding: 24px;
+        padding: 0 24px;
     }
 
     .description {
@@ -401,6 +401,52 @@
             font-size: .9rem;
             font-weight: 300;
             margin: 0;
+        }
+    }
+
+    .stay-details .sides .big-side .booking-section {
+
+        h3,
+        p {
+            padding: 0 24px;
+        }
+
+        .calendar-dropdown {
+            display: flex;
+            justify-content: flex-start;
+            margin: 16px 24px 0;
+
+            .calendar {
+                padding: 15px 0;
+            }
+
+            .rdp-month {
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+
+                .rdp-month_grid {
+                    width: calc(100vw - 48px);
+                    margin-right: auto;
+                    justify-content: start;
+
+                    thead .rdp-weekdays th {
+                        padding: 1.5em;
+
+                    }
+
+                    .rdp-week td {
+                        padding: .3em;
+                    }
+
+
+
+                }
+
+                button {
+                    padding: .8em;
+                }
+            }
         }
     }
 

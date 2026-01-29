@@ -1,5 +1,6 @@
 .photos-page {
-  padding: 16px 80px; /* שוליים 80px מצדדים */
+  padding: 16px 80px;
+  /* שוליים 80px מצדדים */
   box-sizing: border-box;
 }
 
@@ -12,9 +13,12 @@
 /* Grid של התמונות */
 .photos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* columns גמישות */
-  grid-auto-rows: 200px; /* גובה בסיסי לכל תמונה */
-  gap: 8px; /* רווח בין התמונות */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  /* columns גמישות */
+  grid-auto-rows: 200px;
+  /* גובה בסיסי לכל תמונה */
+  gap: 8px;
+  /* רווח בין התמונות */
 }
 
 /* כל תמונה */
@@ -26,15 +30,57 @@
   transition: transform 0.3s;
 }
 
-.photo-0 { grid-row: span 2; grid-column: span 2; }
+.photo-0 {
+  grid-row: span 2;
+  grid-column: span 2;
+}
 
-.photo-3 { grid-row: span 2; grid-column: span 1; }
+.photo-3 {
+  grid-row: span 2;
+  grid-column: span 1;
+}
+
+.heading {
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0 20px;
+
+  .title {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  .share,
+  .save,
+  .arrow-responsive {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    background: none;
+    font-size: .9rem;
+    font-weight: 300;
+    margin: 0;
+
+    span {
+      text-decoration: underline;
+    }
+
+    svg {
+      width: 18px;
+    }
+
+  }
+}
+
 
 /* Responsive */
 @media (max-width: 1024px) {
   .photos-page {
     padding: 16px 40px;
   }
+
   .photos-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     grid-auto-rows: 150px;
@@ -45,6 +91,7 @@
   .photos-page {
     padding: 16px 16px;
   }
+
   .photos-grid {
     grid-template-columns: 1fr;
     grid-auto-rows: 200px;
