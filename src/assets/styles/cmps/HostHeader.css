@@ -30,3 +30,9 @@
         }
     }
 }
+
+@media (max-width: 1125px) {
+  .btn-hosting {
+    display: none;
+  }
+}
