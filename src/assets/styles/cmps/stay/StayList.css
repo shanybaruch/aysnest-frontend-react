@@ -10,7 +10,7 @@
     }
 
     .stays-grid {
-        --min-column-size: 170px;
+        --min-column-size: 210px;
 
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(var(--min-column-size), 1fr));
