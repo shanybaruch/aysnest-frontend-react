@@ -9,17 +9,17 @@ export function HostHeader() {
       <div className="host-header-nav">
         <ul>
           <li>
-            <NavLink to="user/${user._id}/host/orders" className={({ isActive }) => isActive ? 'active' : ''}>
+            <NavLink to={`/user/${user._id}/host/orders`} className={({ isActive }) => isActive ? 'active' : ''}>
               Orders
             </NavLink>
           </li>
           <li>
-            <NavLink to="user/${user._id}/host/calendar" className={({ isActive }) => isActive ? 'active' : ''}>
+            <NavLink to={`/user/${user._id}/host/calendar`} className={({ isActive }) => isActive ? 'active' : ''}>
               Calendar
             </NavLink>
           </li>
           <li>
-            <NavLink to="user/${user._id}/host/listings" className={({ isActive }) => isActive ? 'active' : ''}>
+            <NavLink to={`/user/${user._id}/host/listings`} className={({ isActive }) => isActive ? 'active' : ''}>
               Listings
             </NavLink>
           </li>
