@@ -146,7 +146,8 @@
                     .rdp-month {
                         .rdp-month_grid {
                             thead .rdp-weekdays th {
-                                padding: 3em;
+                                padding: 0px 3em;
+                                font-weight: 600; 
                             }
 
                             .rdp-week td {
