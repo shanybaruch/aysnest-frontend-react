@@ -4,10 +4,10 @@ import { loadOrders } from '../store/actions/order.actions'
 import { Loader } from '../cmps/Loader'
 
 export function TripPage() {
-    const orders = useSelector(storeState => storeState.orderModule.orders)
+    const user = useSelector(storeState => storeState.userModule.user)
+
 
     useEffect(() => {
-        loadOrders()
     }, [])
 
     function getFormattedDate(dateStr) {
@@ -19,29 +19,29 @@ export function TripPage() {
         })
     }
 
-    if (!orders) return <Loader />
+    if (!user) return <Loader />
     return (
         <section className="trips-page ">
             <h1 className="title">Trips</h1>
 
-            {orders.length === 0 ? (
+            {user.trips.length === 0 ? (
                 <div className="no-trips">
                     <h3>No trips booked... yet!</h3>
                     <p>Time to dust off your bags and start planning your next adventure.</p>
                 </div>
             ) : (
-                <div className="orders-grid">
-                    {orders.map(order => (
-                        <div key={order._id} className="order-card">
+                <div className="trips-grid">
+                    {user.trips.map(trip => (
+                        <div key={trip._id} className="trip-card">
                             <div className="img-container">
-                                <img src={order.stay.imgUrls[0]} alt={order.stay.name} />
-                                <span className={`status-badge ${order.status}`}>{order.status}</span>
+                                <img src={trip.stay.imgUrls[0]} alt={trip.stay.name} />
+                                <span className={`status-badge ${trip.status}`}>{trip.status}</span>
                             </div>
-                            <div className="order-details">
-                                <h3 className="stay-name">{order.stay.name}</h3>
-                                <p className="stay-host">Hosted by {order.hostName || 'Host'}</p>
-                                <p className="order-dates">{getFormattedDate(order.startDate)} – {getFormattedDate(order.endDate)}</p>
-                                <p className="order-price">₪{order.totalPrice.toLocaleString()}</p>
+                            <div className="trip-details">
+                                <h3 className="stay-name">{trip.stay.name}</h3>
+                                <p className="stay-host">Hosted by {trip.hostName || 'Host'}</p>
+                                <p className="trip-dates">{getFormattedDate(trip.startDate)} – {getFormattedDate(trip.endDate)}</p>
+                                <p className="trip-price">₪{trip.totalPrice.toLocaleString()}</p>
                             </div>
                         </div>
                     ))}
