@@ -15,6 +15,7 @@ import { Loader } from '../cmps/Loader.jsx'
 import { OrderCard } from '../cmps/OrderCard.jsx'
 import { InfoBar } from '../cmps/InfoBar.jsx'
 
+
 import { useSearchParams } from 'react-router-dom'
 import { SET_FILTER_BY } from '../store/reducers/stay.reducer'
 
@@ -22,13 +23,15 @@ import { useInView } from 'react-intersection-observer'
 import { RiStarFill, RiTvLine } from "react-icons/ri";
 
 import { FaRegHeart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa6";
+import { FaHeart , FaArrowLeft} from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
 import { CgMenuGridO } from "react-icons/cg";
+
 
 import { useLocation } from 'react-router-dom'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { loadStay, addStayMsg } from '../store/actions/stay.actions'
+import { SvgIcon } from '../cmps/SvgIcon.jsx'
 
 
 export function StayDetails() {
@@ -152,7 +155,9 @@ export function StayDetails() {
           <div>
             <div className="heading flex">
               <h1 className='title'>{stay?.name}</h1>
-              <button></button>
+              <button className='arrow-responsive' onClick={() => navigate(-1)}>
+                <FaArrowLeft />
+              </button>
               <div className="right-heading flex">
                 <button
                   className='share'

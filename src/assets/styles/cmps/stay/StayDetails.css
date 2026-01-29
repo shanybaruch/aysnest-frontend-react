@@ -23,6 +23,9 @@
             font-weight: 500;
         }
 
+        .arrow-responsive {
+            display: none;
+        }
     }
 
     .share,
@@ -45,7 +48,6 @@
         }
 
     }
-
 
     .sides {
         display: grid;
@@ -284,6 +286,7 @@
         .title {
             display: none;
         }
+
     }
 
     .stay-details .heading {
@@ -386,4 +389,20 @@
             }
         }
     }
+
+    .stay-details .heading {
+        justify-content: space-between;
+
+        .arrow-responsive {
+            display: block;
+            align-items: center;
+
+            background: none;
+            font-size: .9rem;
+            font-weight: 300;
+            margin: 0;
+        }
+    }
+
+
 }
