@@ -1,6 +1,5 @@
 .photos-page {
   padding: 16px 80px;
-  /* שוליים 80px מצדדים */
   box-sizing: border-box;
 }
 
@@ -10,18 +9,13 @@
   font-weight: bold;
 }
 
-/* Grid של התמונות */
 .photos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  /* columns גמישות */
   grid-auto-rows: 200px;
-  /* גובה בסיסי לכל תמונה */
   gap: 8px;
-  /* רווח בין התמונות */
 }
 
-/* כל תמונה */
 .photo-item img {
   width: 100%;
   height: 100%;
@@ -74,8 +68,6 @@
   }
 }
 
-
-/* Responsive */
 @media (max-width: 1024px) {
   .photos-page {
     padding: 16px 40px;

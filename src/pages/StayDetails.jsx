@@ -210,7 +210,7 @@ export function StayDetails() {
                   </div>
                 </div>
 
-                <div className="stay-details-padding">
+                <div className="stay-details-padding description-wrapper">
                   <div className="divider"></div>
                   <p className={`description-p ${isExpanded ? 'expanded' : ''}`}>
                     {stay?.description}
