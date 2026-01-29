@@ -6,11 +6,12 @@
   --white: #FFFFFF;
   --white-gray: #F2F2F2;
   --gray-light: #EBEBEB;
+  --gray-light2:#fdfdfd;
   --gray-light-hover: #DDDDDD;
   --gray2:rgb(174, 174, 174);
   --gray: #6A6A6A;
   --black: #222222;
-  --background-gray: #F7F7F7;
+  --background-gray: #f7f7f7;
 
   --success: rgb(41, 189, 73);
   --error: rgb(216, 59, 59);

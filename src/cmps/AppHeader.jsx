@@ -13,6 +13,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { LoginModal } from './LoginModal'
 import { StayFilter } from './StayFilter'
 import { UserImg } from './UserImg'
+import { HostPage } from '../pages/HostPage.jsx'
 
 export function AppHeader({ isAtTop }) {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -25,6 +26,7 @@ export function AppHeader({ isAtTop }) {
     const [isEditingWhen, setIsEditingWhen] = useState(false)
     const [isEditingWho, setIsEditingWho] = useState(false)
     const [isLoginOpen, setIsLoginOpen] = useState(false)
+    const [isHosting, setIsHosting] = useState(false);
 
     const isUserPage = location.pathname.startsWith('/user')
     const isOrderPage = location.pathname.startsWith('/order')
@@ -60,6 +62,17 @@ export function AppHeader({ isAtTop }) {
             showSuccessMsg(`Bye now`)
         } catch (err) {
             showErrorMsg('Cannot logout')
+        }
+    }
+
+
+    function handleSwitch() {
+        setIsHosting(prev => !prev);
+
+        if (!isHosting) {
+            navigate(`/user/${user._id}/host`);
+        } else {
+            navigate('/stay');
         }
     }
 
@@ -106,6 +119,11 @@ export function AppHeader({ isAtTop }) {
                 )}
 
                 <section className='nav-end'>
+                    <div>
+                        <button className="btn-hosting" onClick={handleSwitch}>
+                            {isHosting ? 'Switch to traveling' : 'Switch to hosting'}
+                        </button>
+                    </div>
                     <div className="menu-wrapper">
                         {user && (
                             <Link to={`/user/${user._id}/about`} className="menu-item user-img-link">

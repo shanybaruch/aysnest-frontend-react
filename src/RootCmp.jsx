@@ -7,6 +7,7 @@ import { AdminIndex } from './pages/AdminIndex.jsx'
 
 import { StayDetails } from './pages/StayDetails'
 import { StayDetailsPhotos } from './pages/StayDetailsPhotos.jsx'
+import {HostPage} from './pages/HostPage.jsx' 
 import { UserDetails } from './pages/UserDetails'
 
 import { AppHeader } from './cmps/AppHeader'
@@ -55,6 +56,7 @@ export function RootCmp() {
                     </Route>
                     <Route path="user/:id/wishlist" element={<Wishlist />} />
                     <Route path="user/:id/trip" element={<TripPage />} />
+                    <Route path="user/:id/host" element={<HostPage />} />
                     <Route path="review" element={<ReviewIndex />} />
                     <Route path="chat" element={<ChatApp />} />
                     <Route path="admin" element={<AdminIndex />} />

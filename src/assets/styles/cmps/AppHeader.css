@@ -11,7 +11,7 @@
     width: 100%;
     max-width: 1480px;
 
-    background-color: var(--white);
+    background-color: var(--gray-light2);
     padding: .3rem 30px 1.9rem;
     border-bottom: 1px solid var(--gray-light);
     transition: min-height 0.2s cubic-bezier(0.2, 0, 0, 1), padding 0.4s ease;
@@ -168,6 +168,7 @@
 
         .nav-end {
             display: flex;
+            align-items: center;
             gap: .5em;
 
             .menu-wrapper {
@@ -318,6 +319,21 @@
                         background-color: transparent;
                     }
                 }
+            }
+
+            .btn-hosting {
+                border-radius: 20px;
+                background-color: var( --gray-light2);
+                height: 40px;
+                width: 138px;
+                padding: 0;
+                margin: 0;
+                /* font-weight: bold; */
+                font-size: 1em;
+            }
+
+            .btn-hosting:hover {
+                background-color: var(--background-gray);
             }
         }
     }
