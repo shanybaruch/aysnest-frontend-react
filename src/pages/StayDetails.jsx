@@ -67,13 +67,22 @@ export function StayDetails() {
     threshold: 0.1,
   })
 
+  const maxWords = 20;
+
+  const description = stay?.description || ''
+  const words = description.split(/\s+/)
+  const isLong = words.length > maxWords
+  const shortDescription = isLong
+    ? words.slice(0, maxWords).join(' ') + '…'
+    : description
+
   useEffect(() => {
     const handleScroll = () => {
       if (calendarRef.current) {
         const calendarRect = calendarRef.current.getBoundingClientRect()
         const calendarBottom = calendarRect.bottom
         const windowHeight = window.innerHeight
-        
+
         if (calendarBottom <= 50) {
           setShowOrderInHeader(true)
         } else {
@@ -82,7 +91,7 @@ export function StayDetails() {
         console.log('Calendar bottom:', calendarRect.bottom, 'Show in header:', calendarBottom <= 50)
       }
     }
-    
+
     handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -233,18 +242,19 @@ export function StayDetails() {
 
                 <div className="stay-details-padding description-wrapper">
                   <div className="divider"></div>
-                  <p className={`description-p ${isExpanded ? 'expanded' : ''}`}>
-                    {stay?.description}
+                  <p className="description-p">
+                    {isExpanded || !isLong ? description : shortDescription}
                   </p>
 
-                  <button
-                    className="btn-description-more"
-                    onClick={() => setIsExpanded(prev => !prev)}
-                  >
-                    {isExpanded ? 'Show less' : 'Show more'}
-                  </button>
+                  {isLong && (
+                    <button
+                      className="btn-description-more"
+                      onClick={() => setIsExpanded(prev => !prev)}
+                    >
+                      {isExpanded ? 'Show less' : 'Show more'}
+                    </button>
+                  )}
                 </div>
-
                 <section ref={amenitiesRef}>
                   <div className="amenities stay-details-padding">
                     <div className="divider"></div>
