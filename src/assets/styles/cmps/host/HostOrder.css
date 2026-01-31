@@ -1,3 +1,114 @@
 .host-order {
     padding: 40px 50px;
+    color: var(--black);
+    margin: 0 auto;
+
+    .orders-table {
+        width: 100%;
+        border-collapse: collapse;
+        /* table-layout: fixed; */
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: 0 8px 20px var(--gray-light);
+
+        th {
+            background-color: var(--white);
+            text-align: left;
+            padding: 10px 0;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--black);
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        td {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--white-gray);
+            font-size: 0.8rem;
+            font-weight: 500;
+            background-color: var(--white-gray);
+            vertical-align: middle;
+            text-align: center;
+        }
+    }
+
+    p {
+        color: var(--gray);
+        text-align: center;
+        margin-top: 50px;
+    }
+}
+
+.orders-table tr:last-child td {
+    border-bottom: none;
+}
+
+.orders-table tr:hover {
+    background-color: var(--white-gray);
+    transition: background 0.2s ease;
+}
+
+.status-pending,
+.status-approved,
+.status-rejected {
+    display: inline-block;
+    padding: 14px 18px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.status-pending {
+    background-color: #fff7dd;
+    color: #b78103;
+}
+
+.status-approved {
+    background-color: var(--white);
+    color: var(--success);
+}
+
+.status-rejected {
+    background-color: var(--white);
+    color: var(--error);
+}
+
+.order-actions span {
+    color: var(--gray);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.btn-approve,
+.btn-reject {
+    padding: 10px 12px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin: 0;
+}
+
+.btn-approve {
+    margin-right: .5rem;
+    background-color: var(--clr1);
+    color: var(--white);
+}
+
+.btn-approve:hover {
+    color: var(--clr1);
+    background-color: var(--white);
+}
+
+.btn-reject {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.btn-reject:hover {
+    background-color: var(--white);
+    color: var(--black);
 }

@@ -238,7 +238,7 @@ export function OrderPage() {
 
                     <hr />
 
-                    {/* <h5>Price details</h5> */}
+                    <h5>Details</h5>
                     <div className="payment-row">
                         {nights > 1 ?
                             <span>{nights} nights x ₪{stay.price}</span> :

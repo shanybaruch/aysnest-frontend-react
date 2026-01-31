@@ -6,7 +6,6 @@ import { Loader } from '../cmps/Loader'
 export function TripPage() {
     const user = useSelector(storeState => storeState.userModule.user)
 
-
     useEffect(() => {
     }, [])
 
