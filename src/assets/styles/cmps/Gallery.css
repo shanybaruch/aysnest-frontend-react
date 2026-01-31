@@ -86,8 +86,8 @@
     .stay-details {
         padding: 0;
         overflow: hidden;
-    }
 
+        
     .gallery {
         grid-template-columns: 1fr;
 
@@ -123,6 +123,8 @@
         max-width: 710px;
         overflow: hidden;
     }
+    }
+
 }
 
 @media (max-width: 1120px) {

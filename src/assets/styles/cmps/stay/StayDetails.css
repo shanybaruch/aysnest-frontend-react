@@ -124,11 +124,21 @@
                     color: var(--gray);
                 }
 
+                .calendar {
+                    padding: 0;
+                }
+
                 .calendar-dropdown {
                     margin-bottom: 1rem;
 
-                    .rdp-nav {
 
+                    .rdp {
+                        margin-left: 0;
+                        margin-right: auto;
+
+                    }
+
+                    .rdp-nav {
                         .rdp-chevron {
                             fill: var(--gray);
 
@@ -143,15 +153,34 @@
                         }
                     }
 
+                    .rdp-day td {
+                        padding: 0;
+                        /* text-align: left; */
+                    }
+
                     .rdp-month {
                         .rdp-month_grid {
                             thead .rdp-weekdays th {
                                 padding: 0px 3em;
-                                font-weight: 600; 
+                                font-weight: 600;
+                            }
+
+                            thead .rdp-weekdays th {
+                                padding: 0;
+                                text-align: left;
                             }
 
                             .rdp-week td {
-                                padding: .5em;
+                                padding: 0;
+
+                                .rdp-day td {
+                                    text-align: left;
+                                }
+
+                                button {
+                                    padding: 0;
+                                    justify-content: left;
+                                }
 
                             }
                         }
@@ -182,11 +211,11 @@
     }
 
     .description-p {
-    padding: 20px 0 0;
-    margin: 0;
-    word-spacing: 1px;
-    font-weight: 300;
-}
+        padding: 20px 0 0;
+        margin: 0;
+        word-spacing: 1px;
+        font-weight: 300;
+    }
 
 
     .description-p.expanded {
@@ -222,34 +251,34 @@
         border-bottom: 0.8px solid var(--gray-light);
         margin: 5px 0;
     }
+
+
+    .reviews,
+    .info-bar-list {
+        padding: 30px 80px;
+    }
+
+    .amenities-columns {
+        display: flex;
+    }
+
+    .amenities-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+    }
+
+    .amenity-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 316px;
+    }
 }
-
-.reviews,
-.info-bar-list {
-    padding: 30px 80px;
-}
-
-.amenities-columns {
-    display: flex;
-}
-
-.amenities-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-}
-
-.amenity-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 316px;
-}
-
 
 @media (max-width: 1120px) {
 
@@ -384,14 +413,6 @@
         width: 16px;
     }
 
-    .stay-details .calendar-dropdown {
-        .rdp-months {
-            button {
-                padding: 5px;
-            }
-        }
-    }
-
     .stay-details .heading {
         justify-content: space-between;
 
@@ -416,10 +437,15 @@
         .calendar-dropdown {
             display: flex;
             justify-content: flex-start;
+            align-items: flex-start;
             margin: 16px 24px 0;
 
             .calendar {
-                padding: 15px 0;
+                padding: 0;
+            }
+
+            th {
+                text-align: left;
             }
 
             .rdp-month {
