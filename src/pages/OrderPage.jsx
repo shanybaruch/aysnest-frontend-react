@@ -144,12 +144,11 @@ export function OrderPage() {
 
     return (
         <section className="order-page">
-            
-            <header>
-            <button className="btn-back" onClick={() => navigate(-1)}>
-                <FaArrowLeft />
-            </button>
 
+            <header>
+                <button className="btn-back" onClick={() => navigate(-1)}>
+                    <FaArrowLeft />
+                </button>
                 <h1>Confirm and pay</h1>
             </header>
 
@@ -239,7 +238,7 @@ export function OrderPage() {
 
                     <hr />
 
-                    <h5>Price details</h5>
+                    {/* <h5>Price details</h5> */}
                     <div className="payment-row">
                         {nights > 1 ?
                             <span>{nights} nights x ₪{stay.price}</span> :
