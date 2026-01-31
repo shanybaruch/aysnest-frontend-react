@@ -84,9 +84,12 @@ export function HostOrder() {
                                             <button className="btn-approve" onClick={() => onUpdateStatus(order._id, 'approved')}>Approve</button>
                                             <button className="btn-reject" onClick={() => onUpdateStatus(order._id, 'rejected')}>Reject</button>
                                         </>
-                                    ) : (
+                                    ) : 
+                                    // null
+                                    (
                                         <span>Done</span>
-                                    )}
+                                    )
+                                    }
                                 </td>
                             </tr>
                         ))}
