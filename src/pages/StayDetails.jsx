@@ -292,7 +292,7 @@ export function StayDetails() {
                     }
                   </p>
                   <div className="calendar-dropdown" onClick={(e) => e.stopPropagation()}>
-                    <Calendar months={1} range={rangeForCalendar} setRange={onSetRange} />
+                    <Calendar months={2} range={rangeForCalendar} setRange={onSetRange} />
                   </div>
                 </section>
               </section>

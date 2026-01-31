@@ -131,7 +131,6 @@
                 .calendar-dropdown {
                     margin-bottom: 1rem;
 
-
                     .rdp {
                         margin-left: 0;
                         margin-right: auto;
@@ -144,12 +143,20 @@
 
                             polygon {
                                 transform: scaleX(0.8);
-                                transform-origin: center;
                             }
                         }
 
                         button {
                             font-weight: 100;
+
+                            padding: .8em 0;
+                            margin: 0;
+
+                            polygon {
+                                transform-origin: left;
+
+                            }
+
                         }
                     }
 
@@ -159,6 +166,7 @@
                     }
 
                     .rdp-month {
+
                         .rdp-month_grid {
                             thead .rdp-weekdays th {
                                 padding: 0px 3em;
@@ -170,18 +178,27 @@
                                 text-align: left;
                             }
 
-                            .rdp-week td {
+
+                            thead .rdp-week td {
+                                padding: 0;
+                                text-align: left;
+
+
+                            }
+
+                            .rdp-week {
                                 padding: 0;
 
-                                .rdp-day td {
-                                    text-align: left;
-                                }
-
-                                button {
+                                .rdp-day_button {
                                     padding: 0;
                                     justify-content: left;
+                                    justify-content: flex-start;
                                 }
 
+                                .rdp-day_button:hover {
+                                    justify-content: left;
+                                    justify-content: flex-start;
+                                }
                             }
                         }
 
