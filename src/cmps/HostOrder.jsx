@@ -7,7 +7,7 @@ export function HostOrder() {
     const loggedinUser = useSelector(storeState => storeState.userModule.user)
     // for (let i = 0; i < orders.length; i++) {
     //     const stayOrder = orders[i].stay
-        
+
     // }
 
     useEffect(() => {
@@ -41,6 +41,15 @@ export function HostOrder() {
         }
     }
 
+    function getFormattedDate(dateStr) {
+        const date = new Date(dateStr)
+        return date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        })
+    }
+
     return (
         <section className="host-order">
             {orders.length === 0 ? (
@@ -60,10 +69,11 @@ export function HostOrder() {
                         {orders.map(order => (
                             <tr key={order._id}>
                                 <td>
-                                    {order.stay.imgUrls?.[0]}
-                                    </td>
+                                    <img src={order.stay.imgUrls?.[0]} alt="" />
+                                </td>
                                 <td>{order.buyer.fullname}</td>
                                 <td>{order.stay.name}</td>
+                                <td className="order-dates">{getFormattedDate(order.startDate)} – {getFormattedDate(order.endDate)}</td>
                                 <td>${order.totalPrice}</td>
                                 <td>
                                     <span className={`status-${order.status}`}>{order.status}</span>
