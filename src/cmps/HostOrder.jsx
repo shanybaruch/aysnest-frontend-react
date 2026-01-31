@@ -74,7 +74,7 @@ export function HostOrder() {
                                 <td>{order.buyer.fullname}</td>
                                 <td>{order.stay.name}</td>
                                 <td className="order-dates">{getFormattedDate(order.startDate)} – {getFormattedDate(order.endDate)}</td>
-                                <td>${order.totalPrice}</td>
+                                {/* <td>${order.totalPrice}</td> */}
                                 <td>
                                     <span className={`status-${order.status}`}>{order.status}</span>
                                 </td>
