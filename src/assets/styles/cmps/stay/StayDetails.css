@@ -495,5 +495,14 @@
         }
     }
 
+    .app-footer{
+        margin-bottom: 125px;
+    }
 
+}
+
+@media (max-width: 394px) {
+    .app-footer{
+        margin-bottom: 177px;
+    }
 }
