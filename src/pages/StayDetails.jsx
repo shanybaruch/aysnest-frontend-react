@@ -269,7 +269,7 @@ export function StayDetails() {
                   </div>
 
                 </section>
-                <section className="booking-section " ref={calendarRef}>
+                <section className="booking-section-2 " ref={calendarRef}>
                   <h3>
                     {Math.max(nightsCount - 1, 0)} {nightLabel} in {stay?.loc.city}
                   </h3>
@@ -293,6 +293,32 @@ export function StayDetails() {
                   </p>
                     <div className="calendar-dropdown" onClick={(e) => e.stopPropagation()}>
                       <Calendar months={2} range={rangeForCalendar} setRange={onSetRange} />
+                    </div>
+                </section>
+                <section className="booking-section-1 " ref={calendarRef}>
+                  <h3 className='stay-details-padding'>
+                    {Math.max(nightsCount - 1, 0)} {nightLabel} in {stay?.loc.city}
+                  </h3>
+                  <p>
+                    {
+                      filterBy.from
+                        ? `${new Date(filterBy.from).toLocaleDateString('en-US', {
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric',
+                        })} - ${filterBy.to
+                          ? new Date(filterBy.to).toLocaleDateString('en-US', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric',
+                          })
+                          : ''
+                        }`
+                        : 'Add dates'
+                    }
+                  </p>
+                    <div className="calendar-dropdown" onClick={(e) => e.stopPropagation()}>
+                      <Calendar months={1} range={rangeForCalendar} setRange={onSetRange} />
                     </div>
                 </section>
               </section>
