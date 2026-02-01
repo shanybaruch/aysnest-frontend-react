@@ -9,7 +9,6 @@ import { StayDetails } from './pages/StayDetails'
 import { StayDetailsPhotos } from './pages/StayDetailsPhotos.jsx'
 import { HostOrder } from './cmps/HostOrder.jsx'
 import { HostPageCalendar } from './cmps/HostPageCalendar.jsx'
-import { HostPageListings } from './cmps/HostPageListings.jsx'
 import { UserDetails } from './pages/UserDetails'
 
 import { AppHeader } from './cmps/AppHeader'
@@ -29,6 +28,7 @@ import { useInView } from 'react-intersection-observer'
 import { OrderPage } from './pages/OrderPage.jsx'
 import { Wishlist } from './cmps/Wishlist.jsx'
 import { TripPage } from './pages/TripsPage.jsx'
+import { HostListing } from './cmps/HostListing.jsx'
 
 export function RootCmp() {
     const { ref, inView } = useInView({
@@ -61,7 +61,7 @@ export function RootCmp() {
 
                     <Route path="user/:id/host/orders" element={<HostOrder />} />
                     <Route path="user/:id/host/calendar" element={<HostPageCalendar />} />
-                    <Route path="user/:id/host/listings" element={<HostPageListings />} />
+                    <Route path="user/:id/host/listings" element={<HostListing />} />
 
                     <Route path="review" element={<ReviewIndex />} />
                     <Route path="chat" element={<ChatApp />} />
