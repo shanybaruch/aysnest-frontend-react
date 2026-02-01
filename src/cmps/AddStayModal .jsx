@@ -51,7 +51,7 @@ export function AddStayModal({ onClose }) {
                     <section className="step">
 
                         <div className="add-stay-options">
-                            <div className={`add-stay-card ${stay.add-stay === 'Home' ? 'selected' : ''}`}  onClick={() => updateStay('add-stay', 'Home')}>
+                            <div className={`add-stay-card ${stay.type === 'Home' ? 'selected' : ''}`} onClick={() => updateStay('type', 'Home')}>
                                 <img src="/img/home-logo.png" alt="home-logo" className="add-stay-card-img" />
                                 <div className="add-stay-card-label">Home</div>
                             </div>

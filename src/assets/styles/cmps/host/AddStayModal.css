@@ -91,13 +91,13 @@
                     border-radius: 8px;
                     font-size: 1rem;
                     
-                    .disabled{
+                    &.disabled{
                         color: var(--white);
                         background-color: var(--gray-light);
                         cursor: not-allowed;
                     }
                     
-                    .active{
+                    &.active{
                         color: var(--white);
                         background-color: var(--black);
                         cursor: pointer;
