@@ -41,6 +41,7 @@
 @import "cmps/HostHeader.css";
 @import "cmps/host/HostPageListings.css";
 @import "cmps/host/AddStayModal.css";
+@import "cmps/host/HostPageCalendar.css";
 
 @import "cmps/ShareModal.css";
 @import "cmps/AmenitiesModal.css";
