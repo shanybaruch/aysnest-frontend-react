@@ -23,7 +23,8 @@
     }
 
     &.compact {
-        padding: 1.1rem 30px 1.1rem;;
+        padding: 1.1rem 30px 1.1rem;
+        ;
 
         .selection {
             max-height: 0;
@@ -396,6 +397,13 @@
                 display: none;
             }
         }
+
+        .calendar {
+            .rdp-day {
+                width: 48px;
+                height: 48px;
+            }
+        }
     }
 }
 
@@ -405,6 +413,11 @@
         .calendar {
             .rdp-months {
                 justify-content: space-evenly;
+            }
+
+            .rdp-day {
+                width: 43px;
+                height: 43px;
             }
 
             .rdp-day_button {
@@ -555,6 +568,7 @@
 
                 .rdp-months {
                     display: grid;
+                    justify-content: space-evenly;
                     width: 100%;
                     gap: 0;
                     overflow-y: auto;

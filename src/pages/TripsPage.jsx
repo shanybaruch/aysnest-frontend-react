@@ -1,13 +1,32 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { loadOrders } from '../store/actions/order.actions'
 import { Loader } from '../cmps/Loader'
+import { userService } from '../services/user/user.service.remote'
 
 export function TripPage() {
     const user = useSelector(storeState => storeState.userModule.user)
+    const [hostNames, setHostNames] = useState({})
 
     useEffect(() => {
-    }, [])
+        if (user?.trips?.length > 0) {
+            loadHostNames()
+        }
+    }, [user])
+
+    async function loadHostNames() {
+        const namesMap = {}
+        try {
+            for (const trip of user.trips) {
+                if (namesMap[trip.hostId]) continue
+
+                const hostUser = await userService.getById(trip.hostId)
+                namesMap[trip.hostId] = hostUser.fullname
+            }
+            setHostNames(namesMap)
+        } catch (err) {
+            console.log("Error loading host names", err)
+        }
+    }
 
     function getFormattedDate(dateStr) {
         const date = new Date(dateStr)
@@ -19,8 +38,9 @@ export function TripPage() {
     }
 
     if (!user) return <Loader />
+
     return (
-        <section className="trips-page ">
+        <section className="trips-page">
             <h1 className="title">Trips</h1>
 
             {user.trips.length === 0 ? (
@@ -38,7 +58,7 @@ export function TripPage() {
                             </div>
                             <div className="trip-details">
                                 <h3 className="stay-name">{trip.stay.name}</h3>
-                                <p className="stay-host">Hosted by {trip.hostName || 'Host'}</p>
+                                <p className="stay-host">Hosted by {hostNames[trip.hostId] || 'Loading...'}</p>
                                 <p className="trip-dates">{getFormattedDate(trip.startDate)} – {getFormattedDate(trip.endDate)}</p>
                                 <p className="trip-price">₪{trip.totalPrice.toLocaleString()}</p>
                             </div>

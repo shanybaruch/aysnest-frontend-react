@@ -4,9 +4,10 @@ import { AddStayModal } from "./AddStayModal "
 import { useState } from 'react'
 
 
-export function HostPageListings() {
-    const [isModalOpen, setIsModalOpen] = useState(false)
+export function HostListing() {
 
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    
     return (
         <section className="host-page-listings">
             <section className="listings-header">
