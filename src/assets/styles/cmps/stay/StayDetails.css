@@ -7,6 +7,9 @@
         margin-bottom: 20px;
     }
 
+    .reviews {
+        padding: 0 80px;
+    }
 }
 
 .stay-details {
@@ -75,9 +78,7 @@
                     font-weight: 500;
                     margin-top: 5px;
 
-                    .reviews {
-                        text-decoration: underline;
-                    }
+
                 }
 
                 .guests {
@@ -86,6 +87,10 @@
                     letter-spacing: .15px;
                     font-size: .95rem;
                 }
+            }
+
+            .reviews {
+                text-decoration: underline;
             }
 
             .amenities {
@@ -146,6 +151,14 @@
                             }
                         }
 
+                        .rdp-chevron:last-child {
+                            fill: var(--gray);
+
+                            polygon {
+                                transform: scaleX(0.8);
+                            }
+                        }
+
                         button {
                             font-weight: 100;
 
@@ -158,6 +171,19 @@
                             }
 
                         }
+
+                        button:last-child {
+                            font-weight: 100;
+
+                            padding: .8em 0;
+                            margin: 0;
+
+                            polygon {
+                                transform-origin: right;
+
+                            }
+
+                        }
                     }
 
                     .rdp-day td {
@@ -165,49 +191,90 @@
                         /* text-align: left; */
                     }
 
-                    .rdp-month {
 
-                        .rdp-month_grid {
-                            thead .rdp-weekdays th {
-                                padding: 0px 3em;
-                                font-weight: 600;
+                    .rdp-month .rdp-month_grid {
+                        thead .rdp-weekdays th {
+                            padding: 0px 3em;
+                            font-weight: 600;
+                        }
+
+                        thead .rdp-weekdays th {
+                            padding: 0;
+                            text-align: left;
+                        }
+
+
+                        thead .rdp-week td {
+                            padding: 0;
+                            text-align: left;
+
+
+                        }
+
+                        .rdp-week {
+                            padding: 0;
+
+                            .rdp-day_button {
+                                padding: 0;
+                                justify-content: left;
+                                justify-content: flex-start;
                             }
 
-                            thead .rdp-weekdays th {
-                                padding: 0;
-                                text-align: left;
-                            }
-
-
-                            thead .rdp-week td {
-                                padding: 0;
-                                text-align: left;
-
-
-                            }
-
-                            .rdp-week {
-                                padding: 0;
-
-                                .rdp-day_button {
-                                    padding: 0;
-                                    justify-content: left;
-                                    justify-content: flex-start;
-                                }
-
-                                .rdp-day_button:hover {
-                                    justify-content: left;
-                                    justify-content: flex-start;
-                                }
+                            .rdp-day_button:hover {
+                                justify-content: left;
+                                justify-content: flex-start;
                             }
                         }
 
-                        button {
-                            padding: 1.4em;
+
+
+                    }
+
+                    .rdp-month:last-child .rdp-month_grid {
+                         thead .rdp-weekdays th {
+                            padding: 0px 3em;
+                            font-weight: 600;
                         }
+
+                        thead .rdp-weekdays th {
+                            padding: 0;
+                            text-align: right;
+                        }
+
+                        thead .rdp-week td {
+                            padding: 0;
+                            text-align: right;
+                        }
+                        .rdp-week {
+                            padding: 0;
+
+                        
+                            .rdp-day_button {
+                                padding: 0;
+                                justify-content: right;
+                                justify-content: flex-end;
+                            }
+
+                            .rdp-day_button:hover {
+                                justify-content: right;
+                                justify-content: flex-end;
+                            }
+                        }
+                    }
+
+                    /* .rdp-month:last-child .rdp-month_grid {
+                            .rdp week .rdp-day td {
+                                padding: 0;
+                                text-align: right;
+                            }
+                        } */
+
+                    button {
+                        padding: 1.4em;
                     }
                 }
             }
+
         }
 
     }
@@ -253,7 +320,6 @@
         background-color: var(--gray-light);
     }
 
-
     .btn-description-more:hover {
         background-color: var(--gray-light);
     }
@@ -269,8 +335,6 @@
         margin: 5px 0;
     }
 
-
-    .reviews,
     .info-bar-list {
         padding: 30px 80px;
     }
@@ -295,15 +359,24 @@
         gap: 8px;
         width: 316px;
     }
+
+    .rdp {
+        --rdp-months: 2;
+    }
+}
+
+@media (max-width: 1200px) {
+    .rdp {
+        --rdp-months: 1;
+    }
 }
 
 @media (max-width: 1120px) {
 
     .stay-details,
-    .reviews,
-    .info-bar-list {
-        padding-left: 40px;
-        padding-right: 40px;
+    .all-stay-details .reviews,
+    .all-stay-details .info-bar-list {
+        padding: 0 40px;
     }
 
     .stay-details .sides {
@@ -326,7 +399,7 @@
     }
 
     .stay-details,
-    .reviews,
+    .all-stay-details .reviews,
     .info-bar-list {
         padding-left: 24px;
         padding-right: 24px;
@@ -478,10 +551,12 @@
                     thead .rdp-weekdays th {
                         padding: 1.5em;
 
+
                     }
 
                     .rdp-week td {
                         padding: .3em;
+
                     }
 
 
@@ -495,14 +570,14 @@
         }
     }
 
-    .app-footer{
+    .app-footer {
         margin-bottom: 125px;
     }
 
 }
 
 @media (max-width: 394px) {
-    .app-footer{
+    .app-footer {
         margin-bottom: 177px;
     }
 }
