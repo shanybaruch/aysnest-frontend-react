@@ -195,6 +195,12 @@
                         /* text-align: left; */
                     }
 
+                    .rdp-month .rdp-month_grid {
+                      td{
+                        height: 40px;
+                        width: 40px;
+                       }
+                    }
 
                     .rdp-month .rdp-month_grid {
                         thead .rdp-weekdays th {
@@ -233,6 +239,8 @@
 
 
                     }
+
+                    .rdp-month_grid {}
 
                     .rdp-month:last-child .rdp-month_grid {
                         thead .rdp-weekdays th {
@@ -464,7 +472,7 @@
         padding-top: 10px !important;
     }
 
-    .calendar-dropdown{
+    .calendar-dropdown {
         margin: 0;
         justify-content: center;
     }
@@ -530,8 +538,7 @@
 @media (max-width: 743px) {
 
     .stay-details,
-    .stay-details .reviews
-    .stay-details .sides .big-side .booking-section-1,
+    .stay-details .reviews .stay-details .sides .big-side .booking-section-1,
     .stay-details p,
     .info-bar-list {
         padding-left: 16px;
