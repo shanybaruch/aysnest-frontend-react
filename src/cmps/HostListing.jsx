@@ -1,4 +1,4 @@
-export function HostPageListings() {
+export function HostListing() {
     return (
         <section className="host-header-page">
             <h2>Host Listings Page</h2>
