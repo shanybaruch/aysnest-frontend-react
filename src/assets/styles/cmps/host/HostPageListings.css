@@ -1,0 +1,31 @@
+.host-page-listings{
+    padding: 0 80px;
+    
+
+    .listings-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 24px;
+        padding-bottom: 4px;
+
+        h1{
+            margin: 0px;
+        }
+
+        .btn-action{
+            
+            .btn-add-listing{
+                display: flex;
+                padding: 14px;
+                border-radius: 24px;
+                margin: 0px;
+            }
+        }
+    }
+
+    .listings-content{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

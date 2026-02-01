@@ -15,7 +15,8 @@ function _getIcon(iconName) {
             <svg aria-label="Home" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
                 <title>Home</title>
                 <path d="M9.005 16.545a2.997 2.997 0 0 1 2.997-2.997A2.997 2.997 0 0 1 15 16.545V22h7V11.543L12 2 2 11.543V22h7.005Z"
-                    fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2"></path>
+                    fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="2">
+                </path>
             </svg>
         ),
 
@@ -30,6 +31,27 @@ function _getIcon(iconName) {
             <svg viewBox="0 0 32 32" role="img" height="24" width="24" fill="currentColor">
                 <title>Arrow</title>
                 <path d="M4 16h26M15 28 3.7 16.7a1 1 0 0 1 0-1.4L15 4"></path>
+            </svg>
+        ),
+        
+        Plus: (
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="3" width="16" height="16">
+                <title>Plus</title>
+                <path d="M2 16h28M16 2v28" />
+            </svg>
+        ),
+        
+        ListView: (
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="3" width="16" height="16">
+                <title>List View</title>
+                <path d="m29 19v10h-26v-10zm0-16v10h-26v-10z" strokeLinejoin="round"/>
+            </svg>
+        ),
+        
+        GridView: (
+            <svg viewBox="0 0 32 32" role="img" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3">
+                <title>Grid view</title>
+                <path d="m13 19v10h-10v-10zm16 0v10h-10v-10zm-16-16v10h-10v-10zm16 0v10h-10v-10z" strokeLinejoin="round"/>
             </svg>
         ),
         
