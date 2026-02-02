@@ -45,7 +45,7 @@
             }
 
             a {
-                color: var(--gray);
+                color: var(--gray2);
                 font-size: .75rem;
                 text-decoration: underline;
                 font-weight: 500;
@@ -77,7 +77,7 @@
                 }
 
                 &.disabled {
-                    opacity: 0.4;
+                    opacity: 0.2;
                     cursor: not-allowed;
                 }
             }

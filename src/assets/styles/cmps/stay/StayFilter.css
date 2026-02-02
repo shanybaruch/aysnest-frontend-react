@@ -1,6 +1,6 @@
 .filter-backdrop {
     position: fixed;
-    top: 199px;
+    top: 194px;
     left: 0;
     width: 100vw;
     height: calc(100vh - 80px);
