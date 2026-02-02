@@ -19,9 +19,11 @@ export function HostListing() {
     }, [loggedinUser])
 
     async function loadHostStays() {
+        if (!loggedinUser?._id) return
         try {
             setIsLoading(true)
-            const filterBy = { ownerId: loggedinUser._id }
+            const filterBy = { hostId: loggedinUser._id }
+            console.log('Fetching stays for host:', loggedinUser._id)
             const fetchedStays = await stayService.query(filterBy)
             setStays(fetchedStays)
         } catch (err) {

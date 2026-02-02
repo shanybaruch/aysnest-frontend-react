@@ -84,7 +84,7 @@ async function save(stay) {
     } else {
         const stayToSave = {
             ...stay,
-            owner: userService.getLoggedinUser(),
+            host: userService.getLoggedinUser(),
             msgs: []
         }
         return storageService.post(STORAGE_KEY, stayToSave)

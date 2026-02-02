@@ -13,11 +13,11 @@ export function HostHeader() {
               Orders
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to={`/user/${user?._id}/host/calendar`} className={({ isActive }) => isActive ? 'active' : ''}>
               Calendar
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to={`/user/${user?._id}/host/listings`} className={({ isActive }) => isActive ? 'active' : ''}>
               Listings
