@@ -3,7 +3,7 @@
 
     .divider {
         border-bottom: 0.8px solid var(--gray-light);
-        margin: 5px 0;
+        margin: 10px 0;
         margin-bottom: 20px;
     }
 
@@ -117,6 +117,7 @@
 
             .booking-section-1 {
                 display: none;
+                padding-block: 20px;
             }
 
             .booking-section-2 {
@@ -196,10 +197,10 @@
                     }
 
                     .rdp-month .rdp-month_grid {
-                      td{
-                        height: 40px;
-                        width: 40px;
-                       }
+                        td {
+                            height: 40px;
+                            width: 40px;
+                        }
                     }
 
                     .rdp-month .rdp-month_grid {
@@ -359,6 +360,7 @@
     .amenities-list {
         list-style: none;
         padding: 0;
+        padding-bottom: 10px;
         margin: 0;
         display: flex;
         flex-direction: column;
@@ -398,46 +400,46 @@
             }
         }
     }
-
-    .calendar-dropdown {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        margin: 16px 24px 0;
-
-        .calendar {
-            padding: 0;
-        }
-
-        th {
-            text-align: left;
-        }
-
-        .rdp-month {
+    .stay-details {
+        .calendar-dropdown {
             display: flex;
-            flex-direction: column;
-            justify-content: start;
-
-            .rdp-month_grid {
-                /* width: calc(100vw - 48px); */
-                margin-right: auto;
-                justify-content: start;
-
-                thead .rdp-weekdays th {
-                    padding: 1.5em;
-
-
-                }
-
-                .rdp-week td {
-                    padding: .3em;
-
-                }
-
+            align-items: flex-start;
+            margin: 16px 24px 0;
+    
+            .calendar {
+                padding: 0;
             }
-
-            button {
-                padding: .8em;
+    
+            th {
+                text-align: left;
+            }
+    
+            .rdp-month {
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+    
+                .rdp-month_grid {
+                    /* width: calc(100vw - 48px); */
+                    margin-right: auto;
+                    justify-content: start;
+    
+                    thead .rdp-weekdays th {
+                        padding: 1.5em;
+    
+    
+                    }
+    
+                    .rdp-week td {
+                        padding: .3em;
+    
+                    }
+    
+                }
+    
+                button {
+                    padding: .8em;
+                }
             }
         }
     }
@@ -541,7 +543,7 @@
     .stay-details .reviews .stay-details .sides .big-side .booking-section-1,
     .stay-details p,
     .info-bar-list {
-        padding-left: 16px;
+        padding-left: 24px;
         padding-right: 16px;
     }
 

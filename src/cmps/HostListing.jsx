@@ -40,7 +40,6 @@ export function HostListing() {
                 <div className="btn-action">
                     <button className="btn-add-listing" onClick={() => setIsModalOpen(true)}> 
                         <SvgIcon iconName="Plus" />
-                        {/* <span>Add Listing</span> */}
                     </button>
                 </div>
             </section>

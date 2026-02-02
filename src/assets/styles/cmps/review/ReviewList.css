@@ -9,6 +9,7 @@
     /* flex-wrap: wrap; */
     gap: 32px;
     font-weight: 400;
+    margin-block-end: 1rem;
 
     .actions {
         & button {
@@ -39,7 +40,7 @@
     margin: 0;
     font-size: 16px;
     font-weight: 500;
-    text-decoration:underline;
+    text-decoration: underline;
     cursor: pointer;
 }
 
