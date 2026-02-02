@@ -43,7 +43,8 @@ export function StayDetails() {
   const photosRef = useRef(null)
   const amenitiesRef = useRef(null)
   const reviewsRef = useRef(null)
-  const calendarRef = useRef(null)
+  const calendarRef1 = useRef(null)
+  const calendarRef2= useRef(null)
 
 
   const stay = useSelector(storeState => storeState.stayModule.stay)
@@ -78,24 +79,30 @@ export function StayDetails() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (calendarRef.current) {
-        const calendarRect = calendarRef.current.getBoundingClientRect()
+      const currentCalender = calendarRef1.current?.offsetParent !== null
+        ? calendarRef1.current
+        : calendarRef2.current
+        
+        if (!currentCalender){
+          console.log('Calender Not Found')
+          return
+        } 
+        
+        const calendarRect = currentCalender.getBoundingClientRect()
         const calendarBottom = calendarRect.bottom
-        const windowHeight = window.innerHeight
 
-        if (calendarBottom <= 50) {
+        if (calendarBottom < 50) {
           setShowOrderInHeader(true)
         } else {
           setShowOrderInHeader(false)
         }
-        console.log('Calendar bottom:', calendarRect.bottom, 'Show in header:', calendarBottom <= 50)
+        console.log('Calendar bottom:', calendarRect.bottom, 'Show in header:', calendarBottom < 50)
       }
-    }
-
-    handleScroll()
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      
+      handleScroll()
+      window.addEventListener('scroll', handleScroll)
+      return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -269,7 +276,7 @@ export function StayDetails() {
                   </div>
 
                 </section>
-                <section className="booking-section-2 " ref={calendarRef}>
+                <section className="booking-section-2 " ref={calendarRef2}>
                   <h3>
                     {Math.max(nightsCount - 1, 0)} {nightLabel} in {stay?.loc.city}
                   </h3>
@@ -295,7 +302,7 @@ export function StayDetails() {
                       <Calendar months={2} range={rangeForCalendar} setRange={onSetRange} />
                     </div>
                 </section>
-                <section className="booking-section-1 " ref={calendarRef}>
+                <section className="booking-section-1 " ref={calendarRef1}>
                   <h3 className='stay-details-padding'>
                     {Math.max(nightsCount - 1, 0)} {nightLabel} in {stay?.loc.city}
                   </h3>
