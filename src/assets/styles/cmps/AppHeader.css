@@ -23,8 +23,11 @@
     }
 
     &.compact {
-        padding: 1.1rem 30px 1.1rem;
-        ;
+        padding: .8rem 30px;
+
+        .stay-filter {
+            display: none;
+        }
 
         .selection {
             max-height: 0;
