@@ -5,11 +5,16 @@ import { SvgIcon } from "./SvgIcon"
 import { AddStayModal } from "./AddStayModal"
 import { Loader } from './Loader'
 
+import { CiGrid41 } from "react-icons/ci";
+import { CiGrid2H } from "react-icons/ci";
+
+
 export function HostListing() {
     const [stays, setStays] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
-    
+    const [layout, setLayout] = useState('grid')
+
     const loggedinUser = useSelector(storeState => storeState.userModule.user)
 
     useEffect(() => {
@@ -39,8 +44,15 @@ export function HostListing() {
         <section className="host-listing">
             <section className="listings-header">
                 <h1>Your Listings ({stays.length})</h1>
-                <div className="btn-action">
-                    <button className="btn-add-listing" onClick={() => setIsModalOpen(true)}> 
+                <div className="btns-action">
+                    <button
+                        className="btn-layout-toggle"
+                        onClick={() => setLayout(layout === 'grid' ? 'list' : 'grid')}
+                        title={layout === 'grid' ? "Switch to List" : "Switch to Grid"}
+                    >
+                        {layout === 'grid' ? <CiGrid2H size={22} /> : <CiGrid41 size={22} />}
+                    </button>
+                    <button className="btn-add-listing" onClick={() => setIsModalOpen(true)}>
                         <SvgIcon iconName="Plus" />
                     </button>
                 </div>
@@ -50,7 +62,7 @@ export function HostListing() {
                 {stays.length === 0 ? (
                     <p>You don't have any listings yet.</p>
                 ) : (
-                    <ul className="listings-list">
+                    <ul className={`listings-list ${layout}`}>
                         {stays.map(stay => (
                             <li key={stay._id} className="listing-item">
                                 <img src={stay.imgUrls[0]} alt={stay.name} />
@@ -59,8 +71,7 @@ export function HostListing() {
                                     <p>{stay.loc.city}, {stay.loc.country}</p>
                                     <p className="price">₪{stay.price} <span> per night</span></p>
                                 </div>
-                                <div className="actions">
-                                </div>
+                                <div className="actions"></div>
                             </li>
                         ))}
                     </ul>

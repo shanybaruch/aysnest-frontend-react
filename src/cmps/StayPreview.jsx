@@ -20,7 +20,7 @@ export function StayPreview({ stay }) {
 
             {/* <p>Capacity: <span>{stay.capacity
         }</span></p> */}
-            {stay.host && <p>Host: <span>{stay.host.fullname}</span></p>}
+            {/* {stay.host && <p>Host: <span>{stay.host.fullname}</span></p>} */}
         </Link>
 
     </article>

@@ -100,7 +100,7 @@
 .order-actions span {
     color: var(--gray2);
     font-size: 0.8rem;
-    padding: 0;
+    padding: 0 10px;
 }
 
 .btn-approve,
