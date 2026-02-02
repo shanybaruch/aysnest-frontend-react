@@ -50,6 +50,11 @@
             width: 18px;
         }
 
+        &:hover {
+            border-radius: 10px;
+            background-color: var(--background-gray);
+        }
+
     }
 
     .sides {
@@ -578,6 +583,7 @@
     .stay-details .share,
     .stay-details .save {
         font-size: 0.85rem;
+
     }
 
     .stay-details .share svg,
