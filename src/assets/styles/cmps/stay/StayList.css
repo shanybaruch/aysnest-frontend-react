@@ -11,14 +11,16 @@
 
     .stays-grid {
         display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: none;
-        grid-auto-columns: 170px;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
         grid-template-rows: max-content;
-        overflow-x: auto;
+        row-gap: 0;
+        column-gap: .8rem;
         grid-auto-rows: 0;
-        overflow-y: hidden;
-        gap: .8rem;
+        justify-content: start;
+        overflow: hidden;
+
+        margin-top: 0;
+        overflow-x: auto;
         scrollbar-width: none;
         scroll-snap-type: x mandatory;
 
@@ -28,9 +30,9 @@
     }
 
     .stays-grid>li {
-        scroll-snap-align: start;
+        min-height: 0;
     }
-
+  
     .location-title {
         font-weight: 500;
         align-self: end;
