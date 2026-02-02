@@ -597,11 +597,11 @@
             font-weight: 300;
             margin: 0;
         }
+        .app-footer {
+            margin-bottom: 125px;
+        }
     }
 
-    .app-footer {
-        margin-bottom: 125px;
-    }
 
 }
 
