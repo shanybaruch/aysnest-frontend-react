@@ -508,6 +508,8 @@
         }
 
         & .header-nav {
+            padding: 20px;
+            
             & .nav-middle {
                 margin: 0 auto;
 

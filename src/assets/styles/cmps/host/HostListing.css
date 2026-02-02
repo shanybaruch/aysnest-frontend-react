@@ -1,0 +1,195 @@
+.host-listing {
+    padding: 30px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--black);
+
+    .listings-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .btn-add-listing {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px;
+            background-color: var(--white);
+            border: 1px solid var(--black);
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: var(--white-gray);
+            }
+
+            svg {
+                stroke: var(--black);
+                width: 14px;
+                height: 14px;
+            }
+        }
+    }
+
+    .listings-content {
+        .listings-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+
+            .listing-item {
+                display: grid;
+                grid-template-columns: 120px 1fr auto;
+                align-items: center;
+                gap: 15px;
+                padding: 12px 0;
+                border-bottom: 1px solid var(--white-gray);
+                transition: background-color 0.2s;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                img {
+                    width: 110px;
+                    height: 90px;
+                    object-fit: cover;
+                    border-radius: 12px;
+                    background-color: var(--white-gray);
+                }
+
+                .stay-info {
+                    h3 {
+                        font-size: .9rem;
+                        font-weight: 500;
+                        margin: 0 0 4px 0;
+                    }
+
+                    p {
+                        color: var(--gray);
+                        margin: 0;
+                        font-size: 0.8rem;
+
+                        &.price {
+                            margin-top: 4px;
+                            color: var(--black);
+                            font-weight: 500;
+
+                            span {
+                                font-weight: 300;
+                                color: var(--gray);
+                            }
+                        }
+                    }
+                }
+
+                .actions {
+                    display: flex;
+                    gap: 12px;
+
+                    button {
+                        background: none;
+                        border: none;
+                        text-decoration: underline;
+                        font-weight: 600;
+                        cursor: pointer;
+                        font-size: 0.875rem;
+                    }
+                }
+            }
+        }
+
+        p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-top: 40px;
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .host-listing {
+        padding: 24px;
+
+        .listings-content .listings-list .listing-item {
+            padding: 10px 0;
+            gap: 24px;
+
+            img {
+                width: 120px;
+                height: 100px;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .host-listing {
+        .listings-header {
+            h1 {
+                font-size: 1.1rem;
+            }
+
+            .btn-add-listing {
+                svg {
+                    width: 12px;
+                    height: 12px;
+                }
+            }
+        }
+
+        .listings-content {
+            .listings-list {
+                align-items: center;
+                position: relative;
+
+                .listing-item {
+                    width: 100%;
+                    padding: 0;
+
+                    grid-template-columns: 1fr 2fr;
+                    ;
+
+                    img {
+                        width: 160px;
+                        height: 120px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 500px) {
+    .host-listing {
+        .listings-content {
+            .listings-list {
+                .listing-item {
+                    width: 100%;
+                    padding: 0;
+
+                    grid-template-columns: 1fr;
+                    ;
+
+                    img {
+                        width: 100vw;
+                        height: 200px;
+                    }
+                }
+            }
+        }
+    }
+}
