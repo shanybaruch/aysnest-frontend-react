@@ -109,23 +109,88 @@
         }
 
         .step2{
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            /* gap: 16px; */
             
             
-            .header{
+            .step2-header{
                 border-bottom: 1px solid var(--gray-light);
                 h2 ,p{
                     text-align: center;
                     padding: 0 8px;
                 }
+                
+                p {
+                    color: var(--gray);
+                }
             }
             
             .about{
+                flex: 1;
+                overflow-y: auto;
+                padding-bottom: 16px;
+                /* display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 0px 24px; */
+            }
+            
+            .form-group {
                 display: flex;
                 flex-direction: column;
-                gap: 16px;
+                gap: 6px;
+                
+                label {
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                }
+                
+                input,
+                textarea {
+                    padding: 12px;
+                    border-radius: 8px;
+                    border: 1px solid var(--gray-light);
+                    font-size: 0.95rem;
+                }
+                
+                textarea {
+                    resize: vertical;
+                }
+            }
+            
+            .address-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            
+            .grid-3 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            
+            .image-upload {
+                position: relative;
+                border: 1px dashed var(--gray-light);
+                border-radius: 12px;
+                padding: 32px;
+                text-align: center;
+                color: var(--gray);
+                cursor: pointer;
+                
+                p {
+                    margin: 0;
+                }
+                
+                input {
+                    position: absolute;
+                    inset: 0;
+                    opacity: 0;
+                    cursor: pointer;
+                }
             }
 
             .actions{
