@@ -93,17 +93,16 @@ export function AddStayModal({ onClose }) {
                 {step === 2 && subStep === 1 && (
                     
                     <section className="step2">
-                        <div className="header">
+                        <div className="step2-header">
                             <h2>Tell us about your place</h2>
                             <p>Basic info about your place</p>
                         </div>
                         
                         <div className="about">
-                            
                             {/* NAME */}
                             <div className="form-group">
                                 <label>Name</label>
-                                <input value={stay.name}
+                                <input value={stay.name} placeholder="Enter The Name Of The Property"
                                 onChange={ev => updateStay('name', ev.target.value)}/>
                             </div>
                             
@@ -120,7 +119,7 @@ export function AddStayModal({ onClose }) {
                             {/* DESCRIPTION */}
                             <div className="form-group">
                                 <label>Description</label>
-                                <textarea rows="5" 
+                                <textarea rows="5"  placeholder="Description"
                                 onChange={ev => updateStay('description', ev.target.value)}/>
                             </div>
                         </div>
@@ -137,7 +136,7 @@ export function AddStayModal({ onClose }) {
 
                 {step === 2 && subStep === 2 && (
                     <section className="step2">
-                        <div className="header">
+                        <div className="step2-header">
                             <h2>Place details</h2>
                             <p>Capacity, rooms and pricing</p>
                             </div>
