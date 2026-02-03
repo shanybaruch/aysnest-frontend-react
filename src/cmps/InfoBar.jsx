@@ -10,7 +10,7 @@ export function InfoBar({ stay, isPhotosInView, photosRef, amenitiesRef, reviews
         <li>
           <span className='info-bar-item-1'>Overall rating</span>
           <div className="info-rating">
-            {[1,2,3,4,5].map(num => (
+            {[1, 2, 3, 4, 5].map(num => (
               <div key={num} className="rating-row">
                 <span className="rating-number">{num}</span>
                 <div className={`bar ${num === 1 ? 'filled' : ''}`}></div>
@@ -21,15 +21,20 @@ export function InfoBar({ stay, isPhotosInView, photosRef, amenitiesRef, reviews
 
         {infoItems.map((item, idx) => {
           const randomInt = getRandomIntInclusive(4, 5);
-          const randomPoint = getRandomIntInclusive(0, 9);
+          const randomPoint =
+            randomInt === 5 ? 0 : getRandomIntInclusive(0, 9);
+
           return (
             <li key={idx} className="info-bar-item">
               <span>{item}</span>
-              <span className='randomInt-point'>{randomInt}.{randomPoint}</span>
+              <span className='randomInt-point'>
+                {randomInt}.{randomPoint}
+              </span>
               <SvgIcon iconName={item} />
             </li>
           );
         })}
+
       </ul>
     </section>
   )
