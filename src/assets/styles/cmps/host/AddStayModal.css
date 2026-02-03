@@ -152,6 +152,7 @@
                 
                 textarea {
                     resize: vertical;
+                    font-family: inherit;
                 }
             }
             
