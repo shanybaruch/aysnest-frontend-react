@@ -1,3 +1,4 @@
+import { SvgIcon } from './SvgIcon'
 import { useState, useEffect } from 'react'
 
 export function AddStayModal({ onClose }) {
@@ -16,11 +17,12 @@ export function AddStayModal({ onClose }) {
         beds: 0,
         bathrooms: 0,
         price: 0,
-        amenities: []
+        images: [],
+        amenities: [],
     })
 
     const isStep2Part1Valid = stay.name && stay.country && stay.city && stay.street && stay.description
-    const isStep2Part2Valid = stay.capacity > 0 && stay.bedrooms >= 0 && stay.beds >= 0 && stay.bathrooms >= 0 && stay.price > 0
+    const isStep2Part2Valid = stay.capacity > 0 && stay.bedrooms >= 0 && stay.beds >= 0 && stay.bathrooms >= 0 && stay.price > 0 && stay.images.length >= 5
 
 
     useEffect(() => {
@@ -38,6 +40,22 @@ export function AddStayModal({ onClose }) {
     function updateStay(field, value) {
         setStay(prev => ({ ...prev, [field]: value }))
     }
+    
+    function onUploadImages(ev) {
+        const files = Array.from(ev.target.files)
+        
+        setStay(prev => ({
+            ...prev,
+            images: [...prev.images, ...files]
+        }))
+    }
+
+    function removeImage(idx) {
+        setStay(prev => ({
+            ...prev,
+            images: prev.images.filter((_, i) => i !== idx)
+        }))
+    }
 
     function toggleAmenity(amenity) {
         setStay(prev => {
@@ -49,16 +67,15 @@ export function AddStayModal({ onClose }) {
         })
     }
 
-    function onFinish() {
-        console.log('NEW STAY:', stay)
-        onClose()
-    }
-
     function goToSubStep2() {
         if (!isStep2Part1Valid) return
         setSubStep(2)
     }
-
+    
+    function onFinish() {
+        console.log('NEW STAY:', stay)
+        onClose()
+    }
 
     return (
         <section className="add-stay-modal">
@@ -124,6 +141,7 @@ export function AddStayModal({ onClose }) {
                             </div>
                         </div>
                         
+                        {/*ACTIONS*/}
                         <div className="actions">
                             <button className="btn-back" onClick={prevStep}>Back</button>
                             <button className={`btn-next ${isStep2Part1Valid ? 'active' : 'disabled'}`}
@@ -139,49 +157,78 @@ export function AddStayModal({ onClose }) {
                         <div className="step2-header">
                             <h2>Place details</h2>
                             <p>Capacity, rooms and pricing</p>
+                        </div>
+                        
+                        <div className="about">
+                            {/* CAPACITY */}
+                            <div className="form-group">
+                                <label>Capacity</label>
+                                <input type="number" min="0" value={stay.capacity}
+                                onChange={ev => updateStay('capacity', Math.max(0, +ev.target.value))}/>
                             </div>
                             
-                            <div className="about">
-                                {/* NUMBERS */}
+                            <div className="grid-3">
+                                {/* BEDROOMS */}
                                 <div className="form-group">
-                                    <label>Capacity</label>
-                                    <input type="number" min="0" value={stay.capacity}
-                                    onChange={ev => updateStay('capacity', Math.max(0, +ev.target.value))}/>
+                                    <label>Bedrooms</label>
+                                    <input type="number" min="0" value={stay.bedrooms} 
+                                    onChange={ev => updateStay('bedrooms', Math.max(0, +ev.target.value))}/>
                                 </div>
                                 
-                                <div className="grid-3">
-                                    <div className="form-group">
-                                        <label>Bedrooms</label>
-                                        <input type="number" min="0" value={stay.bedrooms} 
-                                        onChange={ev => updateStay('bedrooms', Math.max(0, +ev.target.value))}/>
-                                    </div>
-                                    
-                                    <div className="form-group">
-                                        <label>Beds</label>
-                                        <input type="number" min="0" value={stay.beds}
-                                        onChange={ev => updateStay('beds', Math.max(0, +ev.target.value))}/>
-                                    </div>
-                                    
-                                    <div className="form-group">
-                                        <label>Bathrooms</label>
-                                        <input type="number" min="0" value={stay.bathrooms}
-                                        onChange={ev => updateStay('bathrooms', Math.max(0, +ev.target.value))}/>
-                                    </div>
+                                {/* BEDS */}
+                                <div className="form-group">
+                                    <label>Beds</label>
+                                    <input type="number" min="0" value={stay.beds}
+                                    onChange={ev => updateStay('beds', Math.max(0, +ev.target.value))}/>
                                 </div>
                                 
+                                {/* BATHROOMS */}
                                 <div className="form-group">
-                                    <label>Price per night</label>
-                                    <input type="number" min="0" value={stay.price}
-                                    onChange={ev => updateStay('price', Math.max(0, +ev.target.value))}/>
+                                    <label>Bathrooms</label>
+                                    <input type="number" min="0" value={stay.bathrooms}
+                                    onChange={ev => updateStay('bathrooms', Math.max(0, +ev.target.value))}/>
                                 </div>
                             </div>
                             
-                            <div className="actions">
-                                <button className="btn-back" onClick={() => setSubStep(1)}>Back</button>
-                                <button className={`btn-next ${isStep2Part2Valid ? 'active' : 'disabled'}`}
-                                disabled={!isStep2Part2Valid} onClick={nextStep}> 
-                                Next
-                                </button>
+                            {/* PRICE */}
+                            <div className="form-group">
+                                <label>Price per night</label>
+                                <input type="number" min="0" value={stay.price}
+                                onChange={ev => updateStay('price', Math.max(0, +ev.target.value))}/>
+                            </div>
+                            
+                            {/* IMAGES */}
+                            <div className="form-group">
+                                <label>Images (minimum 5)</label>
+                                <div className="image-upload">
+                                    <p>Drop images here or click to upload</p>
+                                    <input type="file" accept="image/*" multiple onChange={onUploadImages} />
+                                    <p className="images-count">
+                                        {stay.images.length} / 5 images uploaded
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="images-preview">
+                                {stay.images.map((img, idx) => (
+                                    <div className="image-preview-item" key={idx}>
+                                        <img src={URL.createObjectURL(img)} alt="preview"/>
+                                        <button className="btn-remove-image" onClick={() => removeImage(idx)}>
+                                            <SvgIcon iconName="RemoveItem" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+
+                        </div>
+                        
+                        {/*ACTIONS*/}
+                        <div className="actions">
+                            <button className="btn-back" onClick={() => setSubStep(1)}>Back</button>
+                            <button className={`btn-next ${isStep2Part2Valid ? 'active' : 'disabled'}`}
+                            disabled={!isStep2Part2Valid} onClick={nextStep}> 
+                            Next
+                            </button>
                         </div>
                     </section>
                 )}
