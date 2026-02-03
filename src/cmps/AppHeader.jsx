@@ -70,16 +70,17 @@ export function AppHeader({ isAtTop }) {
         }
     }
 
-
+    const isHostingPage = location.pathname.startsWith(`/user/${user?._id}/host`)
     function handleSwitch() {
-        setIsHosting(prev => !prev);
 
-        if (!isHosting) {
-            navigate(`/user/${user._id}/host/orders`);
+
+        if (isHostingPage) {
+            navigate('/stay')
         } else {
-            navigate('/stay');
+            navigate(`/user/${user._id}/host/orders`)
         }
     }
+
 
     return (
         <header className={`app-header ${isCompact ? 'compact' : ''} ${isStayDetails ? 'static-header details-page' : ''}`}>
@@ -125,9 +126,11 @@ export function AppHeader({ isAtTop }) {
                 {shouldHost && <HostHeader />}
                 <section className='nav-end'>
                     <div>
-                        <button className="btn-hosting" onClick={handleSwitch}>
-                            {isHosting ? 'Switch to traveling' : 'Switch to hosting'}
-                        </button>
+                        {user && (
+                            <button className="btn-hosting" onClick={handleSwitch}>
+                                {isHostingPage ? 'Switch to traveling' : 'Switch to hosting'}
+                            </button>
+                        )}
                     </div>
                     <div className="menu-wrapper">
                         {user && (
