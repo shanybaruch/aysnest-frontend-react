@@ -12,6 +12,10 @@ export function Amenities({ amenities, iconMap }) {
   const firstCol = amenitiesToShow.slice(0, mid);
   const secondCol = amenitiesToShow.slice(mid);
 
+  function formatAmenity(str) {
+    return str.replace(/([A-Z])/g, " $1").replace(/^./, c => c.toUpperCase());
+  }
+
   return (
     <>
       <div className={`amenities-columns ${isSingleColumn ? "single" : ""}`}>
@@ -19,7 +23,7 @@ export function Amenities({ amenities, iconMap }) {
           {(isSingleColumn ? amenitiesToShow : firstCol).map((item, idx) => (
             <li key={idx} className="amenity-item">
               <SvgIcon iconName={item} />
-              <span>{item}</span>
+              <span>{formatAmenity(item)}</span>
             </li>
           ))}
         </ul>
@@ -29,7 +33,7 @@ export function Amenities({ amenities, iconMap }) {
             {secondCol.map((item, idx) => (
               <li key={idx} className="amenity-item">
                 <SvgIcon iconName={item} />
-                <span>{item}</span>
+                <span>{formatAmenity(item)}</span>
               </li>
             ))}
           </ul>
