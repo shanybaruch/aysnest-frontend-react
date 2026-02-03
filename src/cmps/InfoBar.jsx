@@ -21,10 +21,11 @@ export function InfoBar({ stay, isPhotosInView, photosRef, amenitiesRef, reviews
 
         {infoItems.map((item, idx) => {
           const randomInt = getRandomIntInclusive(4, 5);
+          const randomPoint = getRandomIntInclusive(0, 9);
           return (
             <li key={idx} className="info-bar-item">
               <span>{item}</span>
-              <span className='randomInt-point'>{randomInt}.0</span>
+              <span className='randomInt-point'>{randomInt}.{randomPoint}</span>
               <SvgIcon iconName={item} />
             </li>
           );
