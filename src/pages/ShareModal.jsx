@@ -38,23 +38,27 @@ export function ShareModal({ onClose, stayId }) {
                         {stay.name} <RiStarFill size={10} /> {stay.rate} · {stay.capacity / 2} bedroom{stay.capacity / 2 > 1 ? 's' : ''} · {stay.capacity} bed{stay.capacity > 1 ? 's' : ''}
                     </p>
                 </div>
-                <button
-                    className="btn-share-modal"
-                    onClick={() => onShareFacebook(stay._id)}
-                >
-                    
-                    <BiLogoFacebookCircle /> Facebook
-                </button>
 
-                <button
-                    className="btn-share-modal"
-                    onClick={() => {
-                        navigator.clipboard.writeText(`https://yourapp.com/stay/${stay._id}`)
-                        alert('Link copied!')
-                    }}
-                >
-                    <IoCopy /> Copy Link
-                </button>
+                <div className='btns-share-modal'>
+                    <button
+                        className="btn-share-modal"
+                        onClick={() => onShareFacebook(stay._id)}
+                    >
+
+                        <BiLogoFacebookCircle /> Facebook
+                    </button>
+
+                    <button
+                        className="btn-share-modal"
+                        onClick={() => {
+                            navigator.clipboard.writeText(`https://yourapp.com/stay/${stay._id}`)
+                            alert('Link copied!')
+                        }}
+                    >
+                        <IoCopy /> Copy Link
+                    </button>
+                </div>
+
             </div>
         </div>
     )

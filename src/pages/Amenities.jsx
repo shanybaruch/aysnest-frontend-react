@@ -13,7 +13,9 @@ export function Amenities({ amenities, iconMap }) {
   const secondCol = amenitiesToShow.slice(mid);
 
   function formatAmenity(str) {
-    return str.replace(/([A-Z])/g, " $1").replace(/^./, c => c.toUpperCase());
+    return str
+      .replace(/([a-z])([A-Z])/g, "$1 $2")
+      .replace(/^./, c => c.toUpperCase());
   }
 
   return (

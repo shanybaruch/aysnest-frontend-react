@@ -14,7 +14,7 @@
     width: 100%;
     width: 520px;
     max-width: 90%;
-    height: 496px;
+    height: 396px;
     border-radius: 30px;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
 }
@@ -25,10 +25,26 @@
     border-radius: 5px;
 }
 
+.btns-share-modal{
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 20px;
+}
+
 .btn-share-modal {
     background-color: var(--white);
     border: solid 1px var(--gray-light-hover);
     border-radius: 8px;
+    font-size: 16px;
+    height: 48px;
+    width: 250px;
+
+    display: flex;
+    padding-left: 20px;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
 }
 
 .btn-share-modal:hover {
@@ -53,7 +69,6 @@
 .share-modal-header {
     display: flex;
     align-items: center;
-    /* מיישר לגובה */
     gap: 12px;
 }
 
