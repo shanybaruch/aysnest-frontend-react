@@ -41,14 +41,22 @@ export function HostOrder() {
         }
     }
 
+    // function getFormattedDate(dateStr) {
+    //     const date = new Date(dateStr)
+    //     return date.toLocaleDateString('en-US', {
+    //         month: 'short',
+    //         day: 'numeric',
+    //         year: 'numeric'
+    //     })
+    // }
     function getFormattedDate(dateStr) {
-        const date = new Date(dateStr)
-        return date.toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
-        })
-    }
+    const date = new Date(dateStr)
+    
+    const day = date.getDate()
+    const month = date.getMonth() + 1 
+    const year = date.getFullYear().toString().slice(-2) 
+    return `${day}/${month}/${year}`
+}
 
     return (
         <section className="host-order">
@@ -58,11 +66,12 @@ export function HostOrder() {
                 <table className="orders-table">
                     <thead>
                         <tr>
-                            {/* <th>Guest</th>
+                            <th></th>
+                            <th>Guest</th>
                             <th>Stay</th>
-                            <th>Price</th>
+                            <th>Dates</th>
                             <th>Status</th>
-                            <th>Actions</th> */}
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
