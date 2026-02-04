@@ -21,7 +21,6 @@
             gap: 6px;
             padding: 12px;
             background-color: var(--white-gray);
-            /* border: 1px solid var(--black); */
             border-radius: 20px;
             font-weight: 600;
             cursor: pointer;
@@ -57,7 +56,7 @@
                 }
 
                 img {
-                    width: 220px;
+                    width: 100%;
                     height: 220px;
                     object-fit: cover;
                     border-radius: 20px;
@@ -131,9 +130,8 @@
 
     .listings-list.grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
         align-items: start;
-        justify-items: center;
         gap: 20px;
     }
 
@@ -164,15 +162,10 @@
     .host-listing {
         padding: 24px;
 
-        .listings-content .listings-list .listing-item {
-            padding: 10px 0;
-            gap: 24px;
-
-            img {
-                width: 120px;
-                height: 100px;
-                object-fit: cover;
-            }
+        .listings-list.grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        
         }
     }
 }
@@ -194,19 +187,20 @@
 
         .listings-content {
             .listings-list {
-                align-items: center;
                 position: relative;
 
                 .listing-item {
-                    width: 100%;
-                    padding: 0;
-
-                    grid-template-columns: 1fr 2fr;
-                    ;
-
-                    img {
-                        width: 160px;
-                        height: 120px;
+                    .stay-info {
+                        h3 {
+                            font-size: .8rem;
+                        }
+                        p {
+                            font-size: .75rem;
+                        }
+                        p.price {
+                            font-weight: 200;
+                            font-size: .75rem;
+                        }
                     }
                 }
             }
@@ -214,23 +208,13 @@
     }
 }
 
-
-
 @media (max-width: 500px) {
     .host-listing {
         .listings-content {
             .listings-list {
                 .listing-item {
-                    width: 100%;
                     padding: 0;
-
-                    grid-template-columns: 1fr;
-                    ;
-
-                    img {
-                        width: 100vw;
-                        height: 200px;
-                    }
+                    gap: 8px;
                 }
             }
         }
