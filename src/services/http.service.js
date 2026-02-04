@@ -1,7 +1,10 @@
 import Axios from 'axios'
 
-const BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://aysnest-backend.onrender.com/api/'
+// const BASE_URL = process.env.NODE_ENV === 'production'
+//     ? 'https://aysnest-backend.onrender.com/api/'
+//     : 'http://localhost:3030/api/'
+const BASE_URL = import.meta.env.PROD 
+    ? 'https://aysnest-backend.onrender.com/api/' 
     : 'http://localhost:3030/api/'
 // const BASE_URL = 'https://aysnest-backend.onrender.com/api/'
 
@@ -35,8 +38,9 @@ async function ajax(endpoint, method = 'GET', data = null) {
         console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: `, data)
         console.dir(err)
         if (err.response && err.response.status === 401) {
-            sessionStorage.clear()
-            window.location.assign('/')
+            // sessionStorage.clear()
+            // window.location.assign('/')
+            console.error('error 401: The server does not recognize you')
         }
         throw err
     }

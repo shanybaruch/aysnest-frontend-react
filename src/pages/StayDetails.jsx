@@ -244,7 +244,7 @@ console.log('Stay in Details page:', stay)
                   <div className="meta-item">
                     <RiStarFill size={10} />
                     <span className='rate'>{stay?.rate} · </span>
-                    <span className='reviews-txt'>{stay?.reviews?.length} review {stay?.reviews?.length > 1 ? 's' : ''}</span>
+                    <span className='reviews-txt'>{stay?.reviews?.length}review{stay?.reviews?.length > 1 ? 's' : ''}</span>
                   </div>
                 </div>
 

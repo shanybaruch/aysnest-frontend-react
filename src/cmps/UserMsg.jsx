@@ -17,7 +17,7 @@ export function UserMsg() {
 		})
 
 		socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, review => {
-			showSuccessMsg(`New review about me ${review.txt}`)
+			showSuccessMsg(`New review about me ${review?.txt}`)
 		})
 
 		return () => {
