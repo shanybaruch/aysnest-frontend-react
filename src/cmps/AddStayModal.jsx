@@ -20,22 +20,65 @@ export function AddStayModal({ onClose }) {
         images: [],
         amenities: [],
     })
+    
+    const amenitiesByCategory = {
+        "Scenic views": ["BayView", "GardenView"],
+
+        "Bathroom": [
+            "HotWater", "Bathtub", "Essentials",
+            "Shampoo", "ShowerGel", "HairDryer"
+        ],
+
+        "Bedroom and laundry": [
+            "Washer", "Dryer", "Hangers", "Iron", "ExtraPillowsAndBlankets"
+        ],
+
+        "Entertainment": ["TV", "SoundSystem", "PoolTable"],
+
+        "Family": ["Crib", "BoardGames"],
+
+        "Heating and cooling": ["AirConditioning", "Heating", "HotTub"],
+
+        "Home safety": [
+            "SmokeDetector", "CarbonMonoxideDetector",
+            "FirstAidKit", "FireExtinguisher", "SafetyCard", "SecurityCameras"
+        ],
+
+        "Internet and office": ["Wifi", "Internet", "Workspace"],
+
+        "Kitchen and dining": [
+            "Kitchen", "Refrigerator", "Microwave",
+            "Toaster", "Blender", "DiningTable"
+        ],
+
+        "Outdoor": ["Pool", "BBQGrill", "SunLoungers"],
+
+        "Parking and facilities": ["parking", "Gym", "Elevator"],
+
+        "Services": ["SelfCheckIn", "RoomDarkeningShades", "LongTermStaysAllowed"]
+    }
 
     const isStep2Part1Valid = stay.name && stay.country && stay.city && stay.street && stay.description
     const isStep2Part2Valid = stay.capacity > 0 && stay.bedrooms >= 0 && stay.beds >= 0 && stay.bathrooms >= 0 && stay.price > 0 && stay.images.length >= 5
 
 
-    useEffect(() => {
-        setSubStep(1)
-    }, [step])
-
+    
     function nextStep() {
         setStep(prev => prev + 1)
     }
-
+    
     function prevStep() {
         setStep(prev => prev - 1)
     }
+    
+    function goToSubStep2() {
+        if (!isStep2Part1Valid) return
+        setSubStep(2)
+    }
+
+    useEffect(() => {
+        setSubStep(1)
+    }, [step])
 
     function updateStay(field, value) {
         setStay(prev => ({ ...prev, [field]: value }))
@@ -56,6 +99,7 @@ export function AddStayModal({ onClose }) {
             images: prev.images.filter((_, i) => i !== idx)
         }))
     }
+    
 
     function toggleAmenity(amenity) {
         setStay(prev => {
@@ -67,9 +111,11 @@ export function AddStayModal({ onClose }) {
         })
     }
 
-    function goToSubStep2() {
-        if (!isStep2Part1Valid) return
-        setSubStep(2)
+    function formatAmenityLabel(key) {
+        return key
+            .replace(/([A-Z])/g, ' $1') 
+            .replace(/^./, str => str.toUpperCase()) 
+            .trim()
     }
     
     function onFinish() {
@@ -237,35 +283,41 @@ export function AddStayModal({ onClose }) {
                 {/* ---------------- STEP 3 ---------------- */}
                 {step === 3 && (
                     <section className="step3">
-                        <div className="header" >
-                            <h2>Step 2 - Make it stand out</h2>
-                            <p>
-                                Add 5 or more photos plus a title and description—we’ll help you out.
-                            </p>
+                        <div className="header">
+                            <h2>Add Amenities</h2>
+                            <p>Choose at least 3 amenities</p>
                         </div>
-
-                        <div className="amenities">
-                            {['Wifi', 'Kitchen', 'Pool', 'TV', 'AirConditioning'].map(amenity => (
-                                <label key={amenity}>
-                                    <input
-                                        type="checkbox"
-                                        checked={stay.amenities.includes(amenity)}
-                                        onChange={() => toggleAmenity(amenity)}
-                                    />
-                                    {amenity}
-                                </label>
+                        
+                        <div className="content-scroll">
+                            {Object.entries(amenitiesByCategory).map(([category, amenities]) => (
+                                <div key={category} className="amenity-category">
+                                    <h3>{category}</h3>
+                                    <div className="amenities-grid">
+                                        {amenities.map(amenity => {
+                                            const isSelected = stay.amenities.includes(amenity)
+                                            return (
+                                            <button key={amenity} type="button" 
+                                            className={`amenity-card ${isSelected ? 'selected' : ''}`}
+                                            onClick={() => toggleAmenity(amenity)}>
+                                                <SvgIcon iconName={amenity} />
+                                            <span>{formatAmenityLabel(amenity)}</span>
+                                            </button>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
                             ))}
                         </div>
-
+                        
                         <div className="actions">
-                            <button onClick={prevStep}>Back</button>
-                            <button className="btn-next" onClick={onFinish}>
+                            <button className="btn-back" onClick={prevStep}> Back </button>
+                            <button className={`btn-next ${stay.amenities.length >= 3 ? 'active' : 'disabled'}`}
+                            disabled={stay.amenities.length < 3} onClick={onFinish}>
                                 Finish
                             </button>
                         </div>
                     </section>
                 )}
-
             </section>
         </section>
     )
