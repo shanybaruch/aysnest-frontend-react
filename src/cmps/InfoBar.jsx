@@ -10,12 +10,27 @@ export function InfoBar({ stay, isPhotosInView, photosRef, amenitiesRef, reviews
         <li>
           <span className='info-bar-item-1'>Overall rating</span>
           <div className="info-rating">
-            {[1, 2, 3, 4, 5].map(num => (
-              <div key={num} className="rating-row">
-                <span className="rating-number">{num}</span>
-                <div className={`bar ${num === 1 ? 'filled' : ''}`}></div>
-              </div>
-            ))}
+            {[5, 4, 3, 2, 1].map(num => {
+              const fillPercent = {
+                5: '100%',
+                4: '70%',
+                3: '0%',
+                2: '20%',
+                1: '0%',
+              }[num];
+
+              return (
+                <div key={num} className="rating-row">
+                  <span className="rating-number">{num}</span>
+                  <div className="bar">
+                    <div
+                      className="bar-fill"
+                      style={{ width: fillPercent }}
+                    ></div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </li>
 
