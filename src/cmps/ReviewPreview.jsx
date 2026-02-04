@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 export function ReviewPreview({ review }) {
+    if (!review || !review.byUser || !review.aboutUser) return null
     const { byUser, aboutUser } = review
 
     return <article className="review-preview">

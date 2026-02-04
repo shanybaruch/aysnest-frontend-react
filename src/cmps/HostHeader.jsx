@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 export function HostHeader() {
   const user = useSelector(storeState => storeState.userModule.user);
 
+  if (!user?._id) return null
   return (
     <section className="host-header">
       <div className="host-header-nav">
