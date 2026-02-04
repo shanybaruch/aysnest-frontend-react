@@ -1,5 +1,5 @@
 import { getDefaultFilter } from "../../services/stay"
-import { stayService } from "../../services/stay/stay.service.local"
+import { stayService } from "../../services/stay/stay.service.remote"
 
 export const SET_STAYS = 'SET_STAYS'
 export const SET_STAY = 'SET_STAY'
@@ -18,39 +18,39 @@ const initialState = {
 }
 
 export function stayReducer(state = initialState, action) {
-    var newState = state
-    var stays
+    let stays 
     switch (action.type) {
         case SET_STAYS:
-            newState = { ...state, stays: action.stays }
-            break
+            return { ...state, stays: action.stays }
         case SET_STAY:
-            newState = { ...state, stay: action.stay }
-            break
+            return { ...state, stay: action.stay }
         case REMOVE_STAY:
-            const lastRemovedStay = state.stays.find(stay => stay._id === action.stayId)
-            stays = state.stays.filter(stay => stay._id !== action.stayId)
-            newState = { ...state, stays, lastRemovedStay }
-            break
+            const lastRemovedStay = state.stays.find(s => s._id === action.stayId)
+            stays = state.stays.filter(s => s._id !== action.stayId)
+            return { ...state, stays, lastRemovedStay }
         case ADD_STAY:
-            newState = { ...state, stays: [...state.stays, action.stay] }
-            break
+            return { ...state, stays: [...state.stays, action.stay] }
         case UPDATE_STAY:
-            stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
-            newState = { ...state, stays }
-            break
+            stays = state.stays.map(s => (s._id === action.stay._id) ? action.stay : s)
+            const isCurrentStay = state.stay?._id === action.stay._id
+            return { 
+                ...state, 
+                stays, 
+                stay: isCurrentStay ? action.stay : state.stay 
+            }
         case ADD_STAY_MSG:
             if (action.msg && state.stay) {
-                newState = { ...state, stay: { ...state.stay, msgs: [...state.stay.msgs || [], action.msg] } }
-                break
+                const updatedStay = { ...state.stay, msgs: [...(state.stay.msgs || []), action.msg] }
+                return { ...state, stay: updatedStay }
             }
+            return state 
         case SET_FILTER_BY:
             return { ...state, filterBy: { ...state.filterBy, ...action.filterBy } }
-      case 'SET_ORDER':
-    return { ...state, currentOrder: action.order }
-            default:
+        case SET_ORDER:
+            return { ...state, currentOrder: action.order }
+        default:
+            return state
     }
-    return newState
 }
 
 // unitTestReducer()

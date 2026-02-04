@@ -96,7 +96,7 @@ export function StayDetails() {
         } else {
           setShowOrderInHeader(false)
         }
-        console.log('Calendar bottom:', calendarRect.bottom, 'Show in header:', calendarBottom < 50)
+        // console.log('Calendar bottom:', calendarRect.bottom, 'Show in header:', calendarBottom < 50)
       }
       
       handleScroll()
@@ -176,6 +176,7 @@ export function StayDetails() {
 
   const nightLabel = nightsCount === 1 ? 'night' : 'nights'
 
+console.log('Stay in Details page:', stay)
 
   if (!stay) return <Loader />
   return (
@@ -341,7 +342,7 @@ export function StayDetails() {
         <div className="divider btn-responsive"></div>
       </div>
 
-      <InfoBar className='info-bar' />
+      <InfoBar className='info-bar' stay={stay} />
       <section className='reviews' ref={reviewsRef}>
         <div className="divider"></div>
         {stay?.reviews?.length > 0 && (
@@ -350,8 +351,6 @@ export function StayDetails() {
           />
         )}
       </section>
-
-
     </section>
   )
 }

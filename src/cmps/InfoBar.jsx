@@ -1,9 +1,9 @@
-import { getRandomIntInclusive } from '../services/util.service.js'
 import { SvgIcon } from './SvgIcon.jsx';
 
 export function InfoBar({ stay, isPhotosInView, photosRef, amenitiesRef, reviewsRef }) {
   const infoItems = ['Cleanliness', 'Accuracy', 'Communication', 'Location', 'CheckIn', 'Value'];
 
+  if (!stay) return null
   return (
     <section className='info-bar'>
       <ul className="info-bar-list">
@@ -20,15 +20,14 @@ export function InfoBar({ stay, isPhotosInView, photosRef, amenitiesRef, reviews
         </li>
 
         {infoItems.map((item, idx) => {
-          const randomInt = getRandomIntInclusive(4, 5);
-          const randomPoint =
-            randomInt === 5 ? 0 : getRandomIntInclusive(0, 9);
+          const key = item.charAt(0).toLowerCase() + item.slice(1);
+          const rating = stay.reviewStats?.[key] || stay.rating || 5.0;
 
           return (
             <li key={idx} className="info-bar-item">
               <span>{item}</span>
               <span className='randomInt-point'>
-                {randomInt}.{randomPoint}
+                {rating.toFixed(1)}
               </span>
               <SvgIcon iconName={item} />
             </li>
