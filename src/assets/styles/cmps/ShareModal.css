@@ -14,7 +14,7 @@
     width: 100%;
     width: 520px;
     max-width: 90%;
-    height: 396px;
+    height: 360px;
     border-radius: 30px;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
 }
@@ -25,9 +25,10 @@
     border-radius: 5px;
 }
 
-.btns-share-modal{
+.btns-share-modal {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     padding-top: 20px;
 }
@@ -74,5 +75,5 @@
 
 .share-modal-overlay h1 {
     font-size: 30px;
-    margin: 40px 0;
+    margin-bottom: 40px;
 }
