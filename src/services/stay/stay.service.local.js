@@ -143,7 +143,7 @@ function createStays() {
         //Internet and office
         "Wifi" , "Internet" , "Workspace" , 
         //Kitchen and dining
-        "Kitchen" , "Refrigerator" , "Microwave" , "Toaster" , "Blender" , "DiningTable" ,
+        "Kitchen" , "Refrigerator" , "Microwave" , "Toaster" , "Blender" , "DiningTable" , "Espresso" ,
         //Location features
         "PrivateEntrance",
         //Outdoor
