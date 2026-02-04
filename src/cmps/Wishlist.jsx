@@ -6,6 +6,7 @@ import { StayPreview } from './StayPreview'
 import { IoIosClose } from "react-icons/io";
 import { updateUser } from '../store/actions/user.actions';
 import { showErrorMsg } from '../services/event-bus.service';
+import { userService } from '../services/user/user.service.remote';
 
 
 

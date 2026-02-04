@@ -70,9 +70,10 @@ export function AppHeader({ isAtTop }) {
         }
     }
 
-    const isHostingPage = location.pathname.startsWith(`/user/${user?._id}/host`)
-    function handleSwitch() {
+    const isHostingPage = user?._id ? location.pathname.startsWith(`/user/${user._id}/host`) : false
 
+    function handleSwitch() {
+        if (!user?._id) return
 
         if (isHostingPage) {
             navigate('/stay')
@@ -176,7 +177,6 @@ export function AppHeader({ isAtTop }) {
                 </section>
 
             </nav>
-
 
 
             {!shouldHideFilter &&
