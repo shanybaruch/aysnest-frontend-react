@@ -136,6 +136,7 @@ export function OrderPage() {
                 await updateUser(userToUpdate)
             }
             setIsConfirm(true)
+            navigate('/')
             showSuccessMsg('The order was successfully!')
         } catch (err) {
             console.error('Failed to save order', err)
