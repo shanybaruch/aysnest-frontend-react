@@ -1,7 +1,10 @@
 import Axios from 'axios'
 
-const BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://aysnest-backend.onrender.com/api/'
+// const BASE_URL = process.env.NODE_ENV === 'production'
+//     ? 'https://aysnest-backend.onrender.com/api/'
+//     : 'http://localhost:3030/api/'
+const BASE_URL = import.meta.env.PROD 
+    ? 'https://aysnest-backend.onrender.com/api/' 
     : 'http://localhost:3030/api/'
 // const BASE_URL = 'https://aysnest-backend.onrender.com/api/'
 
