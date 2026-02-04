@@ -5,10 +5,6 @@ import { orderService } from '../services/order/order.service.remote.js'
 export function HostOrder() {
     const [orders, setOrders] = useState([])
     const loggedinUser = useSelector(storeState => storeState.userModule.user)
-    // for (let i = 0; i < orders.length; i++) {
-    //     const stayOrder = orders[i].stay
-
-    // }
 
     useEffect(() => {
         if (loggedinUser) {
@@ -41,14 +37,6 @@ export function HostOrder() {
         }
     }
 
-    // function getFormattedDate(dateStr) {
-    //     const date = new Date(dateStr)
-    //     return date.toLocaleDateString('en-US', {
-    //         month: 'short',
-    //         day: 'numeric',
-    //         year: 'numeric'
-    //     })
-    // }
     function getFormattedDate(dateStr) {
     const date = new Date(dateStr)
     
