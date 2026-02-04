@@ -1,5 +1,5 @@
 .host-order {
-    padding: 30px 60px;
+    padding: 20px 60px;
     color: var(--black);
     margin: 0 auto;
 
@@ -9,37 +9,30 @@
         border-collapse: separate;
         border-spacing: 0 5px;
         background: var(--white);
-        border-radius: 12px;
-
-        tr {
-            border-bottom: 5px solid var(--white);
-        }
 
         th {
             background-color: var(--white);
-            /* text-align: center; */
             text-align: start;
             padding: 10px 0;
             font-weight: 600;
             font-size: 0.875rem;
             color: var(--black);
 
-            /* border-bottom: 1px solid var(--gray-light); */
         }
 
         td {
-            border-bottom: 1px solid var(--white-gray);
             font-size: 0.75rem;
-            font-weight: 400;
-            background-color: var(--white-gray);
+            font-weight: 500;
+            /* background-color: var(--white-gray); */
             vertical-align: middle;
-                        text-align: start;
-
-            /* text-align: center; */
+            text-align: start;
+            /* border-bottom: 2px solid var(--white-gray); */
+            padding: 0;
 
             img {
                 margin: 0;
-                width: 80px;
+                width: 60px;
+                height: 60px;
                 object-fit: cover;
                 aspect-ratio: 1 / 1;
                 border-radius: 50px;
@@ -83,8 +76,8 @@
     display: inline-block;
     padding: 0;
     border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 0.75rem;
+    font-weight: 600;
     text-transform: capitalize;
 }
 
@@ -110,18 +103,18 @@
 
 .btn-approve,
 .btn-reject {
-    padding: 10px 12px;
+    padding: 8px 12px;
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 500;
     transition: all 0.2s ease;
     margin: 0;
 }
 
 .btn-approve {
-    margin-right: .5rem;
+    margin-right: .3rem;
     background-color: var(--clr1);
     color: var(--white);
 }
@@ -132,32 +125,44 @@
 }
 
 .btn-reject {
-    background-color: var(--white);
-    color: var(--black);
-}
-
-.btn-reject:hover {
     background-color: var(--black);
     color: var(--white);
 }
 
-.orders-table th:nth-child(1), 
-.orders-table td:nth-child(1) { width: 12%; }
+.btn-reject:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
 
-.orders-table th:nth-child(2), 
-.orders-table td:nth-child(2) { width: 14%; }
+.orders-table th:nth-child(1),
+.orders-table td:nth-child(1) {
+    width: 12%;
+}
 
-.orders-table th:nth-child(3), 
-.orders-table td:nth-child(3) { width: 23%; }
+.orders-table th:nth-child(2),
+.orders-table td:nth-child(2) {
+    width: 14%;
+}
 
-.orders-table th:nth-child(4), 
-.orders-table td:nth-child(4) { width: 18%; }
+.orders-table th:nth-child(3),
+.orders-table td:nth-child(3) {
+    width: 23%;
+}
 
-.orders-table th:nth-child(5), 
-.orders-table td:nth-child(5) { width: 15%; }
+.orders-table th:nth-child(4),
+.orders-table td:nth-child(4) {
+    width: 18%;
+}
 
-.orders-table th:nth-child(6), 
-.orders-table td:nth-child(6) { width: 18%; }
+.orders-table th:nth-child(5),
+.orders-table td:nth-child(5) {
+    width: 15%;
+}
+
+.orders-table th:nth-child(6),
+.orders-table td:nth-child(6) {
+    width: 18%;
+}
 
 
 
