@@ -41,8 +41,14 @@ export function StayFilter(
         const params = {}
 
         if (filterToSave.txt) params.txt = filterToSave.txt
-        if (filterToSave.from) params.from = new Date(filterToSave.from).toISOString().split('T')[0] // פורמט תאריך נקי
-        if (filterToSave.to) params.to = new Date(filterToSave.to).toISOString().split('T')[0]
+
+        if (filterToSave.from) {
+            const date = new Date(filterToSave.from);
+            params.from = date.toLocaleDateString('sv-SE');
+        }
+        if (filterToSave.to) {
+            params.to = new Date(filterToSave.to).toLocaleDateString('sv-SE');
+        }
 
         if (filterToSave.guests.adults) params.adults = filterToSave.guests.adults
         if (filterToSave.guests.children) params.children = filterToSave.guests.children
@@ -209,8 +215,6 @@ export function StayFilter(
                         {isAnyActive && <span className="search-text">Search</span>}
                     </section>
                 </div>
-
-
             </section>
         </>
     )

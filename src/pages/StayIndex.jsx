@@ -19,12 +19,10 @@ export function StayIndex() {
     console.log('stays: ', stays)
 
     useEffect(() => {
-        if (searchParams.size === 0) return
-
         const filterFromUrl = {
             txt: searchParams.get('txt') || '',
-            from: searchParams.get('from') || '',
-            to: searchParams.get('to') || '',
+            from: searchParams.get('from') || null,
+            to: searchParams.get('to') || null,
             minCapacity: +searchParams.get('minCapacity') || 0,
             guests: {
                 adults: +searchParams.get('adults') || 0,
