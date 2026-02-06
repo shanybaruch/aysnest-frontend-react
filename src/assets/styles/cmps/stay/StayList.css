@@ -13,9 +13,9 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
         grid-template-rows: max-content;
-        row-gap: 0;
-        column-gap: .8rem;
-        grid-auto-rows: 0;
+        row-gap: 1.5rem;
+        column-gap: .9rem;
+        /* grid-auto-rows: 0; */
         justify-content: start;
         overflow: hidden;
 
