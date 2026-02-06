@@ -76,7 +76,7 @@ export function StayFilter(
     }
 
     const destinations = [
-        { id: '1', name: 'Greece and the islands', desc: 'For its top-notch dining' },
+        { id: '1', name: 'Greece', desc: 'For its top-notch dining' },
         { id: '2', name: 'New York, United States', desc: 'For its bustling nightlife' },
         { id: '3', name: 'Paris, France', desc: 'For its stunning architecture' },
         { id: '4', name: 'Tokyo, Japan', desc: 'For a trip abroad' },
@@ -141,8 +141,13 @@ export function StayFilter(
                                                 onClick={() => handleSelect(dest.name)}
                                                 className="suggestion-item"
                                             >
-                                                <h4>{dest.name}</h4>
-                                                <span>{dest.desc}</span>
+                                                <section className='sec-left-img'>
+                                                    <img src="https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-hawaii-autosuggest-destination-icons-2/original/ea5e5ee3-e9d8-48a1-b7e9-1003bf6fe850.png" alt="" />
+                                                </section>
+                                                <section className='sec-right'>
+                                                    <h4>{dest.name}</h4>
+                                                    <span>{dest.desc}</span>
+                                                </section>
                                             </li>
                                         ))}
                                     </ul>

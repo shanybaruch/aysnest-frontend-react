@@ -4,24 +4,24 @@ export function StayPreview({ stay }) {
     const location = useLocation()
 
     function getRandomDateRange() {
-    const now = new Date()
-    const startTimestamp = now.getTime() + Math.random() * (180 * 24 * 60 * 60 * 1000)
-    const startDate = new Date(startTimestamp)
-    const nights = Math.floor(Math.random() * 4) + 2
-    const endDate = new Date(startDate)
-    endDate.setDate(startDate.getDate() + nights)
-    const monthOptions = { month: 'short' }
-    const startMonth = startDate.toLocaleDateString('en-US', monthOptions)
-    const endMonth = endDate.toLocaleDateString('en-US', monthOptions)
-    const startDay = startDate.getDate()
-    const endDay = endDate.getDate()
+        const now = new Date()
+        const startTimestamp = now.getTime() + Math.random() * (180 * 24 * 60 * 60 * 1000)
+        const startDate = new Date(startTimestamp)
+        const nights = Math.floor(Math.random() * 4) + 2
+        const endDate = new Date(startDate)
+        endDate.setDate(startDate.getDate() + nights)
+        const monthOptions = { month: 'short' }
+        const startMonth = startDate.toLocaleDateString('en-US', monthOptions)
+        const endMonth = endDate.toLocaleDateString('en-US', monthOptions)
+        const startDay = startDate.getDate()
+        const endDay = endDate.getDate()
 
-    if (startMonth === endMonth) {
-        return `${startMonth} ${startDay}-${endDay}`
-    } else {
-        return `${startMonth} ${startDay}-${endMonth} ${endDay}`
+        if (startMonth === endMonth) {
+            return `${startMonth} ${startDay}-${endDay}`
+        } else {
+            return `${startMonth} ${startDay}-${endMonth} ${endDay}`
+        }
     }
-}
 
     if (!stay) return
     return <article className="stay-preview">
@@ -32,7 +32,9 @@ export function StayPreview({ stay }) {
             <p className='name'>{stay.name}</p>
             <div className="stay-info">
                 <p>{getRandomDateRange()}</p>
-                <p>₪{stay.price} for night ★ {stay.rate}</p>
+                <p>
+                    <span>₪{stay.price} for night ★ {stay.rate}</span>
+                </p>
             </div>
         </Link>
     </article>

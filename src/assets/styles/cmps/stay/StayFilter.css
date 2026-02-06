@@ -156,12 +156,25 @@
                 }
 
                 li {
-                    padding: .8em .8em;
+                    padding: .8em;
                     border-radius: 10px;
                     cursor: pointer;
 
+                    display: flex;
+                    align-items: center;
+                    gap: .8rem;
+                    height: 80px;
+
                     &:hover {
                         background-color: var(--white-gray);
+                    }
+
+                    .sec-left-img {
+                        height: 100%;
+                        img {
+                            height: 100%;
+                            border-radius: 15px;
+                        }
                     }
                 }
 
